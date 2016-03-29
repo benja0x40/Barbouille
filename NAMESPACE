@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+# lst <- gsub(".Rd$", "", dir("man"))
+# cat(paste("export(", lst, ")", collapse="\n", sep=""))
+# export(_hidden_)

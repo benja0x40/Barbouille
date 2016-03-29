@@ -1,0 +1,53 @@
+================================================================================
+Barbouille Release 0.1.0
+--------------------------------------------------------------------------------
+New Features
+--------------------------------------------------------------------------------
++ added function transformColors
+  - support for HSV colorspace transformations which can easily change a color
+    scale into desaturated, darker or complementary colors
+  - support for RGB colorspace transformations allowing for instance to generate
+    warmer (red/yellow) and colder (blue/green) color scales
+  - color transformations can be applied directly to colorParameters and
+    groupParameters objects as well as to standard R color vectors
+
++ updated function makeColors
+  - bypass of color mapping now allows use cases with group coloring only
+  - improved transparency control with 3 methods: global, piecewise or per-value
+    length(alpha) == 1                         => global
+    length(alpha) == length(thresholds) => same piecewise mapping as for colors
+    length(alpha) == length(v)              => per value (predefined by user)
+    length(alpha) == unexpected           => error
+  - added the "override" parameter to determine if the transparency of
+    below and above colors should override the provided alpha value(s)
+  - na and group-associated colors always override provided alpha value(s)
+
+--------------------------------------------------------------------------------
+Bugs
+--------------------------------------------------------------------------------
++ fixed several issues with parameter checking, group index management,
+   and color overwriting when using group coloring
+
++ functions defineColors, makeColors:
+  - changed default na color value to NA (invisible)
+
+--------------------------------------------------------------------------------
+Internals
+--------------------------------------------------------------------------------
++ objects resulting from defineColors and defineGroups now belong
+   to the S3 classes colorParameters and groupParameters respectively
+
++ refactored groupPameter attribute from "color" to "colors"
+   Having the same name for color attribute in groupPameters and
+   colorParameters simplifies coding for similar operations on these
+   two classes
+
+--------------------------------------------------------------------------------
+Other
+--------------------------------------------------------------------------------
++ Package name
+  Barbouille, French name of the painting character in Barbapapa.
+
+================================================================================
+Barbouille Release 0.0.1 (originally named RPlotFun_0.0.1)
+--------------------------------------------------------------------------------

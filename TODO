@@ -1,0 +1,197 @@
+################################################################################
+TODO
+================================================================================
+Bugs
+--------------------------------------------------------------------------------
++ function plotLabels
+  - take into account label sizes for returned xlim, ylim values
+
+================================================================================
+Documentation
+--------------------------------------------------------------------------------
++ write package vignette
+
++ add roxygen section for package description
+
++ add missing sections
+  - see also:    plotLabels
+  - description: defineGroups, groupIndex, groupLegend, scatterPlot
+  - detail:      all functions
+
+================================================================================
+Features
+--------------------------------------------------------------------------------
++ transparency
+  - consider adding a transparency (alpha) attribute to group colors
+
++ improve user code consiseness
+  - allow alternative forms of function calls
+    > function makeColors
+      (v, parameters), (grp, grp.prm), (v, parameters, grp, grp.prm)
+  - allow vectorized forms of function calls
+   > function makeColors
+     (v = list, parameters = list), etc.
+
++ extend color transformations
+  - support color "morphing"
+    use source color and target color to transform colors accordingly (either
+    in HSV or RGB space)
+
++ consider extending color transformation:
+  - define color filters (collections of transformation parameters) to make it
+    easier to apply and chain complex color transformations
+
++ consider extending color generation:
+  - concepts from the colorspace package (categorical, sequential, divergent)
+  - concepts from the colortools package (complementary, triadic, tetradic)
+  - concepts from the dichromat package (color blindness)
+  - consider introducing a concept of maximal separation given style constraints
+    use optimization strategy in data and color space to achieve maximal color
+    separation and readability for categorical data and numerical data (density)
+
++ consider extending group representation and color mapping with
+  cascading/functional styles
+
++ consider support for point size mapping and corresponding legend generator
+
++ consider builtin support for common plots
+  - histograms and density plots (1D)
+  - density scatterplots (2D)
+
++ consider builtin support for circular plots
+
+================================================================================
+Internals
+--------------------------------------------------------------------------------
++ use cleaner object implementation using S3 or S4 classes and multiple dispatch
+  to allow alternative forms of function calls
+
++ consider making package features compatible with grid based graphics (lattice)
+
+================================================================================
+Performances
+--------------------------------------------------------------------------------
++ change color mapping for a possibly faster implementation using apply
+  (useful for large datasets, heatmaps, and critical for domainograms)
+
++ consider auto reduction of represented points when density is very high
+  in the scatterPlot function
+
+================================================================================
+Testing
+--------------------------------------------------------------------------------
++ add unit tests to help identify operational or broken package features
+  in case of significant implementation changes
+
+################################################################################
+DONE
+================================================================================
+Bugs
+--------------------------------------------------------------------------------
++ function transformColors
+  - modifying the saturation of greys no longer results in red colors
+
++ fixed several issues with parameter checking, group index management, and
+  color overwriting when using group coloring
+
++ functions defineColors, makeColors:
+  - changed default na color value to NA
+
+================================================================================
+Documentation
+--------------------------------------------------------------------------------
++ started function documentation using roxygen.
+  covered sections: title, description, arguments, author(s), see also, examples
+
+================================================================================
+Features
+--------------------------------------------------------------------------------
++ function makeColors
+  - improved transparency control with 3 methods: global, piecewise or per-value
+    length(alpha) == 1                  => global
+    length(alpha) == length(thresholds) => same piecewise mapping as for colors
+    length(alpha) == length(v)          => per value (predefined by user)
+    length(alpha) == unexpected         => error
+  - added the "override" parameter to determine if the transparency of
+    below and above colors should be replaced by provided alpha value(s)
+  - na and group-associated colors always override provided alpha value(s)
+
++ extended color transformations in function transformColors
+  - support for RGB colorspace transformations allowing for instance to generate
+    warmer (red/yellow) and colder (blue/green) colors
+
++ function transformColors
+  - added support of color transformations for groupParameters and color vectors
+
++ added function transformColors
+  support for HSV colorspace transformations on the colorParameters object which
+  can easily change a color map into desaturated, darker or complementary colors
+
++ function makeColors
+  - bypass of color mapping now allows use cases with group coloring only
+
++ added function scatterPlot
+  generic (x, y) plot function supporting color mapping and group representation
+
++ modified function makeColors to implement group-associated coloring
+
++ added support for the representation of group memberships (color, symbol, ...)
+  - added functions:
+    > defineGroups
+    > groupIndex
+    > groupLegend
+  - modified functions: makeColors
+
++ added function colorLegend
+  represent the color scales used with makeColors and defined with defineColors
+
++ modified makeColors to make use of defineColors and predefined parameters
+
++ added function defineColors
+  - allows persistence and sharing of color mapping parameters between functions
+  - provides useful shortcuts for parameter setting
+  - detects invalid parameters and produces error messages
+
++ implemented a new color mapping function derived from makeColors from
+  package MRA.TA
+  - rewrote sections that were imposing the use of positive numeric values only
+  - rewrote the management of NA values
+  - refactored input logic and parameter names:
+    > "thresholds" and "colors" vector elements are now associated 1 to 1
+    > removed the "background" color
+    > added the lower limit color "below"
+    > changed name of the upper limit color from "overflow" to "above"
+    > added "na" to specify the color of NA values
+    > added "levels" to determine the number of color levels between thresholds
+    > added "alpha" to determine the global transparency of generated colors
+  - improved code structure
+
++ implemented function plotLabels based on the R script of Itys
+  overlays text labels and arrows to annotate a set of points
+
+================================================================================
+Internals
+--------------------------------------------------------------------------------
++ refactored groupPameter attribute from "color" to "colors"
+  Having the same name for color attribute in groupPameter and colorParameters
+  simplifies code for similar operations on these two classes
+
++ updated implementation of object type validations
+  - defined new S3 classes: colorParameters, groupParameters
+  - removed reserved functions: .is.color.parameters, .is.group.parameters
+  - source code making use of class colorParameters:
+    defineColors.R, transformColors.R,  makeColors.R, colorLegend.R
+    updateDefinition.R
+  - source code making use of class groupParameters:
+    defineGroups.R, groupIndex.R, groupLegend.R, makeColors.R
+    updateDefinition.R
+
++ moved source code of groupIndex function from defineGroups.R to groupIndex.R
+
+================================================================================
+Other
+--------------------------------------------------------------------------------
++ Package name
+  Barbouille, French name of the painting character in Barbapapa.
+  The english name is Barbabeau and its use is probably protected.
+
