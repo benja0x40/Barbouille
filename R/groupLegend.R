@@ -80,7 +80,7 @@
 groupLegend <- function(pos, parameters, N = NA, ...) {
 
   # Resolve legend position
-  pos <- .resolve.legend.position(pos)$name
+  pos <- .resolve.legend.position.(pos)$name
 
   if(! is(parameters, "groupParameters")) stop("Class of parameters is invalid")
 

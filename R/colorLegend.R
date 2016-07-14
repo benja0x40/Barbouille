@@ -128,7 +128,7 @@ colorLegend <- function(
   if(! tick.pos %in% c(-1, 1)) stop("Unknown tick.pos value")
 
   # Resolve legend position
-  p <- .resolve.legend.position(pos)
+  p <- .resolve.legend.position.(pos)
 
   r <- parameters$range
   if(log) {

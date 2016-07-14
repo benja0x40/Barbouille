@@ -80,6 +80,7 @@
 #' groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
 defineGroups <- function(ids, labels = NULL, colors = "",  ...) {
+  if(missing(ids) & ! is.null(labels)) ids <- 1:length(labels)
   if(any(duplicated(ids))) stop("Group identifiers are not unique")
   if(is.null(labels)) labels <- as.character(ids)
   if(is.null(colors)) colors <- "black"

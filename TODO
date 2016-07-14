@@ -4,7 +4,14 @@ TODO
 Bugs
 --------------------------------------------------------------------------------
 + function plotLabels
+  - rename to textLabels (better since plot is optional)
   - take into account label sizes for returned xlim, ylim values
+    (use strwidth, strheight)
+  - provide default centroid.shift when plotting single label
+  - support group parameters
+
++ function transformColors
+  - preserve transparency when exists
 
 ================================================================================
 Documentation
@@ -19,23 +26,51 @@ Documentation
   - detail:      all functions
 
 ================================================================================
-Features
+Improvements/Refinements
 --------------------------------------------------------------------------------
++ venn diagrams
+  - add extra layouts for initial positions (horizontal, vertical, diagonal)
+  - add generalized linear layout using angle parameter to control orientation
+
++ color Legend
+  - add title
+  - add units (optional)
+  - management of extrema (represent below and above areas)
+  - see if possible to plot color legend outside of plot area (right margin)
+
 + transparency
   - consider adding a transparency (alpha) attribute to group colors
 
-+ improve user code consiseness
-  - allow alternative forms of function calls
-    > function makeColors
-      (v, parameters), (grp, grp.prm), (v, parameters, grp, grp.prm)
-  - allow vectorized forms of function calls
-   > function makeColors
-     (v = list, parameters = list), etc.
-
 + extend color transformations
+  - support transparency transformations
+  - support standard color filters as available in the Processing language
   - support color "morphing"
     use source color and target color to transform colors accordingly (either
     in HSV or RGB space)
+
++ extend group symbols
+  - support dual color symbols with outline using pairs of graphic symbols
+    (e.g empty square + filled square, empty circle + filled circle )
+
+================================================================================
+New features
+--------------------------------------------------------------------------------
++ venn diagrams
+  - design an evolutionnary algorithm that encode the structure and evolution
+    of populations of generative initial layouts
+    chromosomes:
+      1. order of elements in layouts
+      2. hierarchy of layouts
+      3. layout functions
+    fitness:
+      1. residual energy after layout optimization
+      2. similarity beween initial and optimal layout
+      3. optimization time
+    diversity:
+
++ color management
+  - provide guidance to match color scale parameters / represented values
+    (plot distribution, find modes, quantiles, etc...)
 
 + consider extending color transformation:
   - define color filters (collections of transformation parameters) to make it
@@ -54,6 +89,10 @@ Features
 
 + consider support for point size mapping and corresponding legend generator
 
++ layouts
+  - automated placement of labels and legends could be proposed according to
+    density of represented elements
+
 + consider builtin support for common plots
   - histograms and density plots (1D)
   - density scatterplots (2D)
@@ -66,6 +105,14 @@ Internals
 + use cleaner object implementation using S3 or S4 classes and multiple dispatch
   to allow alternative forms of function calls
 
++ improve user code consiseness
+  - allow alternative forms of function calls
+    > function makeColors
+      (v, parameters), (grp, grp.prm), (v, parameters, grp, grp.prm)
+  - allow vectorized forms of function calls
+   > function makeColors
+     (v = list, parameters = list), etc.
+
 + consider making package features compatible with grid based graphics (lattice)
 
 ================================================================================
@@ -75,7 +122,7 @@ Performances
   (useful for large datasets, heatmaps, and critical for domainograms)
 
 + consider auto reduction of represented points when density is very high
-  in the scatterPlot function
+  in the scatterPlot function (avoid overplotting)
 
 ================================================================================
 Testing

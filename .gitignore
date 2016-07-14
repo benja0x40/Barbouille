@@ -1,4 +1,12 @@
+Barbouille.Rproj
+src/*.o
+src/*.so
+src/*.dll
+.gitignore
+.Rbuildignore
+.Rproj
 .Rproj.user
-.Rhistory
 .RData
 .Ruserdata
+.Rhistory
+Read-and-delete-me

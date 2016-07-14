@@ -1,9 +1,7 @@
 Version History
 ================================================================================
-* * *
-Barbouille Release 0.1.0
+Barbouille Alpha Release 0.1.0
 --------------------------------------------------------------------------------
-* * *
 ### 1. New Features ###
 
 * added function transformColors:
@@ -57,10 +55,8 @@ Barbouille Release 0.1.0
 * Package name:
   Barbouille, French name of the painting character in Barbapapa.
 
-* * *
-Barbouille Release 0.0.1
+Barbouille Alpha Release 0.0.1
 --------------------------------------------------------------------------------
-* * *
 ### 1. Features ###
 
 * added function scatterPlot
