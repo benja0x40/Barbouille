@@ -7,11 +7,7 @@ Bugs
   - rename to textLabels (better since plot is optional)
   - take into account label sizes for returned xlim, ylim values
     (use strwidth, strheight)
-  - provide default centroid.shift when plotting single label
   - support group parameters
-
-+ function transformColors
-  - preserve transparency when exists
 
 ================================================================================
 Documentation
@@ -28,6 +24,15 @@ Documentation
 ================================================================================
 Improvements/Refinements
 --------------------------------------------------------------------------------
++ function plotImage
+  - make simple function to get rid of technical nightmares when using R's
+    builtin image function to represent heatmaps with precomputer colors
+
++ heatmaps
+  - finish implementing a plotImage function to avoid indexing nightmares with
+    the builtin image function when using precomputed colors
+  - implement interval percentages in the legend as was done with fireplots
+
 + venn diagrams
   - add extra layouts for initial positions (horizontal, vertical, diagonal)
   - add generalized linear layout using angle parameter to control orientation

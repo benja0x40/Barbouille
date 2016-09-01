@@ -88,6 +88,10 @@ plotLabels <- function(
   pts <- rbind(x, y)
 
   # Centroid coordinates with optional centroid shift vector
+  if(nrow(pts) == 1 & all(centroid.shift == 0)) {
+    centroid.shift <- c(0.1, 0.1)
+    warning("centroid.shift was set to c(0.1, 0.1)")
+  }
   ctr <- rowMeans(pts) + centroid.shift
 
   # Compute delta x, delta y and the corresponding slopes and intercepts
