@@ -9,6 +9,8 @@ Version History
     + represent set overlaps with approximately proportional areas
     + customizable initial layout allow to control global layout of the diagram
     + support for circle or rectangle geometry to represent sets
+    
+ * added prototype function histogram2D for bivariate frequency plots
 
 ### 2. Bug Fixes ###
 
