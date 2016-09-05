@@ -24,6 +24,9 @@ install_github("benja0x40/Barbouille")
 
 #### Coloring ####
 
+![x](./images/examples/makeColors_1.svg "example")
+![x](./images/examples/makeColors_2.svg "example")
+
 ```R
 # Generate samples from two normally distributed random variables
 x <- rnorm(2000)
@@ -41,8 +44,6 @@ plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
 colorLegend("topleft", parameters = clr.prm, cex = 0.8)
 ```
 
-![](./images/examples/makeColors_1.svg "example")
-
 ```R
 clr.prm <- defineColors(
   thresholds = c(0, 2), colors = c("black", "lightgrey"), above = "red", range = c(0, 2.3), levels = 4
@@ -54,7 +55,6 @@ clr <- makeColors(z, parameters = clr.prm)
 plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
 colorLegend("topleft", parameters = clr.prm, ticks = seq(0, 2, length.out = 5), cex = 0.8)
 ```
-![](./images/examples/makeColors_2.svg "example")
 
 #### Highlighting ####
 

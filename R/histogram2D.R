@@ -32,11 +32,11 @@ histogram2D <- function(x, y, nx = 100, ny = 100, xlim = NULL, ylim = NULL, plot
   x <- seq(xlim[1], xlim[2], by = diff(xlim) / nx)
   y <- seq(ylim[1], ylim[2], by = diff(ylim) / ny)
 
-  k <- table(.m2v.(i, j, nrow = ny))
   z <- matrix(0, ny, ny)
-  z[.v2m.(as.integer(names(k)), nrow = ny)] <- as.vector(k)
+  k <- table(.m2v.(i, j, nrow = ny))
+  z[as.integer(names(k))] <- as.vector(k)
 
-  if(plot) image(z, ...)
+  if(plot) image(x = x, y = y, z = z, ...)
 
   list(x = x, y = y, z = z)
 }
