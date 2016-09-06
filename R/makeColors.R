@@ -44,7 +44,8 @@
 #' @param grp.prm
 #' data.frame of group representation parameters defined by \link{defineGroups}.
 # -----------------------------------------------------------------------------.
-#' @return makeColors returns a character vector of RGBA colors in hexadecimal.
+#' @return
+#' makeColors returns a character vector of RGBA colors in hexadecimal.
 # -----------------------------------------------------------------------------.
 #' @examples
 #'

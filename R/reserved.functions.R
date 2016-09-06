@@ -74,3 +74,16 @@
   if(! ncol(x) %in% (k * n)) stop("Unexpected parameter dimensions")
   x
 }
+# =============================================================================.
+# Find finite values consistently in all samples (log transformed counts)
+# -----------------------------------------------------------------------------.
+.finiteValues. <- function(x) {
+  if(is.null(dim(x))) {
+    x <- sapply(x, FUN=is.finite)
+  } else {
+    n <- ncol(x)
+    x <- t(apply(x, MARGIN=1, FUN=is.finite))
+    x <- rowSums(x) == n
+  }
+  x
+}

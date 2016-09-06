@@ -9,13 +9,25 @@
 #'   \link{scatterPlot}
 # -----------------------------------------------------------------------------.
 #' @param x
+#'
 #' @param y
+#'
 #' @param nx
+#' number of bins on x values
+#'
 #' @param ny
+#' number of bins on y values
+#'
 #' @param xlim
+#' range of x values
+#'
 #' @param ylim
+#' range of y values
+#'
 #' @param plot
+#'
 #' @param ...
+#'
 # -----------------------------------------------------------------------------.
 #' @return
 #' histogram2D returns a \code{list} with the following elements:
@@ -23,8 +35,12 @@
 # -----------------------------------------------------------------------------.
 histogram2D <- function(x, y, nx = 100, ny = 100, xlim = NULL, ylim = NULL, plot = F, ...) {
 
-  if(is.null(xlim)) xlim = range(x, na.rm = T)
-  if(is.null(ylim)) ylim = range(y, na.rm = T)
+  chk <- .finiteValues.(cbind(x, y))
+  x <- x[chk]
+  y <- y[chk]
+
+  if(is.null(xlim)) xlim = range(x)
+  if(is.null(ylim)) ylim = range(y)
 
   i <- floor((nx - 1) * (x - xlim[1]) / diff(xlim)) + 1
   j <- floor((ny - 1) * (y - ylim[1]) / diff(ylim)) + 1

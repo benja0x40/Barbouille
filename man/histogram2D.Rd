@@ -7,6 +7,23 @@
 histogram2D(x, y, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
   plot = F, ...)
 }
+\arguments{
+\item{x}{}
+
+\item{y}{}
+
+\item{nx}{number of bins on x values}
+
+\item{ny}{number of bins on y values}
+
+\item{xlim}{range of x values}
+
+\item{ylim}{range of y values}
+
+\item{plot}{}
+
+\item{...}{}
+}
 \value{
 histogram2D returns a \code{list} with the following elements:
 \code{x}, \code{y}, \code{z}.

@@ -1,6 +1,21 @@
 Version History
 ================================================================================
 
+## Barbouille 0.2.1 (Alpha) ##
+
+### 1. New Features ###
+
+* added function replaceAlpha
+    + replace transparency values in color vectors
+
+### 2. Bug Fixes ###
+
+* function histogram2D now accepts x, y vectors with infinite or NA values
+
+### 3. Internals ###
+
+* added .finiteValues. function to easily filter infinite or NA values
+
 ## Barbouille 0.2.0 (Alpha) ##
 
 ### 1. New Features ###

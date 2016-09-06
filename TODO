@@ -9,6 +9,9 @@ Bugs
     (use strwidth, strheight)
   - support group parameters
 
++ function makeColors
+  - internal function replace.alpha may not be safe when no alpha value exists
+
 ================================================================================
 Documentation
 --------------------------------------------------------------------------------
