@@ -5,8 +5,19 @@ Version History
 
 ### 1. New Features ###
 
+* added function histogram2D for bivariate frequency plots
+  + provides 3 methods: bin, bin.table, ash
+  + provides 4 default color schemes
+
+* added function plotImage
+    + simple function to avoid indexing nightmares when using R's builtin
+      image function to represent heatmaps with precomputer colors
+
 * added function replaceAlpha
     + replace transparency values in color vectors
+
+* added color conversion functions
+    + rgb2hsv, hsv2rgb, R2rgb, R2hsv, rgb2R, hsv2R
 
 ### 2. Bug Fixes ###
 
@@ -14,7 +25,10 @@ Version History
 
 ### 3. Internals ###
 
-* added .finiteValues. function to easily filter infinite or NA values
+* added .finiteValues. in reserved functions
+    + easily filter infinite or NA values
+
+* function histogram2D now uses functions plotImage and makeColors (draft)
 
 ## Barbouille 0.2.0 (Alpha) ##
 
@@ -24,8 +38,6 @@ Version History
     + represent set overlaps with approximately proportional areas
     + customizable initial layout allow to control global layout of the diagram
     + support for circle or rectangle geometry to represent sets
-    
- * added prototype function histogram2D for bivariate frequency plots
 
 ### 2. Bug Fixes ###
 

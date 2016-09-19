@@ -74,6 +74,9 @@
   if(! ncol(x) %in% (k * n)) stop("Unexpected parameter dimensions")
   x
 }
+
+# SPECIAL VALUES ###############################################################
+
 # =============================================================================.
 # Find finite values consistently in all samples (log transformed counts)
 # -----------------------------------------------------------------------------.

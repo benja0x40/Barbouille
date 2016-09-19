@@ -73,7 +73,9 @@
 #' groupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
 # -----------------------------------------------------------------------------.
 scatterPlot <- function(
-  x, y = NULL, clr = NULL, clr.prm = NULL, grp = NULL, grp.prm = NULL,
+  x, y = NULL,
+  clr = NULL, clr.prm = NULL, grp = NULL, grp.prm = NULL,
+  density = c(NULL, "knn", "hist2D"),
   xlab = "", ylab = "", ...
 ) {
 
@@ -107,4 +109,55 @@ scatterPlot <- function(
     }
   }
   do.call(plot.default, args)
+}
+# =============================================================================.
+#' Scatterplot with points colored according to kNN density estimation
+# -----------------------------------------------------------------------------.
+#' @param \code{X} matrix with two columns of numeric values
+#' @param \code{col} index of color gradient (0 = grey, 1 = red, 2 = green, 3 = blue)
+#' @param \code{grp} logical vector defining an highlighted subset of points
+#' @param \code{grp.col} index of color gradient used for the grp subset
+#' @param \code{zline} logical, activates the drawing of line y = 0 when TRUE
+#' @param \code{xyline} logical, activates the drawing of line y = x when TRUE
+#' @param \code{k} number of nearest neighbors for kNN density estimation
+#' @param \code{...} optional parameters passed to the plot function
+#'
+#' @return produce a scatter plot in the active graphic device
+# -----------------------------------------------------------------------------.
+scPlotCounts <- function(X, col=0, grp=NULL, grp.col=0, zline=F, xyline=F, k=256, ...) {
+
+  o <- 0:49/49
+  s <- 0.5
+  point.colors <- list(
+    grey(99:0/132),
+    c(
+      rgb(o, 0, 0, s),
+      rgb(1, o, 0, s)
+    ),
+    c(
+      rgb(0, o, 0, s),
+      rgb(o, 1, 0, s)
+    ),
+    c(
+      rgb(0, 0, o, s),
+      rgb(0, o, 1, s)
+    ),
+    rep(rgb(0,0.5,1,0.5), 100)
+  )
+
+  Y <- X[finiteValues(X),]
+  dens <- densityByKNN(X, k=k)
+  clrs <- point.colors[[col+1]][ceiling(dens$prc)]
+  plot(X, col=clrs, ...)
+  if(! is.null(grp)) {
+    dens <- densityByKNN(X[grp,], k=k/2, sbj = Y)
+    clrs <- point.colors[[grp.col+1]][ceiling(dens$prc)]
+    points(X[grp,], col=clrs, pch=20, cex=0.3)
+  }
+  if(zline) {
+    abline(h=0, col=rgb(0,0,0,0.5), lwd=1)
+  }
+  if(xyline) {
+    abline(a=0, b=1, col=rgb(0,0,0,0.5), lwd=1)
+  }
 }

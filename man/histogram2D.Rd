@@ -4,8 +4,9 @@
 \alias{histogram2D}
 \title{Bivariate histograms}
 \usage{
-histogram2D(x, y, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
-  plot = F, ...)
+histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
+  method = c("bin", "ash", "bin.table"), plot = F, col = grey(99:0/99),
+  clr = NULL, alpha = 0.5, ...)
 }
 \arguments{
 \item{x}{}
@@ -20,9 +21,15 @@ histogram2D(x, y, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
 
 \item{ylim}{range of y values}
 
+\item{method}{}
+
 \item{plot}{}
 
-\item{...}{}
+\item{col}{}
+
+\item{clr}{}
+
+\item{alpha}{}
 }
 \value{
 histogram2D returns a \code{list} with the following elements:
@@ -30,6 +37,18 @@ histogram2D returns a \code{list} with the following elements:
 }
 \description{
 Bivariate histograms
+}
+\examples{
+n <- 100000
+xy <- matrix(rnorm(2 * n), n, 2)
+xy[1:100,] <- 2
+layout(matrix(1:9, 3, 3, byrow = T))
+h <- histogram2D(xy, plot = T, method = "bin.table")
+h <- histogram2D(xy, plot = T, method = "bin")
+h <- histogram2D(xy, plot = T, method = "ash")
+h <- histogram2D(xy, plot = T, method = "bin.table", clr = 0)
+h <- histogram2D(xy, plot = T, method = "bin", clr = 0)
+h <- histogram2D(xy, plot = T, method = "ash", clr = 0)
 }
 \author{
 Benjamin Leblanc

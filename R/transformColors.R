@@ -1,35 +1,4 @@
 # =============================================================================.
-#' Replace transparency values
-# -----------------------------------------------------------------------------.
-#' @author Benjamin Leblanc
-#' @export replaceAlpha
-#' @seealso
-#'   \link{transformColors}
-# -----------------------------------------------------------------------------.
-#' @description
-# -----------------------------------------------------------------------------.
-#' @param x
-#' character vector of colors.
-#'
-#' @param a
-#' transparency given as a numeric value between \code{0} and \code{1}.
-# -----------------------------------------------------------------------------.
-#' @return
-#' replaceAlpha returns a character vector of RGBA colors in hexadecimal.
-# -----------------------------------------------------------------------------.
-#' @examples
-# -----------------------------------------------------------------------------.
-replaceAlpha <- function(x, a) {
-  a <- substr(rgb(0, 0, 0, alpha = a), 8, 9)
-  if(length(a) == 1) a <- rep(a, length(x))
-  chk <- nchar(x) == 9 & grepl("^#[0-9A-F]+", x, perl = T)
-  substr(x[chk], 8, 9) <- a[chk]
-  x[! chk] <- rgb(t(col2rgb(x)/255))[! chk]
-  x[! chk] <- paste(x[! chk], a[! chk], sep = "")
-  x
-}
-
-# =============================================================================.
 #' Color transformation
 # -----------------------------------------------------------------------------.
 #' @author Benjamin Leblanc

@@ -28,13 +28,8 @@ Documentation
 Improvements/Refinements
 --------------------------------------------------------------------------------
 
-+ heatmaps / function plotImage
-  - make simple function to get rid of technical nightmares when using R's
-    builtin image function to represent heatmaps with precomputer colors
-  - finish implementing a plotImage function to avoid indexing nightmares with
-    the builtin image function when using precomputed colors
++ heatmaps / function plotImage / colorLegend
   - implement interval percentages in the legend as was done with fireplots
-  - link new function histogram2D with plotImage and makeColors
 
 + venn diagrams
   - add extra layouts for initial positions (horizontal, vertical, diagonal)

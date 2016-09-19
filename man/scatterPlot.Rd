@@ -5,7 +5,8 @@
 \title{Scatter plot with color mapping and group representation}
 \usage{
 scatterPlot(x, y = NULL, clr = NULL, clr.prm = NULL, grp = NULL,
-  grp.prm = NULL, xlab = "", ylab = "", ...)
+  grp.prm = NULL, density = c(NULL, "knn", "hist2D"), xlab = "",
+  ylab = "", ...)
 }
 \arguments{
 \item{x}{horizontal axis coordinate.}

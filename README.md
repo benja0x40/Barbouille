@@ -24,8 +24,8 @@ install_github("benja0x40/Barbouille")
 
 #### Coloring ####
 
-![x](./images/examples/makeColors_1.svg "example")
-![x](./images/examples/makeColors_2.svg "example")
+![](./images/examples/makeColors_1.svg "example")
+![](./images/examples/makeColors_2.svg "example")
 
 ```R
 # Generate samples from two normally distributed random variables

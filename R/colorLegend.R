@@ -2,7 +2,7 @@
 #' Legend for color maps
 # -----------------------------------------------------------------------------.
 #' @author Benjamin Leblanc
-# -----------------------------------------------------------------------------.
+#' @export colorLegend
 #' @seealso
 #'   \link{makeColors},
 #'   \link{defineColors}

@@ -1,20 +1,21 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille - R Plot Functions
-Version: 0.2.0
+Version: 0.2.1
 Author: Benjamin Leblanc
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
 Imports:
     methods,
     stringr,
-    colorspace
+    colorspace,
+    ash
 Depends:
     R (>= 3.2.0),
     methods,
     stringr,
-    colorspace
-Suggests:
     colorspace,
+    ash
+Suggests:
     colortools,
     dichromat,
     colorRamps,
