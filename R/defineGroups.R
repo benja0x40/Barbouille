@@ -4,13 +4,15 @@
 #' @author Benjamin Leblanc
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{updateDefinition},
+#'   \link{groupIndex},
 #'   \link{groupLegend},
-#'   \link{defineColors},
-#'   \link{scatterPlot}
+#'   \link{scatterPlot},
+#'   \link{updateDefinition},
+#'   \link{defineColors}
 # -----------------------------------------------------------------------------.
 #' @param ids
-#' group identifiers
+#' group identifiers that are referred to when resolving group memberships
+#' with \link{groupIndex}.
 #'
 #' @param labels
 #' readable names for the groups, which are used as text labels by
@@ -29,22 +31,25 @@
 #' elements: \code{id}, \code{label}, \code{colors}.
 # -----------------------------------------------------------------------------.
 #' @examples
-#' # Simultaneous use of color mapping and group membership
+#' # Simultaneous use of color mapping and group membership ////////////////////
 #'
 #' layout(matrix(1:4, 2, 2, byrow = T))
 #'
-#' #  uniformely distributed random variables
+#' # Test data /////////////////////////////////////////////////////////////////
 #' x <- runif(2000, -1, 1)
 #' y <- runif(2000, -1, 1)
 #' z <- sqrt(x^2 + y^2)
 #'
+#' # Color mapping parameters for z
 #' clr.prm <- defineColors(seq(-2, 2, 0.5), grey(c(0.2, 0.8)))
-#' grp.prm <- defineGroups(
-#'   ids = 1:2, colors = rgb(1:2/2,0,0), cex = c(NA, 1), pch = c(15, 18)
-#' )
-#' grp.prm$label <- c("border", "center")
 #'
-#' # 1st possibility to provide the group memberships: vector of group ids
+#' # Define 2 groups: 1 = border, 2 = center ///////////////////////////////////
+#' grp.prm <- defineGroups(
+#'   ids = 1:2, colors = rgb(1:2/2,0,0), cex = c(NA, 1), pch = c(15, 18),
+#'   label <- c("border", "center")
+#' )
+#'
+#' # 1. Group membership = vector of group ids /////////////////////////////////
 #' grp <- 1 * (abs(z - 0.5) < 0.05) + 2 * (z < 0.15)
 #'
 #' scatterPlot(
@@ -54,7 +59,7 @@
 #' )
 #' groupLegend("br", parameters = grp.prm, N = table(grp)[c("1", "2")])
 #'
-#' # 2nd possibility to provide the group memberships: list of elements
+#' # 2. Group membership = list of indices /////////////////////////////////////
 #' grp <- list(
 #'   `1` = which(abs(z - 0.5) < 0.05),
 #'   `2` = which(z < 0.15)
@@ -67,7 +72,7 @@
 #' )
 #' groupLegend("br", parameters = grp.prm, N = sapply(grp, length))
 #'
-#' # 3rd possibility to provide the group memberships: matrix of booleans
+#' # 3. Group membership = matrix of booleans //////////////////////////////////
 #' grp <- cbind(
 #'   `1` = abs(z - 0.5) < 0.05,
 #'   `2` = z < 0.15

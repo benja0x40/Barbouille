@@ -109,6 +109,10 @@ colorLegend <- function(
   # Reset the coordinates system of the current plot area
   par(xlog = F, ylog = F, usr = (1 + margin/100) * c(-1, 1, -1, 1))
 
+  # Extend range to show below and above colors
+  if(log) parameters$range <- with(parameters, exp(log(range) * extra))
+  else    parameters$range <- with(parameters, range * extra)
+
   # Use the predefined range with uniform tick marks
   if(is.null(labels) & is.integer(ticks) & length(ticks) == 1) {
     ticks <- with(parameters, {

@@ -18,11 +18,10 @@ updated color or group parameters
 \description{
 Update color and group parameters
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{defineColors},
 \link{defineGroups}
 }
-
+\author{
+Benjamin Leblanc
+}

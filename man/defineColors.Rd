@@ -5,8 +5,8 @@
 \title{Color map definition}
 \usage{
 defineColors(thresholds = NULL, colors = NULL, range = NULL,
-  number = NULL, below = "white", above = "white", na = NA,
-  levels = 256, name = "")
+  number = NULL, below = NA, above = NA, na = NA, levels = 256,
+  extra = NULL, name = "")
 }
 \arguments{
 \item{thresholds}{numeric vector defining the boundaries for each range of values to be
@@ -24,16 +24,21 @@ automatically set according to the \code{range} and the \code{colors} or
 are unspecified (default = \code{2} in that case).}
 
 \item{below}{color used for all values below the minimum threshold
-(defaut = \code{"white"}).}
+(defaut = \code{NA}, not visible).}
 
 \item{above}{color used for all values above the maximum threshold
-(defaut = \code{"white"}).}
+(defaut = \code{NA}, not visible).}
 
 \item{na}{color used for missing (\code{NA}) values
 (defaut = \code{NA}, not visible).}
 
 \item{levels}{integer vector controlling the number of color levels generated in each
 color interval (default = \code{256}, minimum = \code{2}).}
+
+\item{extra}{numeric value between 1.0 and above, defining the fraction of the colorscale
+used to represent below and above colors with \link{colorLegend}. The default
+values are either 1.0, 1.15 or 1.2, depending how below and above colors are
+specified.}
 
 \item{name}{recall a predefined set of color mapping parameters.}
 }
@@ -60,13 +65,12 @@ clrs    <- makeColors(z, parameters = col.par)
 plot(x, y, xlim = c(-3, 3), ylim = c(-3, 3), pch = 20, col = clrs)
 colorLegend("topright", parameters = col.par)
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{updateDefinition},
   \link{makeColors},
   \link{colorLegend},
   \link{defineGroups}
 }
-
+\author{
+Benjamin Leblanc
+}

@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille - R Plot Functions
-Version: 0.2.1
+Version: 0.2.2
 Author: Benjamin Leblanc
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
 Imports:
@@ -16,12 +16,16 @@ Depends:
     colorspace,
     ash
 Suggests:
+    colorscience,
     colortools,
     dichromat,
     colorRamps,
     RColorBrewer,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Description: A small set of extra plot functions based on standard R graphics
 License: GPL (>= 2)
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr

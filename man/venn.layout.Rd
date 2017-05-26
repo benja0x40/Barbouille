@@ -26,4 +26,3 @@ venn.layout returns a \code{list} with the following elements:
 \description{
 2D layout by optimization of area proportions
 }
-

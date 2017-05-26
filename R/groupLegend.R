@@ -5,6 +5,8 @@
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{defineGroups}
+#'   \link{groupIndex}
+#'   \link{scatterPlot}
 # -----------------------------------------------------------------------------.
 #' @param pos
 #' the legend location which can be specified using either a single keyword in

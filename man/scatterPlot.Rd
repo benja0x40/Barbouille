@@ -5,8 +5,7 @@
 \title{Scatter plot with color mapping and group representation}
 \usage{
 scatterPlot(x, y = NULL, clr = NULL, clr.prm = NULL, grp = NULL,
-  grp.prm = NULL, density = c(NULL, "knn", "hist2D"), xlab = "",
-  ylab = "", ...)
+  grp.prm = NULL, xlab = "", ylab = "", ...)
 }
 \arguments{
 \item{x}{horizontal axis coordinate.}
@@ -63,9 +62,6 @@ groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 scatterPlot(a, y, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "y")
 groupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{defineColors},
   \link{makeColors},
@@ -73,4 +69,6 @@ Benjamin Leblanc
   \link{defineGroups},
   \link{groupLegend}
 }
-
+\author{
+Benjamin Leblanc
+}

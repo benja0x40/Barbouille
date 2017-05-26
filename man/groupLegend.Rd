@@ -75,10 +75,11 @@ scatterPlot(
 )
 groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 }
+\seealso{
+\link{defineGroups}
+  \link{groupIndex}
+  \link{scatterPlot}
+}
 \author{
 Benjamin Leblanc
 }
-\seealso{
-\link{defineGroups}
-}
-

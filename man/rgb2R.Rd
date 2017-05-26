@@ -23,4 +23,3 @@ Convert an RGB matrix into R colors (hexadecimal)
   \link{rgb2hsv},
   \link{hsv2rgb}
 }
-

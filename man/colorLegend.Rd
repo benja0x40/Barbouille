@@ -76,11 +76,10 @@ colorLegend(
   "bottom", parameters = col.par, log = T, size = c(70, 3), horiz = T
 )
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{makeColors},
   \link{defineColors}
 }
-
+\author{
+Benjamin Leblanc
+}

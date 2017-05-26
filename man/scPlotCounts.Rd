@@ -30,4 +30,3 @@ produce a scatter plot in the active graphic device
 \description{
 Scatterplot with points colored according to kNN density estimation
 }
-

@@ -23,4 +23,3 @@ Convert R colors into an HSV matrix
   \link{rgb2hsv},
   \link{hsv2rgb}
 }
-

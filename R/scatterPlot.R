@@ -73,9 +73,7 @@
 #' groupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
 # -----------------------------------------------------------------------------.
 scatterPlot <- function(
-  x, y = NULL,
-  clr = NULL, clr.prm = NULL, grp = NULL, grp.prm = NULL,
-  density = c(NULL, "knn", "hist2D"),
+  x, y = NULL, clr = NULL, clr.prm = NULL, grp = NULL, grp.prm = NULL,
   xlab = "", ylab = "", ...
 ) {
 

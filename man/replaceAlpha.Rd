@@ -14,10 +14,9 @@ replaceAlpha(x, a)
 \value{
 replaceAlpha returns a character vector of RGBA colors in hexadecimal.
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{transformColors}
 }
-
+\author{
+Benjamin Leblanc
+}

@@ -42,11 +42,11 @@
 #'
 #' @param below
 #' color used for all values below the minimum threshold
-#' (defaut = \code{"white"}).
+#' (defaut = \code{NA}, not visible).
 #'
 #' @param above
 #' color used for all values above the maximum threshold
-#' (defaut = \code{"white"}).
+#' (defaut = \code{NA}, not visible).
 #'
 #' @param na
 #' color used for missing (\code{NA}) values
@@ -55,6 +55,12 @@
 #' @param levels
 #' integer vector controlling the number of color levels generated in each
 #' color interval (default = \code{256}, minimum = \code{2}).
+#'
+#' @param extra
+#' numeric value between 1.0 and above, defining the fraction of the colorscale
+#' used to represent below and above colors with \link{colorLegend}. The default
+#' values are either 1.0, 1.15 or 1.2, depending how below and above colors are
+#' specified.
 #'
 #' @param name
 #' recall a predefined set of color mapping parameters.
@@ -82,10 +88,11 @@ defineColors <- function(
   colors     = NULL,
   range      = NULL,
   number     = NULL,
-  below      = "white",
-  above      = "white",
+  below      = NA,
+  above      = NA,
   na         = NA,
   levels     = 256,
+  extra      = NULL,
   name       = ""
 ) {
 
@@ -93,6 +100,11 @@ defineColors <- function(
   if(tolower(name) == "bantignies") {
     if(is.null(thresholds)) thresholds <- c(1, 10, 50, 500, 5000)
     if(is.null(colors))     colors     <- c("white", "blue", "yellow", "red", "black")
+    if(is.null(na))         na         <- "grey"
+  }
+  if(tolower(name) == "sexton") {
+    if(is.null(thresholds)) thresholds <- c(1, 10, 50, 500, 5000, 50000)
+    if(is.null(colors))     colors     <- c("white", "blue", "yellow", "red", "black", "pink")
     if(is.null(na))         na         <- "grey"
   }
   if(grepl("^EXWEXS\\.", name, perl = T, ignore.case = T)) {
@@ -172,6 +184,13 @@ defineColors <- function(
   if(n.l < 2) stop("At least one of the levels value is too low (minimum = 2)")
   if(n.c != n.t | n.l != n.t) stop("Inconsistent color mapping parameters")
 
+  if(is.null(extra)) {
+    chk <- ! is.na(c(below, above))
+    extra <- c(1.0, 1.0)
+    if(chk[1])   extra <- extra + c(0.15, 0.00)
+    if(chk[2])   extra <- extra + c(0.00, 0.15)
+    if(all(chk)) extra <- extra + c(0.05, 0.05)
+  }
   number <- n.t
 
   prm <- list(
@@ -183,6 +202,7 @@ defineColors <- function(
     above      = above,
     na         = na,
     levels     = levels,
+    extra      = extra,
     name       = name
   )
   class(prm) <- c("colorParameters", "list")

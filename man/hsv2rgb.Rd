@@ -24,4 +24,3 @@ Convert colors from HSV matrix to RGB matrix
   \link{R2hsv},
   \link{R2rgb}
 }
-

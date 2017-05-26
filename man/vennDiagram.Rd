@@ -30,4 +30,3 @@ Venn diagrams with approximate area proportions
 \link{defineGroups},
   \link{groupLegend}
 }
-

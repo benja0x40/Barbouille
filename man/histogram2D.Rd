@@ -50,12 +50,11 @@ h <- histogram2D(xy, plot = T, method = "bin.table", clr = 0)
 h <- histogram2D(xy, plot = T, method = "bin", clr = 0)
 h <- histogram2D(xy, plot = T, method = "ash", clr = 0)
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{plotImage},
   \link{defineColors},
   \link{scatterPlot}
 }
-
+\author{
+Benjamin Leblanc
+}

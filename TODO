@@ -28,6 +28,9 @@ Documentation
 Improvements/Refinements
 --------------------------------------------------------------------------------
 
++ defineColors and scatterPlot
+  - add cex and pch options to shorten code when calling scatterPlot
+
 + heatmaps / function plotImage / colorLegend
   - implement interval percentages in the legend as was done with fireplots
 

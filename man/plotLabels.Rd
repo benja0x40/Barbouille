@@ -64,4 +64,3 @@ points inside a 2D scatterplot.
 \author{
 Benjamin Leblanc, Itys Comet
 }
-

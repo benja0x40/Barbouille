@@ -12,4 +12,3 @@ Plot matrix of colors as an image
 \author{
 Benjamin Leblanc
 }
-

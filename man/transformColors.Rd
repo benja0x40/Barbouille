@@ -53,12 +53,11 @@ image(matrix(1:100, 10), col = makeColors(1:100, parameters = tst))
 tst <- transformColors(col.prm, V.range = c(0, 1))
 image(matrix(1:100, 10), col = makeColors(1:100, parameters = tst))
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{defineColors},
   \link{defineGroups},
   \link{makeColors}
 }
-
+\author{
+Benjamin Leblanc
+}

@@ -27,10 +27,10 @@ automatically set according to the \code{range} and the \code{colors} or
 are unspecified (default = \code{2} in that case).}
 
 \item{below}{color used for all values below the minimum threshold
-(defaut = \code{"white"}).}
+(defaut = \code{NA}, not visible).}
 
 \item{above}{color used for all values above the maximum threshold
-(defaut = \code{"white"}).}
+(defaut = \code{NA}, not visible).}
 
 \item{na}{color used for missing (\code{NA}) values
 (defaut = \code{NA}, not visible).}
@@ -122,12 +122,11 @@ clr <- makeColors(z, parameters = clr.prm)
 plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
 colorLegend("topleft", parameters = clr.prm, cex = 0.8, log = T)
 }
-\author{
-Benjamin Leblanc
-}
 \seealso{
 \link{colorLegend},
   \link{defineColors},
   \link{defineGroups}
 }
-
+\author{
+Benjamin Leblanc
+}
