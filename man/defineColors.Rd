@@ -6,7 +6,7 @@
 \usage{
 defineColors(thresholds = NULL, colors = NULL, range = NULL,
   number = NULL, below = NA, above = NA, na = NA, levels = 256,
-  extra = NULL, name = "")
+  centered = F, extra = NULL, name = "")
 }
 \arguments{
 \item{thresholds}{numeric vector defining the boundaries for each range of values to be
@@ -35,6 +35,8 @@ are unspecified (default = \code{2} in that case).}
 \item{levels}{integer vector controlling the number of color levels generated in each
 color interval (default = \code{256}, minimum = \code{2}).}
 
+\item{centered}{logical value.}
+
 \item{extra}{numeric value between 1.0 and above, defining the fraction of the colorscale
 used to represent below and above colors with \link{colorLegend}. The default
 values are either 1.0, 1.15 or 1.2, depending how below and above colors are
@@ -45,7 +47,8 @@ specified.}
 \value{
 defineColors returns a \code{list} with the following elements:
 \code{thresholds}, \code{colors}, \code{range}, \code{number},
-\code{below}, \code{above}, \code{na}, \code{levels}, \code{name}.
+\code{below}, \code{above}, \code{na}, \code{levels}, \code{centered},
+\code{extra}, \code{name}.
 }
 \description{
 defineColors provides a general method to define piecewise translations
@@ -70,7 +73,4 @@ colorLegend("topright", parameters = col.par)
   \link{makeColors},
   \link{colorLegend},
   \link{defineGroups}
-}
-\author{
-Benjamin Leblanc
 }

@@ -69,6 +69,3 @@ groupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
   \link{defineGroups},
   \link{groupLegend}
 }
-\author{
-Benjamin Leblanc
-}

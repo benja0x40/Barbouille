@@ -55,6 +55,3 @@ h <- histogram2D(xy, plot = T, method = "ash", clr = 0)
   \link{defineColors},
   \link{scatterPlot}
 }
-\author{
-Benjamin Leblanc
-}

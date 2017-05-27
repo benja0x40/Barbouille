@@ -87,6 +87,3 @@ groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
   \link{updateDefinition},
   \link{defineColors}
 }
-\author{
-Benjamin Leblanc
-}

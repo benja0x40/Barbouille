@@ -8,8 +8,6 @@
 # 3. combine with a better management of transparency
 # 4. implement nested definitions (subgroups with specific color mapping)
 # -----------------------------------------------------------------------------.
-#' @author Benjamin Leblanc
-# -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{updateDefinition},
 #'   \link{makeColors},
@@ -56,6 +54,9 @@
 #' integer vector controlling the number of color levels generated in each
 #' color interval (default = \code{256}, minimum = \code{2}).
 #'
+#' @param centered
+#' logical value.
+#'
 #' @param extra
 #' numeric value between 1.0 and above, defining the fraction of the colorscale
 #' used to represent below and above colors with \link{colorLegend}. The default
@@ -68,7 +69,8 @@
 #' @return
 #' defineColors returns a \code{list} with the following elements:
 #' \code{thresholds}, \code{colors}, \code{range}, \code{number},
-#' \code{below}, \code{above}, \code{na}, \code{levels}, \code{name}.
+#' \code{below}, \code{above}, \code{na}, \code{levels}, \code{centered},
+#' \code{extra}, \code{name}.
 # -----------------------------------------------------------------------------.
 #' @examples
 #' # Radial color gradient with two normally distributed random variables
@@ -92,6 +94,7 @@ defineColors <- function(
   above      = NA,
   na         = NA,
   levels     = 256,
+  centered   = F,
   extra      = NULL,
   name       = ""
 ) {
@@ -202,6 +205,7 @@ defineColors <- function(
     above      = above,
     na         = na,
     levels     = levels,
+    centered   = centered,
     extra      = extra,
     name       = name
   )

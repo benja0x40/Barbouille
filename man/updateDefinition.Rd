@@ -22,6 +22,3 @@ Update color and group parameters
 \link{defineColors},
 \link{defineGroups}
 }
-\author{
-Benjamin Leblanc
-}

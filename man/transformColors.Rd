@@ -27,10 +27,13 @@ defined by \link{defineColors} or by \link{defineGroups}.}
 list of color mapping parameters with transformed threshold colors.
 }
 \description{
-transformColors modifies a vector of colors in HSV or RGB spaces. If
-both HSV and RGB transformation parameters are provided, the colors will be
-modified first in HSV space, then in RGB space. Note that transformColors
-does not alter transparency values.
+transformColors modifies a vector of colors in HSV or RGB spaces (see Details
+section).
+}
+\details{
+If both HSV and RGB transformation parameters are provided, the colors will
+be modified first in HSV space, then in RGB space.
+Note that transformColors does not alter transparency values.
 When providing color or group parameters as input, transformColors returns
 color mapping parameters with modified threshold colors or group
 representation parameters with modified group-associated colors.
@@ -57,7 +60,4 @@ image(matrix(1:100, 10), col = makeColors(1:100, parameters = tst))
 \link{defineColors},
   \link{defineGroups},
   \link{makeColors}
-}
-\author{
-Benjamin Leblanc
 }

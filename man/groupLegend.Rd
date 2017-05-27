@@ -80,6 +80,3 @@ groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
   \link{groupIndex}
   \link{scatterPlot}
 }
-\author{
-Benjamin Leblanc
-}

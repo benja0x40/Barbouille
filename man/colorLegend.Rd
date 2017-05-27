@@ -80,6 +80,3 @@ colorLegend(
 \link{makeColors},
   \link{defineColors}
 }
-\author{
-Benjamin Leblanc
-}

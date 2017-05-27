@@ -17,6 +17,3 @@ replaceAlpha returns a character vector of RGBA colors in hexadecimal.
 \seealso{
 \link{transformColors}
 }
-\author{
-Benjamin Leblanc
-}

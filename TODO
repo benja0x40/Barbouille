@@ -1,8 +1,82 @@
 ################################################################################
 TODO
 ================================================================================
+Prepare release of version 0.3 on github (opened to anyone)
+================================================================================
++ Create a devel branch with the current development version
+  This is the version which I can continue to use for myself
+
++ Work to be done in the master branch
+
+  - remove files
+    VersionHistory.md (kept in the devel branch)
+    TODO (kept in the devel branch, change to md format)
+
+  - remove source code
+    scPlotCounts (not kept in the devel branch)
+    venn.layout, vennDiagram functions and everything related to Venn diagrams
+    (kept in the devel branch)
+
+  - add
+    densityByKNN new version (knn_stat, knn_density) rename it dataDensity
+    default density to rank
+    default density color parameters (grey, red, green, blue, yellow) etc.
+    make behaviour consistent with histogram2D and plotImage
+    ditherCounts ?
+    plotSources1D, plotSources2D?
+
+  - hidden/internals
+    hide color conversion functions R2hsv, hsv2R, R2rgb, rgb2R, hsv2rgb, rgb2hsv
+
+  - rename/refactor
+    plotLabels as textLabels
+    groupIndex as groupMembership
+    replaceAlpha as colorChannel and colorChannel<-
+
+  - fixes
+    move the log parameter of colorLegend to defineColors and rename it logscale
+
+  - improvements
+    replaceAlpha as colorChannel => generalize replacement of R, G, B, A values
+
+    see what can be done from sections below
+
+  - validation
+    add most important unit tests
+
+  - documentation
+    use @import to generate namespace with roxygen
+    add missing documentation
+      histogram2D
+    define author and contributor in package description
+    add missing sections
+      see also:    plotLabels
+      description: defineGroups, groupIndex, groupLegend, scatterPlot
+      description/detail if relevant
+    change the group scatter plots with better examples (mixture of gaussian)
+    update examples in the builtin documentation
+
+  - write/update
+    concise README.md and vignette Barbouile.md
+    README: minimal description, installation, main features and gallery
+    vignette: go from basic scatterplot to advance scatterplot with density
+    cheatheet?
+
+================================================================================
 Bugs
 --------------------------------------------------------------------------------
++ function makeColors
+  - colors are duplicated around thresold values
+    ( *** FIXED + added centered parameter in defineColors *** )
+    => improve by chosing either left, center or right positioning
+
++ function colorLegend
+  - automated extension for below and above is broken when using a small number
+    of levels
+
++ function scatterPlot
+  error when missing color value and parameters (no default)
+
 + function plotLabels
   - rename to textLabels (better since plot is optional)
   - take into account label sizes for returned xlim, ylim values
@@ -19,17 +93,27 @@ Documentation
 
 + add roxygen section for package description
 
-+ add missing sections
-  - see also:    plotLabels
-  - description: defineGroups, groupIndex, groupLegend, scatterPlot
-  - detail:      all functions
-
 ================================================================================
 Improvements/Refinements
 --------------------------------------------------------------------------------
++ scatterPlot
+  - add auto margin for color legends to scatterplot using the same principle
+    as the extra parameter. can be done with a separate fuction that computes
+    xlim and ylim easily like makePlotRange()
+
++ defineGroups
+  - allow for different color mapping for each group
+
++ scatterPlot, defineColors and defineGroups
+  - allow for ploting groups with different color mappings
+    (mixture of distributions)
+
++ defineColors, makeColors
+  - allow for multi dimension color function
+    (1 paramater per channel)
 
 + defineColors and scatterPlot
-  - add cex and pch options to shorten code when calling scatterPlot
+  - add cex and pch options to shorten code when calling scatterPlot?
 
 + heatmaps / function plotImage / colorLegend
   - implement interval percentages in the legend as was done with fireplots
@@ -39,9 +123,10 @@ Improvements/Refinements
   - add generalized linear layout using angle parameter to control orientation
 
 + color Legend
+  - management of extrema to represent below and above areas
+    ( *** DONE + added parameter extra to function defineColors *** )
   - add title
   - add units (optional)
-  - management of extrema (represent below and above areas)
   - see if possible to plot color legend outside of plot area (right margin)
 
 + transparency
@@ -57,6 +142,7 @@ Improvements/Refinements
 + extend group symbols
   - support dual color symbols with outline using pairs of graphic symbols
     (e.g empty square + filled square, empty circle + filled circle )
+  - support symbol size mapping like for color mapping
 
 ================================================================================
 New features
