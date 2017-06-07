@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille - R Plot Functions
-Version: 0.2.2
+Version: 0.3.0
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
