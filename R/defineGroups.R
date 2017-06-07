@@ -23,7 +23,7 @@
 #' Optional parameters controlling the representation of each group.
 #' At the moment, only \code{pch} and \code{cex} are supported in combination
 #' with the \link{scatterPlot} function.
-# -----------------------------------------------------------------------------.
+#'
 #' @return
 #' defineGroups returns a \code{data.frame} including at least the following
 #' elements: \code{id}, \code{label}, \code{colors}.
@@ -82,6 +82,7 @@
 #' )
 #' groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
+#' @export
 defineGroups <- function(ids, labels = NULL, colors = "",  ...) {
   if(missing(ids) & ! is.null(labels)) ids <- 1:length(labels)
   if(any(duplicated(ids))) stop("Group identifiers are not unique")

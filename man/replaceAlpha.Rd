@@ -14,6 +14,9 @@ replaceAlpha(x, a)
 \value{
 replaceAlpha returns a character vector of RGBA colors in hexadecimal.
 }
+\description{
+Replace transparency values
+}
 \seealso{
 \link{transformColors}
 }

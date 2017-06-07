@@ -23,7 +23,7 @@
 #'
 #' @param ...
 #' optional parameters passed to the \link{legend} function.
-# -----------------------------------------------------------------------------.
+#'
 #' @return NULL
 # -----------------------------------------------------------------------------.
 #' @examples
@@ -77,6 +77,7 @@
 #' )
 #' groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
+#' @export
 groupLegend <- function(pos, parameters, N = NA, ...) {
 
   # Resolve legend position

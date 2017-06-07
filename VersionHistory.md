@@ -1,6 +1,9 @@
 Version History
 ================================================================================
 
+## Barbouille 0.3.0 (Alpha) ##
+
+
 ## Barbouille 0.2.1 (Alpha) ##
 
 ### 1. New Features ###

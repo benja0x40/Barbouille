@@ -30,6 +30,8 @@ histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
 \item{clr}{}
 
 \item{alpha}{}
+
+\item{...}{}
 }
 \value{
 histogram2D returns a \code{list} with the following elements:

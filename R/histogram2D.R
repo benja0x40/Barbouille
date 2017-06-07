@@ -33,7 +33,7 @@
 #' @param alpha
 #'
 #' @param ...
-# -----------------------------------------------------------------------------.
+#'
 #' @return
 #' histogram2D returns a \code{list} with the following elements:
 #' \code{x}, \code{y}, \code{z}.
@@ -50,6 +50,7 @@
 #' h <- histogram2D(xy, plot = T, method = "bin", clr = 0)
 #' h <- histogram2D(xy, plot = T, method = "ash", clr = 0)
 # -----------------------------------------------------------------------------.
+#' @export
 histogram2D <- function(
   x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"),

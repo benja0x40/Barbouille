@@ -19,7 +19,7 @@
 #'
 #' @param parameters
 #' data.frame of group representation parameters defined by \link{defineGroups}.
-# -----------------------------------------------------------------------------.
+#'
 #' @return integer vector
 # -----------------------------------------------------------------------------.
 #' @examples
@@ -76,6 +76,7 @@
 #' )
 #' groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
+#' @export
 groupIndex <- function(v, parameters) {
 
   idx <- NULL

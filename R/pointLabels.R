@@ -1,12 +1,12 @@
 # =============================================================================.
-#' Text labelling for scatterplots
+#' Labels in scatterplots
 # -----------------------------------------------------------------------------.
 #' @author Benjamin Leblanc, Itys Comet
 # -----------------------------------------------------------------------------.
 #' @description
-#' plotLabels overlays text labels and arrows to annotate a specific set of
+#' pointLabels overlays text labels and arrows to annotate a specific set of
 #' points inside a 2D scatterplot.
-# -----------------------------------------------------------------------------.
+#'
 #' @param x
 #' the x axis coordinate of points to be labelled.
 #'
@@ -43,9 +43,9 @@
 #'
 #' @param ...
 #' optional parameters passed to the \link{text} function.
-# -----------------------------------------------------------------------------.
+#'
 #' @return
-#' plotLabels returns a \code{list} with the following elements:
+#' pointLabels returns a \code{list} with the following elements:
 #' \item{labels}{
 #'   character vector with text labels
 #' }
@@ -66,7 +66,8 @@
 #'   coordinates of the centroid
 #' }
 # -----------------------------------------------------------------------------.
-plotLabels <- function(
+#' @export
+pointLabels <- function(
   x, y,
   centroid.shift = c(0,0), distance = 1, pts.offset = 0.1, txt.offset = 0.2,
   labels = NULL, col = "black", plot = T, show.centroid = F, ...

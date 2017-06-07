@@ -11,9 +11,10 @@
 #'
 #' @param ...
 #'parameters to be updated.
-# -----------------------------------------------------------------------------.
+#'
 #' @return updated color or group parameters
 # -----------------------------------------------------------------------------.
+#' @export
 updateDefinition <- function(prm, ...) {
   f <- NULL
   if(is(prm, "groupParameters")) {

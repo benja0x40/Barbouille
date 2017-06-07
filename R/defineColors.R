@@ -19,7 +19,7 @@
 #' of numeric values into colors. It can be used in combination with
 #' \link{makeColors} and \link{colorLegend} to produce plots with precise
 #' and easy to interpret color informations.
-# -----------------------------------------------------------------------------.
+#'
 #' @param thresholds
 #' numeric vector defining the boundaries for each range of values to be
 #' mapped into a specific color interval. When unspecified, thresholds are
@@ -65,7 +65,7 @@
 #'
 #' @param name
 #' recall a predefined set of color mapping parameters.
-# -----------------------------------------------------------------------------.
+#'
 #' @return
 #' defineColors returns a \code{list} with the following elements:
 #' \code{thresholds}, \code{colors}, \code{range}, \code{number},
@@ -85,6 +85,7 @@
 #' plot(x, y, xlim = c(-3, 3), ylim = c(-3, 3), pch = 20, col = clrs)
 #' colorLegend("topright", parameters = col.par)
 # -----------------------------------------------------------------------------.
+#' @export
 defineColors <- function(
   thresholds = NULL,
   colors     = NULL,

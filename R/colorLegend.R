@@ -1,14 +1,13 @@
 # =============================================================================.
 #' Legend for color maps
 # -----------------------------------------------------------------------------.
-#' @export colorLegend
 #' @seealso
 #'   \link{makeColors},
 #'   \link{defineColors}
 # -----------------------------------------------------------------------------.
 #' @description
 #' colorLegend draws a color legend according to given color mapping parameters.
-# -----------------------------------------------------------------------------.
+#'
 #' @param pos
 #' the legend location which can be specified using either a single keyword in
 #' \code{"bottomright", "bottom", "bottomleft", "left", "center", "right",
@@ -72,7 +71,7 @@
 #'
 #' @param ...
 #' optional parameters passed to the \link{text} function.
-# -----------------------------------------------------------------------------.
+#'
 #' @return NULL
 # -----------------------------------------------------------------------------.
 #' @examples
@@ -90,6 +89,7 @@
 #'   "bottom", parameters = col.par, log = T, size = c(70, 3), horiz = T
 #' )
 # -----------------------------------------------------------------------------.
+#' @export
 colorLegend <- function(
   pos, parameters, ticks = NULL, labels = NULL, resolution = 100, log = F,
   size = c(40, 3), margin = 5, horiz = F,

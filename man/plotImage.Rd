@@ -6,6 +6,13 @@
 \usage{
 plotImage(m, x = NULL, y = NULL)
 }
+\arguments{
+\item{m}{matrix of color values}
+
+\item{x}{coordinates of the x axis bins}
+
+\item{y}{coordinates of the y axis bins}
+}
 \description{
 Plot matrix of colors as an image
 }

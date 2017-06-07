@@ -3,7 +3,7 @@ TODO
 ================================================================================
 Prepare release of version 0.3 on github (opened to anyone)
 ================================================================================
-+ Create a devel branch with the current development version
++ Create a devel branch with the current development version  ( *** DONE *** )
   This is the version which I can continue to use for myself
 
 + Work to be done in the master branch
@@ -13,9 +13,8 @@ Prepare release of version 0.3 on github (opened to anyone)
     TODO (kept in the devel branch, change to md format)
 
   - remove source code
-    scPlotCounts (not kept in the devel branch)
-    venn.layout, vennDiagram functions and everything related to Venn diagrams
-    (kept in the devel branch)
+    scPlotCounts (not kept in the devel branch)  ( *** DONE *** )
+    everything related to Venn diagrams (kept in devel branch)  ( *** DONE *** )
 
   - add
     densityByKNN new version (knn_stat, knn_density) rename it dataDensity
@@ -26,12 +25,13 @@ Prepare release of version 0.3 on github (opened to anyone)
     plotSources1D, plotSources2D?
 
   - hidden/internals
-    hide color conversion functions R2hsv, hsv2R, R2rgb, rgb2R, hsv2rgb, rgb2hsv
+    cleanup reserved functions that are not used and remove the dots in names
+    hide color conversion functions R2hsv, hsv2R, R2rgb, rgb2R, hsv2rgb, rgb2hsv  ( *** DONE *** )
 
   - rename/refactor
-    plotLabels as textLabels
-    groupIndex as groupMembership
     replaceAlpha as colorChannel and colorChannel<-
+    plotLabels as pointLabels ( *** DONE *** )
+    groupIndex as groupMembership ( *** ABANDONED *** )
 
   - fixes
     move the log parameter of colorLegend to defineColors and rename it logscale
@@ -45,7 +45,7 @@ Prepare release of version 0.3 on github (opened to anyone)
     add most important unit tests
 
   - documentation
-    use @import to generate namespace with roxygen
+    use @import and @export to generate namespace with roxygen ( *** DONE *** )
     add missing documentation
       histogram2D
     define author and contributor in package description
