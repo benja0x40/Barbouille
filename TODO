@@ -110,7 +110,7 @@ Improvements/Refinements
 
 + defineColors, makeColors
   - allow for multi dimension color function
-    (1 paramater per channel)
+    (1 paramater per channel, full access to RGBA)
 
 + defineColors and scatterPlot
   - add cex and pch options to shorten code when calling scatterPlot?
