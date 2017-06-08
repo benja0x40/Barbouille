@@ -19,12 +19,10 @@ pkg <- installed.packages()[, "Package"]
 # CRAN packages
 lst <- c("stringr", "colorspace", "ash")
 lst <- setdiff(lst, pkg)
-if(length(lst) > 0) {
-  install.packages(lst, repos = "https://cloud.r-project.org/")
-}
+if(length(lst) > 0) install.packages(lst, repos = "https://cloud.r-project.org/")
 ```
 
-#### Installations from github ####
+#### Installation from github ####
 
 Run the bash code below to build package Barbouille from github.
 
@@ -56,6 +54,10 @@ install.packages("Barbouille_0.3.0.tar.gz")
 
 #### Gallery ####
 
-
-![](./images/examples/makeColors_2.svg "example")
+![](./images/examples/barbouille_01.png "example_01")
+![](./images/examples/barbouille_02.png "example_02")
+![](./images/examples/barbouille_03.png "example_03")
+![](./images/examples/barbouille_04.png "example_04")
+![](./images/examples/barbouille_05.png "example_05")
+![](./images/examples/barbouille_06.png "example_06")
 
