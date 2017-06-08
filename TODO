@@ -23,6 +23,7 @@ Prepare release of version 0.3 on github (opened to anyone)
     make behaviour consistent with histogram2D and plotImage
     ditherCounts ?
     plotSources1D, plotSources2D?
+    boxplotByCategories/Group, histogramByCategories/Group?
 
   - hidden/internals
     cleanup reserved functions that are not used and remove the dots in names
@@ -78,7 +79,7 @@ Bugs
   error when missing color value and parameters (no default)
 
 + function plotLabels
-  - rename to textLabels (better since plot is optional)
+  - rename to pointLabels (better since plot is optional)
   - take into account label sizes for returned xlim, ylim values
     (use strwidth, strheight)
   - support group parameters

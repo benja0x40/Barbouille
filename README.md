@@ -1,64 +1,61 @@
 Barbouille
 ================================================================================
 
-Barbouille is an R package with coloring, labeling, highlighting and plotting
-functions.
+Barbouille is an R package for precise color mapping on scatterplots.
 
-### Installation ###
+### Package installation ###
 
 #### Prerequisites ####
 
-Before installing and using Barbouille, install the following dependencies:
+  - [R environment](https://www.r-project.org/) version 3.x
+  - CRAN packages `stringr`, `colorspace`, `ash`
 
-  - R environment version 3.2 or higher
-  - R packages: stringr, colorspace
-  
-#### Installing Barbouille ####
+Run the R code below to install CRAN packages dependencies for Barbouille.
 
 ```R
-library("devtools")
-install_github("benja0x40/Barbouille")
+# Already installed
+pkg <- installed.packages()[, "Package"]
+
+# CRAN packages
+lst <- c("stringr", "colorspace", "ash")
+lst <- setdiff(lst, pkg)
+if(length(lst) > 0) {
+  install.packages(lst, repos = "https://cloud.r-project.org/")
+}
 ```
 
-### Features ###
+#### Installations from github ####
 
-#### Coloring ####
+Run the bash code below to build package Barbouille from github.
 
-![](./images/examples/makeColors_1.svg "example")
+```bash
+# Clone github repository
+cd ~/DataImportTools
+git clone git@github.com:benja0x40/Barbouille.git
+
+# Update cloned repository
+cd ~/DataImportTools/Barbouille
+git pull
+
+# Build package
+cd ..
+R CMD build Barbouille
+```
+Run the R code below to install Barbouille.
+
+```r
+# When package will be public
+# library("devtools")
+# install_github("benja0x40/Barbouille")
+
+# Using manually built package archive
+install.packages("Barbouille_0.3.0.tar.gz")
+```
+
+### Main features ###
+
+#### Gallery ####
+
+
 ![](./images/examples/makeColors_2.svg "example")
-
-```R
-# Generate samples from two normally distributed random variables
-x <- rnorm(2000)
-y <- rnorm(2000)
-z <- sqrt(x^2 + y^2)
-```
-
-```R
-clr.prm <- defineColors(seq(0, 2, 0.5), c("black", "lightgrey"), above = "red", range = c(0, 2.3))
-```
-
-```R
-clr <- makeColors(z, parameters = clr.prm)
-plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
-colorLegend("topleft", parameters = clr.prm, cex = 0.8)
-```
-
-```R
-clr.prm <- defineColors(
-  thresholds = c(0, 2), colors = c("black", "lightgrey"), above = "red", range = c(0, 2.3), levels = 4
-)
-```
-
-```R
-clr <- makeColors(z, parameters = clr.prm)
-plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
-colorLegend("topleft", parameters = clr.prm, ticks = seq(0, 2, length.out = 5), cex = 0.8)
-```
-
-#### Highlighting ####
-
-#### Labelling ####
-
-#### Venn diagrams (experimental) ####
 
