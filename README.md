@@ -55,9 +55,9 @@ install.packages("Barbouille_0.3.0.tar.gz")
 #### Gallery ####
 
 ![](./images/examples/barbouille_01.png "example_01")
-![](./images/examples/barbouille_02.png "example_02")
 ![](./images/examples/barbouille_03.png "example_03")
-![](./images/examples/barbouille_04.png "example_04")
 ![](./images/examples/barbouille_05.png "example_05")
+![](./images/examples/barbouille_02.png "example_02")
+![](./images/examples/barbouille_04.png "example_04")
 ![](./images/examples/barbouille_06.png "example_06")
 
