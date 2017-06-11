@@ -13,7 +13,7 @@ open_img <- function(counter = NULL, name = "barbouille") {
   if(! is.null(counter)) {
     counter <- counter + 1
     name <- paste0(name, "_", str_pad(counter, width = 2, pad = "0"))
-    png(paste0("images/examples/", name, ".png"), width = 288, height = 320)
+    png(paste0("images/gallery/", name, ".png"), width = 288, height = 320)
   }
 
   par(pch = 20, mar = c(4.1, 3.1, 4.1, 2.1))
@@ -77,7 +77,7 @@ clr.prm <- defineColors(seq(0, 2, 0.5), grey(c(0.2, 0.8)), above = red)
 clr <- makeColors(z, parameters = clr.prm)
 
 image_counter <- open_img(image_counter)
-plot(x, y, xlim = rng, ylim = rng, col = clr)
+plot(x, y, xlim = rng, ylim = rng, col = clr, xlab = "", ylab = "")
 colorLegend("topleft", parameters = clr.prm, cex = 0.8)
 title(expression(sqrt(x^2 + y^2)))
 close_img(image_counter)
