@@ -52,26 +52,6 @@ rng <- c(-4.5, 4.5)
 red    <- transformColors("red", S.range = 0.8)
 orange <- transformColors(rgb(1, 0.5, 0), S.range = 0.8)
 
-# //// Example 1 ////
-clr.prm <- defineColors(seq(-180, 180, 60))
-clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
-
-image_counter <- open_img(image_counter)
-scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
-title(expression(over(180 ~~ atan2(y, x), pi)))
-close_img(image_counter)
-
-# //// Example 2 ////
-clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
-clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
-
-image_counter <- open_img(image_counter)
-scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
-title(expression(over(180 ~~ atan2(y, x), pi)))
-close_img(image_counter)
-
 # //// Example 3 ////
 clr.prm <- defineColors(seq(0, 2, 0.5), grey(c(0.2, 0.8)), above = red)
 clr <- makeColors(z, parameters = clr.prm)
@@ -154,3 +134,78 @@ if(F) {
   points(cos(a) * 1.05, sin(a) * 1.1, pch = 19, col = b)
   close_img(image_counter)
 }
+
+# EXAMPLES #####################################################################
+
+# =============================================================================.
+# Examples for defineColors and makeColors
+# -----------------------------------------------------------------------------.
+# Random sample of normal distribution N(mu = 0, sigma = 1)
+x <- rnorm(2000)
+y <- rnorm(2000)
+
+# Polar coordinates
+a <- 180 * atan2(y, x) / pi
+z <- sqrt(x^2 + y^2)
+
+# Plot range
+rng <- c(-4.5, 4.5)
+
+# //// Example 1 ////
+clr <- SuperRainbow(
+  7, mod = c("-+", "++", "+-"), s.rng = c(0.6, 1.0), l.rng = c(0.7, 1.0)
+)
+clr.prm <- defineColors(seq(-180, 180, 60), colors = clr)
+
+image_counter <- open_img(image_counter)
+scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+title(expression(over(180 ~~ atan2(y, x), pi)))
+close_img(image_counter)
+
+# //// Example 2 ////
+clr.prm <- defineColors(seq(-180, 180, 60), colors = clr, levels = 3)
+
+image_counter <- open_img(image_counter)
+scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+title(expression(over(180 ~~ atan2(y, x), pi)))
+close_img(image_counter)
+
+# //// Example 1 ////
+clr.prm <- defineColors(seq(-180, 180, 60))
+clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+
+image_counter <- open_img(image_counter)
+scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+title(expression(over(180 ~~ atan2(y, x), pi)))
+close_img(image_counter)
+
+# //// Example 2 ////
+clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
+clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+
+image_counter <- open_img(image_counter)
+scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+title(expression(over(180 ~~ atan2(y, x), pi)))
+close_img(image_counter)
+
+# //// Example 1 ////
+# clr.prm <- defineColors(seq(-180, 180, 60))
+#
+# image_counter <- open_img(image_counter)
+# scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# title(expression(over(180 ~~ atan2(y, x), pi)))
+# close_img(image_counter)
+
+# //// Example 2 ////
+# clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
+#
+# image_counter <- open_img(image_counter)
+# scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# title(expression(over(180 ~~ atan2(y, x), pi)))
+# close_img(image_counter)

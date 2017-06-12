@@ -16,7 +16,7 @@ Tutorials and documentation can be found in the package vignettes.
   - [R environment](https://www.r-project.org/) version 3.x
   - CRAN packages `stringr`, `colorspace`, `ash`
 
-Run the R code below to install CRAN packages dependencies for `Barbouille`.
+Run the R code below to install CRAN package dependencies for `Barbouille`.
 
 ```R
 # Already installed
@@ -56,12 +56,13 @@ Run the R code below to install `Barbouille`.
 install.packages("Barbouille_0.3.0.tar.gz")
 ```
 
-#### Gallery ####
+### Gallery ###
 
 ![](./images/gallery/barbouille_01.png "example_01")
-![](./images/gallery/barbouille_03.png "example_03")
-![](./images/gallery/barbouille_05.png "example_05")
 ![](./images/gallery/barbouille_02.png "example_02")
+![](./images/gallery/barbouille_03.png "example_03")
 ![](./images/gallery/barbouille_04.png "example_04")
+![](./images/gallery/barbouille_05.png "example_05")
 ![](./images/gallery/barbouille_06.png "example_06")
-
+![](./images/gallery/barbouille_07.png "example_07")
+![](./images/gallery/barbouille_08.png "example_08")
