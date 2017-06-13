@@ -10,7 +10,7 @@ SuperRainbow(n, mod = "++", s.rng = 1, l.rng = 1, f = "hsv",
 \arguments{
 \item{n}{number of colors.}
 
-\item{mod}{cyclic modulation pattern, character vector.}
+\item{mod}{cyclic modulation pattern, a character vector, for instance c("+-", "-+").}
 
 \item{s.rng}{range of modulated chroma/saturation values.}
 
@@ -21,9 +21,6 @@ SuperRainbow(n, mod = "++", s.rng = 1, l.rng = 1, f = "hsv",
 \item{alpha}{transparency value (default = 1). See alpha argument in function \link{hcl}.}
 
 \item{ordering}{color order}
-
-\item{l.mod}{logical, generate colors with cyclic modulation of luminance values.
-(default = T).}
 }
 \value{
 SuperRainbow returns a character vector of RGBA colors in hexadecimal.
