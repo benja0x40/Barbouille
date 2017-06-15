@@ -1,5 +1,5 @@
 # =============================================================================.
-# Convert colors from HSV matrix to RGB matrix
+#' Convert colors from HSV matrix to RGB matrix
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{rgb2hsv},
@@ -16,13 +16,15 @@
 #' numeric matrix with 3 columns representing red (R), green (G) and blue (B)
 #' color components respectively
 # -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 hsv2rgb <- function(x) {
   x <- HSV(x[,1], x[,2], x[,3])
   x <- coords(as(x, "RGB"))
   x
 }
 # =============================================================================.
-# Convert colors from RGB matrix to HSV matrix
+#' Convert colors from RGB matrix to HSV matrix
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{hsv2rgb},
@@ -39,6 +41,8 @@ hsv2rgb <- function(x) {
 #' numeric matrix with 3 columns representing hue (H), saturation (S), and
 #' value (V) color components respectively
 # -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 rgb2hsv <- function(x) {
   x <- RGB(x[,1], x[,2], x[,3])
   x <- coords(as(x, "HSV"))
@@ -46,7 +50,7 @@ rgb2hsv <- function(x) {
   x
 }
 # =============================================================================.
-# Convert R colors into an RGB matrix
+#' Convert R colors into an RGB matrix
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{R2hsv},
@@ -62,12 +66,14 @@ rgb2hsv <- function(x) {
 #' numeric matrix with 3 columns representing red (R), green (G) and blue (B)
 #' color components respectively
 # -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 R2rgb <- function(x) {
   x <- t(sapply(x, col2rgb) / 255)
   x
 }
 # =============================================================================.
-# Convert an RGB matrix into R colors (hexadecimal)
+#' Convert an RGB matrix into R colors (hexadecimal)
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{hsv2R},
@@ -83,12 +89,14 @@ R2rgb <- function(x) {
 #' @return
 #' character vector of R colors (hexadecimal)
 # -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 rgb2R <- function(x) {
   x <- rgb(x[, 1], x[, 2], x[, 3])
   x
 }
 # =============================================================================.
-# Convert R colors into an HSV matrix
+#' Convert R colors into an HSV matrix
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{R2rgb},
@@ -104,13 +112,15 @@ rgb2R <- function(x) {
 #' numeric matrix with 3 columns representing hue (H), saturation (S), and
 #' value (V) color components respectively
 # -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 R2hsv <- function(x) {
   x <- R2rgb(x)
   x <- rgb2hsv(x)
   x
 }
 # =============================================================================.
-# Convert an HSV matrix into R colors (hexadecimal)
+#' Convert an HSV matrix into R colors (hexadecimal)
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{rgb2R},
@@ -126,6 +136,8 @@ R2hsv <- function(x) {
 #' @return
 #' character vector of R colors (hexadecimal)
 # -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 hsv2R <- function(x) {
   x <- HSV(x[,1], x[,2], x[,3])
   x <- hex(x)
