@@ -63,7 +63,7 @@ histogram2D <- function(
     x <- x[, 1]
   }
 
-  chk <- .finiteValues.(cbind(x, y))
+  chk <- FiniteValues(cbind(x, y))
   x <- x[chk]
   y <- y[chk]
 

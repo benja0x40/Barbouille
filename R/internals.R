@@ -22,6 +22,61 @@
   p
 }
 
+# RESCALING ####################################################################
+
+# =============================================================================.
+#' rankstat
+# -----------------------------------------------------------------------------.
+#' @description
+#' rank statistics
+#'
+#' @param x
+#' numeric vector
+#'
+#' @return
+#' \eqn{(rank(x) - 0.5) / N} where N = length(x)
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+rankstat <- function(x) { (rank(x) - 0.5) / length(x) }
+
+# =============================================================================.
+#' S01
+# -----------------------------------------------------------------------------.
+#' @description
+#' rescale x into [0, 1]
+#'
+#' @param x
+#' numeric vector
+#'
+#' @return
+#' S01 returns x rescaled such that range(x) = [0, 1]
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+S01 <- function(x) { (x - min(x)) / diff(range(x)) }
+
+# SPECIAL VALUES ###############################################################
+
+# =============================================================================.
+#' Detect computable values (i.e. not NA nor Inf)
+# -----------------------------------------------------------------------------.
+#' @param x
+#' numeric vector or matrix
+#'
+#' @return
+#' FiniteValues returns a \code{logical} vector
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+FiniteValues <- function(x) {
+  if(is.null(dim(x))) {
+    x <- sapply(x, FUN = is.finite)
+  } else {
+    n <- ncol(x)
+    x <- t(apply(x, MARGIN = 1, FUN = is.finite))
+    x <- rowSums(x) == n
+  }
+  x
+}
+
 # MATRIX MANIPULATION ##########################################################
 
 # =============================================================================.
@@ -72,21 +127,5 @@
     x <- do.call(cbind, x)
   }
   if(! ncol(x) %in% (k * n)) stop("Unexpected parameter dimensions")
-  x
-}
-
-# SPECIAL VALUES ###############################################################
-
-# =============================================================================.
-# Find finite values consistently in all samples (log transformed counts)
-# -----------------------------------------------------------------------------.
-.finiteValues. <- function(x) {
-  if(is.null(dim(x))) {
-    x <- sapply(x, FUN=is.finite)
-  } else {
-    n <- ncol(x)
-    x <- t(apply(x, MARGIN=1, FUN=is.finite))
-    x <- rowSums(x) == n
-  }
   x
 }
