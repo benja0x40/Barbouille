@@ -27,15 +27,16 @@ colorize <- function(x, mode = "0_1", colors = NULL) {
   if(! is.na(charmatch(mode[1], "rank"))) {
     x <- rankstat(x)
     if(is.null(q)) {
-      q <- c(0, 1/3, 2/3, 1.0)
-      colors <- c("grey", "black", "red", "yellow")
+      q <- c(0.0, 1/3, 2/3, 1.0)
+      colors <- c(grey(c(0.9, 0.1)), rgb(1:1, 0:1, 0:0))
     }
   }
   if(mode[1] == "0_1") {
     x <- S01(x)
+    x <- x * (1 - .Machine$double.neg.eps) # => prevent use of the "above" color
     if(is.null(q)) {
-      q <- 0:1
-      colors <- grey(0:1)
+      q <- c(0, 1)
+      colors <- grey(1:0)
     }
   }
 

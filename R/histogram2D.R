@@ -46,15 +46,15 @@
 #' h <- histogram2D(xy, plot = T, method = "bin.table")
 #' h <- histogram2D(xy, plot = T, method = "bin")
 #' h <- histogram2D(xy, plot = T, method = "ash")
-#' h <- histogram2D(xy, plot = T, method = "bin.table", clr = 0)
-#' h <- histogram2D(xy, plot = T, method = "bin", clr = 0)
-#' h <- histogram2D(xy, plot = T, method = "ash", clr = 0)
+#' h <- histogram2D(xy, plot = T, method = "bin.table", color.mode = "rank")
+#' h <- histogram2D(xy, plot = T, method = "bin", color.mode = "rank")
+#' h <- histogram2D(xy, plot = T, method = "ash", color.mode = "rank")
 # -----------------------------------------------------------------------------.
 #' @export
 histogram2D <- function(
   x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"),
-  plot = F, col = grey(99:0/99), clr = NULL, alpha = 0.5, ...
+  plot = F, color.mode = "0_1", colors = NULL, alpha = 1.0, ...
 ) {
 
   method <- method[1]
@@ -95,21 +95,12 @@ histogram2D <- function(
   }
 
   if(plot) {
-    if(! is.null(clr)) {
-      k <- clr
-      if(clr == 0 | is.null(clr)) k <- c(grey(0.9), grey(0.5), grey(0))
-      if(clr == 1) k <- c(grey(0.1), rgb(1, 0, 0), rgb(1, 1, 0))
-      if(clr == 2) k <- c(grey(0.1), rgb(0, 1, 0), rgb(1, 1, 0))
-      if(clr == 3) k <- c(grey(0.1), rgb(0, 0, 1), rgb(0, 1, 1))
-      clr <- replaceAlpha(k, alpha)
-      d <- 100 * sqrt((z - min(z)) / diff(range(z)))
-      prm <- defineColors(colors = clr, range = range(d[d > 0]), above = clr[length(clr)])
-      d <- matrix(makeColors(d, parameters = prm), ny, nx)
-      plotImage(d, x, y)
-    } else {
-      d <- 100 * sqrt((z - min(z)) / diff(range(z)))
-      image(x = x, y = y, z = d, col = col, ...)
-    }
+    chk <- z > 0
+    d <- rep(NA, nx * ny)
+    d[chk] <- colorize(z[chk], mode = color.mode, colors = colors)
+    d <- replaceAlpha(d, alpha)
+    d <- matrix(d, ny, nx)
+    plotImage(d, x, y)
   }
 
   list(x = x, y = y, z = z)

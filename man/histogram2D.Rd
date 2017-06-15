@@ -5,8 +5,8 @@
 \title{Bivariate histograms}
 \usage{
 histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
-  method = c("bin", "ash", "bin.table"), plot = F, col = grey(99:0/99),
-  clr = NULL, alpha = 0.5, ...)
+  method = c("bin", "ash", "bin.table"), plot = F, color.mode = "0_1",
+  colors = NULL, alpha = 1, ...)
 }
 \arguments{
 \item{x}{}
@@ -25,13 +25,13 @@ histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
 
 \item{plot}{}
 
-\item{col}{}
-
-\item{clr}{}
-
 \item{alpha}{}
 
 \item{...}{}
+
+\item{col}{}
+
+\item{clr}{}
 }
 \value{
 histogram2D returns a \code{list} with the following elements:
@@ -48,9 +48,9 @@ layout(matrix(1:9, 3, 3, byrow = T))
 h <- histogram2D(xy, plot = T, method = "bin.table")
 h <- histogram2D(xy, plot = T, method = "bin")
 h <- histogram2D(xy, plot = T, method = "ash")
-h <- histogram2D(xy, plot = T, method = "bin.table", clr = 0)
-h <- histogram2D(xy, plot = T, method = "bin", clr = 0)
-h <- histogram2D(xy, plot = T, method = "ash", clr = 0)
+h <- histogram2D(xy, plot = T, method = "bin.table", color.mode = "rank")
+h <- histogram2D(xy, plot = T, method = "bin", color.mode = "rank")
+h <- histogram2D(xy, plot = T, method = "ash", color.mode = "rank")
 }
 \seealso{
 \link{plotImage},
