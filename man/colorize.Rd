@@ -4,17 +4,17 @@
 \alias{colorize}
 \title{Quick and dirty color mapping}
 \usage{
-colorize(x, mode = "0_1", colors = NULL)
+colorize(x, mode = NULL, clr.prm = NULL, ...)
 }
 \arguments{
-\item{x}{numeric vector}
+\item{x}{numeric vector.}
 
-\item{mode}{either \code{"rank"} or \code{"0_1"} (default).}
+\item{mode}{either \code{"rank"} or \code{"01"} (default).}
 
-\item{colors}{vector of colors (optional).}
+\item{clr.prm}{list of color mapping parameters defined by \link{defineColors}.}
 }
 \value{
-colorize returns a vector of colors
+colorize returns a vector of colors.
 }
 \description{
 Quick and dirty color mapping

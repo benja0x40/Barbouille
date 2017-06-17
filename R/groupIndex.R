@@ -6,10 +6,10 @@
 #' @seealso
 #'   \link{defineGroups}
 #'   \link{groupLegend}
-#'   \link{scatterPlot}
+#'   \link{ScatterPlot}
 # -----------------------------------------------------------------------------.
 #' @description
-#' This function is used internally by \link{scatterPlot}.
+#' This function is used internally by \link{ScatterPlot}.
 #'
 #' @param v
 #' group memberships, which can be specified using either a logical matrix,
@@ -44,7 +44,7 @@
 #' # 1. Group membership = vector of group ids /////////////////////////////////
 #' grp <- 1 * (abs(z - 0.5) < 0.05) + 2 * (z < 0.15)
 #'
-#' scatterPlot(
+#' ScatterPlot(
 #'   x, y, pch = 20,
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
@@ -57,7 +57,7 @@
 #'   `2` = which(z < 0.15)
 #' )
 #'
-#' scatterPlot(
+#' ScatterPlot(
 #'   x, y, pch = 20,
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
@@ -69,7 +69,7 @@
 #'   `1` = abs(z - 0.5) < 0.05,
 #'   `2` = z < 0.15
 #' )
-#' scatterPlot(
+#' ScatterPlot(
 #'   x, y, pch = 20,
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm

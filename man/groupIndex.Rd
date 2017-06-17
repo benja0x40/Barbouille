@@ -18,7 +18,7 @@ these 3 possibilities.}
 integer vector
 }
 \description{
-This function is used internally by \link{scatterPlot}.
+This function is used internally by \link{ScatterPlot}.
 }
 \examples{
 # Simultaneous use of color mapping and group membership ////////////////////
@@ -42,7 +42,7 @@ grp.prm <- defineGroups(
 # 1. Group membership = vector of group ids /////////////////////////////////
 grp <- 1 * (abs(z - 0.5) < 0.05) + 2 * (z < 0.15)
 
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -55,7 +55,7 @@ grp <- list(
   `2` = which(z < 0.15)
 )
 
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -67,7 +67,7 @@ grp <- cbind(
   `1` = abs(z - 0.5) < 0.05,
   `2` = z < 0.15
 )
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -77,5 +77,5 @@ groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 \seealso{
 \link{defineGroups}
   \link{groupLegend}
-  \link{scatterPlot}
+  \link{ScatterPlot}
 }

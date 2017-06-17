@@ -4,7 +4,7 @@
 #' @seealso
 #'   \link{plotImage},
 #'   \link{defineColors},
-#'   \link{scatterPlot}
+#'   \link{ScatterPlot}
 # -----------------------------------------------------------------------------.
 #' @param x
 #'
@@ -54,7 +54,7 @@
 histogram2D <- function(
   x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"),
-  plot = F, color.mode = "0_1", colors = NULL, alpha = 1.0, ...
+  plot = F, color.mode = "01", colors = NULL, alpha = 1.0, ...
 ) {
 
   method <- method[1]

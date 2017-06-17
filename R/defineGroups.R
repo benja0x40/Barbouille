@@ -4,7 +4,7 @@
 #' @seealso
 #'   \link{groupIndex},
 #'   \link{groupLegend},
-#'   \link{scatterPlot},
+#'   \link{ScatterPlot},
 #'   \link{updateDefinition},
 #'   \link{defineColors}
 # -----------------------------------------------------------------------------.
@@ -22,7 +22,7 @@
 #' @param ...
 #' Optional parameters controlling the representation of each group.
 #' At the moment, only \code{pch} and \code{cex} are supported in combination
-#' with the \link{scatterPlot} function.
+#' with the \link{ScatterPlot} function.
 #'
 #' @return
 #' defineGroups returns a \code{data.frame} including at least the following
@@ -50,7 +50,7 @@
 #' # 1. Group membership = vector of group ids /////////////////////////////////
 #' grp <- 1 * (abs(z - 0.5) < 0.05) + 2 * (z < 0.15)
 #'
-#' scatterPlot(
+#' ScatterPlot(
 #'   x, y, pch = 20,
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
@@ -63,7 +63,7 @@
 #'   `2` = which(z < 0.15)
 #' )
 #'
-#' scatterPlot(
+#' ScatterPlot(
 #'   x, y, pch = 20,
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
@@ -75,7 +75,7 @@
 #'   `1` = abs(z - 0.5) < 0.05,
 #'   `2` = z < 0.15
 #' )
-#' scatterPlot(
+#' ScatterPlot(
 #'   x, y, pch = 20,
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm

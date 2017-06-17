@@ -85,7 +85,7 @@ rng <- c(-3, 3)
 clr.prm <- defineColors(seq(-4, 4, 2), grey(c(0.2, 0.8)), below = orange, above = red)
 
 image_counter <- open_img(image_counter)
-scatterPlot(
+ScatterPlot(
   x, y, clr = x + y, clr.prm = clr.prm,
   xlim = 1.2 * rng, ylim = c(1.1, 1.3) * rng
 )
@@ -124,7 +124,7 @@ if(F) {
   clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
 
   image_counter <- open_img(image_counter)
-  scatterPlot(x, y, clr = a, clr.prm = clr.prm, pch = 20, cex = 0.5, xlim = rng, ylim = rng)
+  ScatterPlot(x, y, clr = a, clr.prm = clr.prm, pch = 20, cex = 0.5, xlim = rng, ylim = rng)
   colorLegend("r", parameters = clr.prm, size = c(90, 3), cex = 0.8)
   a <- pi - c(0, 120, 240) * pi / 180
   b <- transformColors(c(rgb(1, 0, 0), rgb(0, 1, 0), rgb(0, 0, 1)), S.range = 0.6, V.range = 0.95)
@@ -158,7 +158,7 @@ clr <- SuperRainbow(
 clr.prm <- defineColors(seq(-180, 180, 60), colors = clr)
 
 image_counter <- open_img(image_counter)
-scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
 colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
@@ -167,7 +167,7 @@ close_img(image_counter)
 clr.prm <- defineColors(seq(-180, 180, 60), colors = clr, levels = 3)
 
 image_counter <- open_img(image_counter)
-scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
 colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
@@ -177,7 +177,7 @@ clr.prm <- defineColors(seq(-180, 180, 60))
 clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
 
 image_counter <- open_img(image_counter)
-scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
 colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
@@ -187,7 +187,7 @@ clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
 clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
 
 image_counter <- open_img(image_counter)
-scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
 colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
@@ -196,7 +196,7 @@ close_img(image_counter)
 # clr.prm <- defineColors(seq(-180, 180, 60))
 #
 # image_counter <- open_img(image_counter)
-# scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+# ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
 # colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)
@@ -205,7 +205,7 @@ close_img(image_counter)
 # clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
 #
 # image_counter <- open_img(image_counter)
-# scatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+# ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
 # colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)

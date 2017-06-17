@@ -5,7 +5,7 @@
 \title{Bivariate histograms}
 \usage{
 histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
-  method = c("bin", "ash", "bin.table"), plot = F, color.mode = "0_1",
+  method = c("bin", "ash", "bin.table"), plot = F, color.mode = "01",
   colors = NULL, alpha = 1, ...)
 }
 \arguments{
@@ -55,5 +55,5 @@ h <- histogram2D(xy, plot = T, method = "ash", color.mode = "rank")
 \seealso{
 \link{plotImage},
   \link{defineColors},
-  \link{scatterPlot}
+  \link{ScatterPlot}
 }

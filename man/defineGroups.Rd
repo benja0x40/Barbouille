@@ -17,7 +17,7 @@ with \link{groupIndex}.}
 
 \item{...}{Optional parameters controlling the representation of each group.
 At the moment, only \code{pch} and \code{cex} are supported in combination
-with the \link{scatterPlot} function.}
+with the \link{ScatterPlot} function.}
 }
 \value{
 defineGroups returns a \code{data.frame} including at least the following
@@ -48,7 +48,7 @@ grp.prm <- defineGroups(
 # 1. Group membership = vector of group ids /////////////////////////////////
 grp <- 1 * (abs(z - 0.5) < 0.05) + 2 * (z < 0.15)
 
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -61,7 +61,7 @@ grp <- list(
   `2` = which(z < 0.15)
 )
 
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -73,7 +73,7 @@ grp <- cbind(
   `1` = abs(z - 0.5) < 0.05,
   `2` = z < 0.15
 )
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -83,7 +83,7 @@ groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 \seealso{
 \link{groupIndex},
   \link{groupLegend},
-  \link{scatterPlot},
+  \link{ScatterPlot},
   \link{updateDefinition},
   \link{defineColors}
 }

@@ -43,7 +43,7 @@ grp.prm$label <- c("border", "center")
 # 1st possibility to provide the group memberships: vector of group ids
 grp <- 1 * (abs(z - 0.5) < 0.05) + 2 * (z < 0.15)
 
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -56,7 +56,7 @@ grp <- list(
   `2` = which(z < 0.15)
 )
 
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -68,7 +68,7 @@ grp <- cbind(
   `1` = abs(z - 0.5) < 0.05,
   `2` = z < 0.15
 )
-scatterPlot(
+ScatterPlot(
   x, y, pch = 20,
   clr = x + y, clr.prm = clr.prm,
   grp = grp, grp.prm = grp.prm
@@ -78,5 +78,5 @@ groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 \seealso{
 \link{defineGroups}
   \link{groupIndex}
-  \link{scatterPlot}
+  \link{ScatterPlot}
 }
