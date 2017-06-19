@@ -43,18 +43,20 @@ autoscale <- function(x, mode = NULL) {
 #' @export
 AutoColorParameters <- function(colors = NULL) {
 
-  if(is.null(colors)) colors <- grey(c(0.9, 0.6, 0.3, 0))
+  if(is.null(colors)) colors <- grey(c(0.8, 0.7, 0.5, 0))
 
   chk <- length(colors) == 1
-  if(chk & colors[1] == "rw") colors <- c(grey(c(0.9, 0.1)), rgb(1:1, 0:1, 0:1))
-  if(chk & colors[1] == "ry") colors <- c(grey(c(0.9, 0.1)), rgb(1:1, 0:1, 0:0))
-  if(chk & colors[1] == "yr") colors <- c(grey(c(0.9, 0.1)), rgb(1:1, 1:0, 0:0))
-  if(chk & colors[1] == "gw") colors <- c(grey(c(0.9, 0.1)), rgb(0:1, 1:1, 0:1))
-  if(chk & colors[1] == "gy") colors <- c(grey(c(0.9, 0.1)), rgb(0:1, 1:1, 0:0))
-  if(chk & colors[1] == "yg") colors <- c(grey(c(0.9, 0.1)), rgb(1:0, 1:1, 0:0))
-  if(chk & colors[1] == "bw") colors <- c(grey(c(0.9, 0.1)), rgb(0:1, 0:1, 1:1))
-  if(chk & colors[1] == "bc") colors <- c(grey(c(0.9, 0.1)), rgb(0:0, 0:1, 1:1))
-  if(chk & colors[1] == "cb") colors <- c(grey(c(0.9, 0.1)), rgb(0:0, 1:0, 1:1))
+  if(chk & colors[1] == "WB") colors <- grey(1:0)
+  if(chk & colors[1] == "BW") colors <- grey(0:1)
+  if(chk & colors[1] == "rW") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:1))
+  if(chk & colors[1] == "ry") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:0))
+  if(chk & colors[1] == "yr") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 1:0, 0:0))
+  if(chk & colors[1] == "gW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:1))
+  if(chk & colors[1] == "gy") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:0))
+  if(chk & colors[1] == "yg") colors <- c(grey(c(0.8, 0.4)), rgb(1:0, 1:1, 0:0))
+  if(chk & colors[1] == "bW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 0:1, 1:1))
+  if(chk & colors[1] == "bc") colors <- c(grey(c(0.8, 0.4)), rgb(0:0, 0:1, 1:1))
+  if(chk & colors[1] == "cb") colors <- c(grey(c(0.8, 0.4)), rgb(0:0, 1:0, 1:1))
 
   n <- length(colors)
   q <- 0:(n-1)/(n-1)

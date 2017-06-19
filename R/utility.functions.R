@@ -1,4 +1,40 @@
 # =============================================================================.
+#' Plot limits with legend
+# -----------------------------------------------------------------------------.
+#' @param x numeric
+#' @param y numeric
+#' @param symetric logical
+#' @param spacing numeric
+#' @param margin numeric
+#' @return list
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+xylim <- function(x, y = NULL, symetric = F, spacing = 0, margin = 0) {
+
+  x <- cbind(x, y)
+
+  xlim <- range(x[FiniteValues(x[, 1]), 1])
+  ylim <- range(x[FiniteValues(x[, 2]), 2])
+  if(symetric) {
+    xlim <- ylim <- range(xlim, ylim)
+  }
+
+  spacing <- rep(spacing, length.out = 2)
+  margin  <- rep(margin,  length.out = 2)
+
+  sgn <- sign(spacing)
+  spacing <- abs(spacing)
+
+  xlim <- xlim * (1 + spacing[1]) + sgn[1] * diff(xlim) * spacing[1] / 2
+  ylim <- ylim * (1 + spacing[2]) + sgn[2] * diff(ylim) * spacing[2] / 2
+
+  xlim <- xlim * (1 + margin[1])
+  ylim <- ylim * (1 + margin[2])
+
+  list(x = xlim, y = ylim)
+}
+# =============================================================================.
 #' Convert colors from HSV matrix to RGB matrix
 # -----------------------------------------------------------------------------.
 #' @seealso
