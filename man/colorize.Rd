@@ -14,7 +14,7 @@ colorize(x, mode = NULL, clr.prm = NULL, ...)
 \item{clr.prm}{list of color mapping parameters defined by \link{defineColors}.}
 }
 \value{
-colorize returns a vector of colors.
+\code{colorize} returns a vector of colors.
 }
 \description{
 Quick and dirty color mapping

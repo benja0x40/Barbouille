@@ -10,7 +10,7 @@ S01(x)
 \item{x}{numeric vector}
 }
 \value{
-S01 returns x rescaled such that range(x) = [0, 1]
+\code{S01} returns x rescaled such that range(x) = [0, 1]
 }
 \description{
 rescale x into [0, 1]

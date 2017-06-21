@@ -25,8 +25,9 @@
 #' with the \link{ScatterPlot} function.
 #'
 #' @return
-#' defineGroups returns a \code{data.frame} including at least the following
-#' elements: \code{id}, \code{label}, \code{colors}.
+#' \code{defineGroups} returns a \code{data.frame} including at least
+#' the following elements:
+#' \code{id}, \code{label}, \code{colors}.
 # -----------------------------------------------------------------------------.
 #' @examples
 #' # Simultaneous use of color mapping and group membership ////////////////////

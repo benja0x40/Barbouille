@@ -8,7 +8,7 @@
 #' either \code{"rank"} or \code{"01"} (default).
 #'
 #' @return
-#' autoscale returns a numeric vector.
+#' \code{autoscale} returns a numeric vector.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -36,7 +36,7 @@ autoscale <- function(x, mode = NULL) {
 #' vector of colors (optional).
 #'
 #' @return
-#' AutoColorParameters returns a \code{list}
+#' \code{AutoColorParameters} returns a \code{list}
 #' (S3 class = \code{colorParameters}).
 # -----------------------------------------------------------------------------.
 #' @keywords internal
@@ -48,13 +48,23 @@ AutoColorParameters <- function(colors = NULL) {
   chk <- length(colors) == 1
   if(chk & colors[1] == "WB") colors <- grey(1:0)
   if(chk & colors[1] == "BW") colors <- grey(0:1)
+
+  if(chk & colors[1] == "Br") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 0))
+  if(chk & colors[1] == "Bg") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 0))
+  if(chk & colors[1] == "Bc") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 1))
+  if(chk & colors[1] == "By") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 1, 0))
+  if(chk & colors[1] == "Bp") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 1))
+
   if(chk & colors[1] == "rW") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:1))
+  if(chk & colors[1] == "gW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:1))
+  if(chk & colors[1] == "bW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 0:1, 1:1))
+
   if(chk & colors[1] == "ry") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:0))
   if(chk & colors[1] == "yr") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 1:0, 0:0))
-  if(chk & colors[1] == "gW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:1))
+
   if(chk & colors[1] == "gy") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:0))
   if(chk & colors[1] == "yg") colors <- c(grey(c(0.8, 0.4)), rgb(1:0, 1:1, 0:0))
-  if(chk & colors[1] == "bW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 0:1, 1:1))
+
   if(chk & colors[1] == "bc") colors <- c(grey(c(0.8, 0.4)), rgb(0:0, 0:1, 1:1))
   if(chk & colors[1] == "cb") colors <- c(grey(c(0.8, 0.4)), rgb(0:0, 1:0, 1:1))
 
@@ -75,7 +85,7 @@ AutoColorParameters <- function(colors = NULL) {
 #' @inheritParams AutoColorParameters
 #'
 #' @return
-#' colorize returns a vector of colors.
+#' \code{colorize} returns a vector of colors.
 # -----------------------------------------------------------------------------.
 #' @export
 colorize <- function(x, mode = NULL, clr.prm = NULL, ...) {

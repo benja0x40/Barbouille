@@ -45,7 +45,7 @@
 #' optional parameters passed to the \link{text} function.
 #'
 #' @return
-#' pointLabels returns a \code{list} with the following elements:
+#' \code{pointLabels} returns a \code{list} with the following elements:
 #' \item{labels}{
 #'   character vector with text labels
 #' }

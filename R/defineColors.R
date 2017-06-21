@@ -67,7 +67,7 @@
 #' recall a predefined set of color mapping parameters.
 #'
 #' @return
-#' defineColors returns a \code{list} (S3 class = \code{colorParameters})
+#' \code{defineColors} returns a \code{list} (S3 class = \code{colorParameters})
 #' containing the following elements:
 #' \code{thresholds}, \code{colors}, \code{range}, \code{number},
 #' \code{below}, \code{above}, \code{na}, \code{levels}, \code{centered},

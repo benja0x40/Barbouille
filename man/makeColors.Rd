@@ -53,7 +53,7 @@ See \link{groupIndex} for documentation on how to specify group memberships.}
 \item{grp.prm}{data.frame of group representation parameters defined by \link{defineGroups}.}
 }
 \value{
-makeColors returns a character vector of RGBA colors in hexadecimal.
+\code{makeColors} returns a character vector of RGBA colors in hexadecimal.
 }
 \description{
 makeColors builds a vector of RGB colors that may represent numerical values

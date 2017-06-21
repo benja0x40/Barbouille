@@ -12,7 +12,7 @@ autoscale(x, mode = NULL)
 \item{mode}{either \code{"rank"} or \code{"01"} (default).}
 }
 \value{
-autoscale returns a numeric vector.
+\code{autoscale} returns a numeric vector.
 }
 \description{
 autoscale

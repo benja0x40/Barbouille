@@ -110,7 +110,7 @@ ScatterPlot <- function(
     if(is.null(clr)) clr <- grey(0)
     args$col <- clr
   }
-  args$col <- replaceAlpha(args$col, alpha)
+  args$col <- ReplaceAlpha(args$col, alpha)
 
   if(! (is.null(grp) | is.null(grp.prm))) {
     grp.prm <- updateDefinition(grp.prm)

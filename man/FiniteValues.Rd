@@ -10,7 +10,7 @@ FiniteValues(x)
 \item{x}{numeric vector or matrix}
 }
 \value{
-FiniteValues returns a \code{logical} vector
+\code{FiniteValues} returns a \code{logical} vector
 }
 \description{
 Detect computable values (i.e. not NA nor Inf)

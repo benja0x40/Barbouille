@@ -27,7 +27,7 @@ close_img <- function(counter = NULL) {
   if(! is.null(counter)) dev.off()
 }
 
-# EXAMPLES #####################################################################
+# SET 1 ########################################################################
 
 # layout(matrix(1:9, 3, 3, byrow = T))
 # image_counter <- NULL
@@ -76,6 +76,8 @@ colorLegend(
 )
 title(expression(sqrt(x^2 + y^2)))
 close_img(image_counter)
+
+# SET 2 ########################################################################
 
 # -----------------------------------------------------------------------------.
 #  uniformely distributed random variables
@@ -135,7 +137,7 @@ if(F) {
   close_img(image_counter)
 }
 
-# EXAMPLES #####################################################################
+# SET 3 ########################################################################
 
 # =============================================================================.
 # Examples for defineColors and makeColors
@@ -173,24 +175,24 @@ title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
 
 # //// Example 1 ////
-clr.prm <- defineColors(seq(-180, 180, 60))
-clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
-
-image_counter <- open_img(image_counter)
-ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
-title(expression(over(180 ~~ atan2(y, x), pi)))
-close_img(image_counter)
+# clr.prm <- defineColors(seq(-180, 180, 60))
+# clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+#
+# image_counter <- open_img(image_counter)
+# ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# title(expression(over(180 ~~ atan2(y, x), pi)))
+# close_img(image_counter)
 
 # //// Example 2 ////
-clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
-clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
-
-image_counter <- open_img(image_counter)
-ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
-title(expression(over(180 ~~ atan2(y, x), pi)))
-close_img(image_counter)
+# clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
+# clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+#
+# image_counter <- open_img(image_counter)
+# ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
+# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# title(expression(over(180 ~~ atan2(y, x), pi)))
+# close_img(image_counter)
 
 # //// Example 1 ////
 # clr.prm <- defineColors(seq(-180, 180, 60))
@@ -209,3 +211,31 @@ close_img(image_counter)
 # colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)
+
+# SET 4 ########################################################################
+
+# //// Example ////
+n <- 50000
+x <- cbind(
+  A = rnorm(n,  0, 3),
+  B = rnorm(n, -5, 1),
+  C = rnorm(n,  0, 2),
+  D = rnorm(n,  5, 1)
+)
+image_counter <- open_img(image_counter)
+h <- ParallelHist2D(x, nx = 200, ny = 200, plot = T)
+close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+h <- ParallelHist2D(x, nx = 200, ny = 200, plot = T, jitter = "norm")
+close_img(image_counter)
+
+# //// Example ////
+# n <- 10000
+# x <- c(runif(n, -1, 1), rnorm(n, c(-1, 1), 1/5) / 2)
+# y <- c(runif(n, -1, 1), rnorm(n, c(-1, 1), 1/5) / 2)
+#
+# image_counter <- open_img(image_counter)
+# h <- Histogram2D(x, y, plot = T)
+# close_img(image_counter)
+

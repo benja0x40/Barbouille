@@ -20,8 +20,9 @@ At the moment, only \code{pch} and \code{cex} are supported in combination
 with the \link{ScatterPlot} function.}
 }
 \value{
-defineGroups returns a \code{data.frame} including at least the following
-elements: \code{id}, \code{label}, \code{colors}.
+\code{defineGroups} returns a \code{data.frame} including at least
+the following elements:
+\code{id}, \code{label}, \code{colors}.
 }
 \description{
 Group representation definition

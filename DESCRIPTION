@@ -9,13 +9,15 @@ Imports:
     methods,
     stringr,
     colorspace,
-    ash
+    ash,
+    triangle
 Depends:
     R (>= 3.2.0),
     methods,
     stringr,
     colorspace,
-    ash
+    ash,
+    triangle
 Suggests:
     colorscience,
     colortools,

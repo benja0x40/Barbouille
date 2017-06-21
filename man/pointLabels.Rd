@@ -36,7 +36,7 @@ arrows (default = \code{F}).}
 \item{...}{optional parameters passed to the \link{text} function.}
 }
 \value{
-pointLabels returns a \code{list} with the following elements:
+\code{pointLabels} returns a \code{list} with the following elements:
 \item{labels}{
   character vector with text labels
 }

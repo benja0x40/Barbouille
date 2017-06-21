@@ -23,7 +23,7 @@ SuperRainbow(n, mod = "++", s.rng = 1, l.rng = 1, f = "hsv",
 \item{ordering}{color order}
 }
 \value{
-SuperRainbow returns a character vector of RGBA colors in hexadecimal.
+\code{SuperRainbow} returns a character vector of RGBA colors in hexadecimal.
 }
 \description{
 Rainbow colors

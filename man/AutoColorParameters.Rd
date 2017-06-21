@@ -10,7 +10,7 @@ AutoColorParameters(colors = NULL)
 \item{colors}{vector of colors (optional).}
 }
 \value{
-AutoColorParameters returns a \code{list}
+\code{AutoColorParameters} returns a \code{list}
 (S3 class = \code{colorParameters}).
 }
 \description{

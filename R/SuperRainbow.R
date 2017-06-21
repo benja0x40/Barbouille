@@ -23,7 +23,7 @@
 #' color order
 #'
 #' @return
-#' SuperRainbow returns a character vector of RGBA colors in hexadecimal.
+#' \code{SuperRainbow} returns a character vector of RGBA colors in hexadecimal.
 # -----------------------------------------------------------------------------.
 #' @export
 SuperRainbow <- function(
