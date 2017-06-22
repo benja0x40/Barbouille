@@ -10,14 +10,16 @@ Imports:
     stringr,
     colorspace,
     ash,
-    triangle
+    triangle,
+    caTools
 Depends:
     R (>= 3.2.0),
     methods,
     stringr,
     colorspace,
     ash,
-    triangle
+    triangle,
+    caTools
 Suggests:
     colorscience,
     colortools,

@@ -4,7 +4,7 @@
 \alias{Histogram2D}
 \title{Bivariate histograms}
 \usage{
-Histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
+Histogram2D(x, y = NULL, nx = 100, ny = nx, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"), plot = F, clrmap = NULL,
   alpha = 1, ...)
 }

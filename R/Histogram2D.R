@@ -54,7 +54,7 @@
 # -----------------------------------------------------------------------------.
 #' @export
 Histogram2D <- function(
-  x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
+  x, y = NULL, nx = 100, ny = nx, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"),
   plot = F, clrmap = NULL, alpha = 1.0, ...
 ) {

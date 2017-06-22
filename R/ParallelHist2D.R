@@ -22,6 +22,10 @@
 #'
 #' @param clrmap function
 #'
+#' @param global logical (default = F)
+#'
+#' @param las interger
+#'
 #' @param ...
 #'
 #' @return
@@ -31,7 +35,7 @@
 #' @export
 ParallelHist2D <- function(
   m, nx = 100, ny = nx, spacing = 0.2, jitter = "unif", method = "bin",
-  plot = F, grid = T, clrmap = NULL, global = F, las = 1, ...
+  smoothx = F, plot = F, grid = T, clrmap = NULL, global = F, las = 1, ...
 ) {
 
   if(is.null(clrmap)) {
@@ -51,7 +55,8 @@ ParallelHist2D <- function(
     j <- rtriangle(nc * nr, a = -1, b = 1, c = 0)
   }
   if(is.null(j)) {
-    j <- runif(nc * nr, -1, 1)
+    j <- 1 - .Machine$double.neg.eps
+    j <- runif(nc * nr, - j, j)
   }
 
   j <- j * (1 - spacing) / 2
@@ -59,13 +64,22 @@ ParallelHist2D <- function(
   h <- cbind(x + j, as.vector(m))
   h <- Histogram2D(h, nx = nx, ny = ny, method = method)
 
+  x <- with(h, (x[-1] + x[-(nx+1)]) / 2)
+
+  if(smoothx) {
+    for(i in 1:nc) {
+      k <- abs(x - i) <= (1 - spacing) / 2
+      h$z[k, ] <- matrix(colMeans(h$z[k, ]), sum(k), ny, byrow = T)
+    }
+  }
+
   if(plot) {
     cm <- rep(NA, nx * ny)
     chk <- as.vector(h$z > 0)
     if(global) {
       cm[chk] <- clrmap(h$z[chk])
     } else {
-      x <- with(h, rep((x[-1] + x[-(nx+1)]) / 2, ny))
+      x <- rep(x, ny)
       for(i in 1:nc) {
         k <- chk & abs(x - i) < 0.5
         cm[k] <- clrmap(h$z[k])

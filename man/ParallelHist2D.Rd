@@ -5,8 +5,8 @@
 \title{Agarose plot}
 \usage{
 ParallelHist2D(m, nx = 100, ny = nx, spacing = 0.2, jitter = "unif",
-  method = "bin", plot = F, grid = T, clrmap = NULL, global = F,
-  las = 1, ...)
+  method = "bin", smoothx = F, plot = F, grid = T, clrmap = NULL,
+  global = F, las = 1, ...)
 }
 \arguments{
 \item{m}{matrix}
@@ -26,6 +26,10 @@ ParallelHist2D(m, nx = 100, ny = nx, spacing = 0.2, jitter = "unif",
 \item{grid}{logical (default = T)}
 
 \item{clrmap}{function}
+
+\item{global}{logical (default = F)}
+
+\item{las}{interger}
 
 \item{...}{}
 }
