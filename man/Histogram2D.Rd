@@ -5,8 +5,8 @@
 \title{Bivariate histograms}
 \usage{
 Histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
-  method = c("bin", "ash", "bin.table"), plot = F, color.mode = "01",
-  colors = NULL, alpha = 1, ...)
+  method = c("bin", "ash", "bin.table"), plot = F, clrmap = NULL,
+  alpha = 1, ...)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -25,13 +25,11 @@ Histogram2D(x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
 
 \item{plot}{logical (default = F)}
 
-\item{alpha}{}
+\item{clrmap}{color mapper}
+
+\item{alpha}{transparency}
 
 \item{...}{}
-
-\item{col}{}
-
-\item{clr}{}
 }
 \value{
 \code{Histogram2D} returns a \code{list} with the following elements:

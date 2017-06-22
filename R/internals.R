@@ -85,6 +85,31 @@ PlotImage <- function(m, x = NULL, y = NULL, ...) {
 # > Colors #####################################################################
 
 # =============================================================================.
+#' Replace transparency values
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{transformColors}
+# -----------------------------------------------------------------------------.
+#' @param x
+#' character vector of colors.
+#'
+#' @param a
+#' transparency given as a numeric value between \code{0} and \code{1}.
+#'
+#' @return
+#' \code{ReplaceAlpha} returns a character vector of RGBA colors in hexadecimal.
+# -----------------------------------------------------------------------------.
+#' @export
+ReplaceAlpha <- function(x, a) {
+  a <- substr(rgb(0, 0, 0, alpha = a), 8, 9)
+  if(length(a) == 1) a <- rep(a, length(x))
+  chk <- nchar(x) == 9 & grepl("^#[0-9A-F]+", x, perl = T)
+  substr(x[chk], 8, 9) <- a[chk]
+  x[! chk] <- rgb(t(col2rgb(x)/255))[! chk]
+  x[! chk] <- paste(x[! chk], a[! chk], sep = "")
+  x
+}
+# =============================================================================.
 #' Convert colors from HSV matrix to RGB matrix
 # -----------------------------------------------------------------------------.
 #' @seealso
@@ -229,31 +254,6 @@ hsv2R <- function(x) {
   x <- hex(x)
   x
 }
-# =============================================================================.
-#' Replace transparency values
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{transformColors}
-# -----------------------------------------------------------------------------.
-#' @param x
-#' character vector of colors.
-#'
-#' @param a
-#' transparency given as a numeric value between \code{0} and \code{1}.
-#'
-#' @return
-#' \code{ReplaceAlpha} returns a character vector of RGBA colors in hexadecimal.
-# -----------------------------------------------------------------------------.
-#' @export
-ReplaceAlpha <- function(x, a) {
-  a <- substr(rgb(0, 0, 0, alpha = a), 8, 9)
-  if(length(a) == 1) a <- rep(a, length(x))
-  chk <- nchar(x) == 9 & grepl("^#[0-9A-F]+", x, perl = T)
-  substr(x[chk], 8, 9) <- a[chk]
-  x[! chk] <- rgb(t(col2rgb(x)/255))[! chk]
-  x[! chk] <- paste(x[! chk], a[! chk], sep = "")
-  x
-}
 
 # NOT EXPORTED #################################################################
 
@@ -289,7 +289,7 @@ rankstat <- function(x) { (rank(x) - 0.5) / length(x) }
 #' @keywords internal
 S01 <- function(x) { (x - min(x)) / diff(range(x)) }
 
-# > Unsafe values ##############################################################
+# > Safe values ##############################################################
 
 # =============================================================================.
 #' Detect computable values (i.e. not NA nor Inf)

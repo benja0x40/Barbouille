@@ -30,11 +30,9 @@
 #' @param plot
 #' logical (default = F)
 #'
-#' @param col
+#' @param clrmap color mapper
 #'
-#' @param clr
-#'
-#' @param alpha
+#' @param alpha transparency
 #'
 #' @param ...
 #'
@@ -58,8 +56,12 @@
 Histogram2D <- function(
   x, y = NULL, nx = 100, ny = 100, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"),
-  plot = F, color.mode = "01", colors = NULL, alpha = 1.0, ...
+  plot = F, clrmap = NULL, alpha = 1.0, ...
 ) {
+
+  if(is.null(clrmap)) {
+    clrmap <- function(k) colorize(k, mode = "01")
+  }
 
   method <- method[1]
   if(is.null(y)) {
@@ -99,9 +101,9 @@ Histogram2D <- function(
   }
 
   if(plot) {
-    chk <- z > 0
     d <- rep(NA, nx * ny)
-    d[chk] <- colorize(z[chk], mode = color.mode, colors = colors)
+    chk <- z > 0
+    d[chk] <- clrmap(z[chk])
     d <- ReplaceAlpha(d, alpha)
     d <- matrix(d, ny, nx)
     PlotImage(d, x, y, ...)

@@ -220,14 +220,16 @@ x <- cbind(
   A = rnorm(n,  0, 3),
   B = rnorm(n, -5, 1),
   C = rnorm(n,  0, 2),
-  D = rnorm(n,  5, 1)
+  D = rnorm(n,  c(-2, 2))
 )
+clr.map <- function(k) colorize(k, mode = "rank", col = "ry")
+
 image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, ny = 200, plot = T)
+h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, ny = 200, plot = T, jitter = "norm")
+h <- ParallelHist2D(x, nx = 200, plot = T, jitter = "norm", clrmap = clr.map)
 close_img(image_counter)
 
 # //// Example ////

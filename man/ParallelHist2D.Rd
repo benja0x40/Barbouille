@@ -2,10 +2,11 @@
 % Please edit documentation in R/ParallelHist2D.R
 \name{ParallelHist2D}
 \alias{ParallelHist2D}
-\title{ParallelHist2D}
+\title{Agarose plot}
 \usage{
-ParallelHist2D(m, nx = 100, ny = 100, spacing = 0.2, jitter = "unif",
-  method = "bin", plot = F, grid = T, color.mapper = NULL, ...)
+ParallelHist2D(m, nx = 100, ny = nx, spacing = 0.2, jitter = "unif",
+  method = "bin", plot = F, grid = T, clrmap = NULL, global = F,
+  las = 1, ...)
 }
 \arguments{
 \item{m}{matrix}
@@ -16,7 +17,7 @@ ParallelHist2D(m, nx = 100, ny = 100, spacing = 0.2, jitter = "unif",
 
 \item{spacing}{numeric}
 
-\item{jitter}{either "unif" (default), "triangle", or "norm"}
+\item{jitter}{either "unif" (default), "norm" or "triangle"}
 
 \item{method}{either "bin" or "ash"}
 
@@ -24,7 +25,7 @@ ParallelHist2D(m, nx = 100, ny = 100, spacing = 0.2, jitter = "unif",
 
 \item{grid}{logical (default = T)}
 
-\item{color.mapper}{function}
+\item{clrmap}{function}
 
 \item{...}{}
 }
@@ -33,5 +34,5 @@ ParallelHist2D(m, nx = 100, ny = 100, spacing = 0.2, jitter = "unif",
 \code{x}, \code{y}, \code{z}.
 }
 \description{
-ParallelHist2D
+Agarose plot
 }
