@@ -66,10 +66,11 @@ ParallelHist2D <- function(
 
   x <- with(h, (x[-1] + x[-(nx+1)]) / 2)
 
-  if(smoothx) {
+  if(smoothx > 0) {
     for(i in 1:nc) {
       k <- abs(x - i) <= (1 - spacing) / 2
-      h$z[k, ] <- matrix(colMeans(h$z[k, ]), sum(k), ny, byrow = T)
+      # h$z[k, ] <- matrix(colMeans(h$z[k, ]), sum(k), ny, byrow = T)
+      h$z[k, ] <- apply(h$z[k, ], 2, caTools::runmean, k = smoothx)
     }
   }
 

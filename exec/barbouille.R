@@ -223,6 +223,8 @@ x <- cbind(
   D = rnorm(n,  c(-2, 2))
 )
 
+# layout(matrix(1:9, 3, 3, byrow = T))
+
 clr.map <- function(k) colorize(k, mode = "rank")
 
 image_counter <- open_img(image_counter)
@@ -230,7 +232,7 @@ h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map, smoothx = T)
+h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map, smoothx = 15)
 close_img(image_counter)
 
 clr.map <- function(k) colorize(k, mode = "01", col = "ry")
