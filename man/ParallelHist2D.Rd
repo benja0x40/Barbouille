@@ -6,7 +6,7 @@
 \usage{
 ParallelHist2D(m, nx = 100, ny = nx, spacing = 0.2, jitter = "unif",
   method = "bin", smoothx = F, plot = F, grid = T, clrmap = NULL,
-  global = F, las = 1, ...)
+  global = F, las = 1, xlim = NULL, ylim = NULL, ...)
 }
 \arguments{
 \item{m}{matrix}

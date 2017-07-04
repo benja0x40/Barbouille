@@ -35,7 +35,8 @@
 #' @export
 ParallelHist2D <- function(
   m, nx = 100, ny = nx, spacing = 0.2, jitter = "unif", method = "bin",
-  smoothx = F, plot = F, grid = T, clrmap = NULL, global = F, las = 1, ...
+  smoothx = F, plot = F, grid = T, clrmap = NULL, global = F, las = 1,
+  xlim = NULL, ylim = NULL, ...
 ) {
 
   if(is.null(clrmap)) {
@@ -89,6 +90,9 @@ ParallelHist2D <- function(
     cm <- matrix(cm, nx, ny)
 
     lim <- with(h, xylim(x, y, spacing = c(0, 0)))
+    if(! is.null(xlim)) lim$x <- xlim
+    if(! is.null(ylim)) lim$y <- ylim
+
     empty.plot(xlim = lim$x, ylim = lim$y, axes = F, ...)
     if(grid) grid(nx = 0, ny = NULL)
     axis(2)
