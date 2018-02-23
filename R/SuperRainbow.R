@@ -1,5 +1,9 @@
 # =============================================================================.
-#' Rainbow colors
+#' Presumably an improved rainbow color generator
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{DefinecolorMap},
+#'   \link{MakeColors}
 # -----------------------------------------------------------------------------.
 #' @param n
 #' number of colors.
@@ -19,16 +23,12 @@
 #' @param alpha
 #' transparency value (default = 1). See alpha argument in function \link{hcl}.
 #'
-#' @param ordering
-#' color order
-#'
 #' @return
 #' \code{SuperRainbow} returns a character vector of RGBA colors in hexadecimal.
 # -----------------------------------------------------------------------------.
 #' @export
 SuperRainbow <- function(
-  n, mod = "++", s.rng = 1.0, l.rng = 1.0, f = "hsv", alpha = 1.0,
-  ordering = NULL
+  n, mod = "++", s.rng = 1.0, l.rng = 1.0, f = "hsv", alpha = 1.0
 ) {
   s.rng <- rep(s.rng, length.out = 2)
   l.rng <- rep(l.rng, length.out = 2)
@@ -48,6 +48,6 @@ SuperRainbow <- function(
   for(i in 1:k) {
     clr[, i] <- f(h, s.rng[s[i]], l.rng[l[i]], alpha = alpha)[1:n]
   }
-  clr <- clr[.m2v.(i = 1:n, j = rep(1:k, length.out = n), nrow = n)]
+  clr <- clr[m2v(i = 1:n, j = rep(1:k, length.out = n), nrow = n)]
   clr
 }

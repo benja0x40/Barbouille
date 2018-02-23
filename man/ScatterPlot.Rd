@@ -2,7 +2,7 @@
 % Please edit documentation in R/ScatterPlot.R
 \name{ScatterPlot}
 \alias{ScatterPlot}
-\title{Scatter plot with color mapping and group representation}
+\title{Scatter plots with color mapping and group highlighting}
 \usage{
 ScatterPlot(x, y = NULL, clr = NULL, clr.prm = NULL, alpha = 1,
   grp = NULL, grp.prm = NULL, xlab = "", ylab = "", add = F, ...)
@@ -12,17 +12,17 @@ ScatterPlot(x, y = NULL, clr = NULL, clr.prm = NULL, alpha = 1,
 
 \item{y}{vertical axis coordinate.}
 
-\item{clr}{vector of numeric values passed to \link{makeColors} for color mapping
+\item{clr}{vector of numeric values passed to \link{MakeColors} for color mapping
 (default = none).}
 
-\item{clr.prm}{list of color mapping parameters defined by \link{defineColors}.}
+\item{clr.prm}{list of color mapping parameters defined by \link{DefineColorMap}.}
 
 \item{alpha}{transparency (numeric value(s) between \code{0} and \code{1}).}
 
 \item{grp}{group memberships for group highlighting (default = none).
-See \link{groupIndex} for documentation on how to specify group memeberships.}
+See \link{GroupIndex} for documentation on how to specify group memeberships.}
 
-\item{grp.prm}{list of group representation parameters defined by \link{defineGroups}.}
+\item{grp.prm}{list of group representation parameters defined by \link{DefineGroupStyles}.}
 
 \item{xlab}{label for the horizontal axis (default = description of x).}
 
@@ -30,10 +30,10 @@ See \link{groupIndex} for documentation on how to specify group memeberships.}
 
 \item{add}{add to existing plot (logical, default = F).}
 
-\item{...}{optional parameters passed to the \link{plot.default} function.}
+\item{...}{optional parameters forwarded to the \link{plot.default} function.}
 }
 \description{
-Scatter plot with color mapping and group representation
+Scatter plots with color mapping and group highlighting
 }
 \examples{
 # Angular groups with two normally distributed random variables
@@ -50,26 +50,26 @@ grp <- 60 * (180/pi * a) \%/\% 60
 grp.ids <- sort(unique(grp))
 grp.lbl <- paste(grp.ids, "° < a < ", grp.ids + 60, "°", sep="")
 
-grp.prm <- defineGroups(
+grp.prm <- DefineGroupStyles(
   grp.ids, labels = grp.lbl, color = grey(c(0.2, 0.6)), pch = 1:6, cex = 0.7
 )
 
 ScatterPlot(x, y, grp = grp, grp.prm = grp.prm, xlab = "x", ylab = "y")
-groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
+GroupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 
 ScatterPlot(a, z, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "z")
-groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
+GroupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 
 ScatterPlot(a, x, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "x")
-groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
+GroupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 
 ScatterPlot(a, y, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "y")
-groupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
+GroupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
 }
 \seealso{
-\link{defineColors},
-  \link{makeColors},
-  \link{colorLegend},
-  \link{defineGroups},
-  \link{groupLegend}
+\link{DefineColorMap},
+  \link{MakeColors},
+  \link{ColorLegend},
+  \link{DefineGroupStyles},
+  \link{GroupLegend}
 }

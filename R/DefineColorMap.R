@@ -1,23 +1,23 @@
 # =============================================================================.
-#' Color map definition
+#' Definition of ColoParameters
 # -----------------------------------------------------------------------------.
-# 1. implement defineGroups to override color, symbol and size
+# 1. implement DefineGroupStyles to override color, symbol and size
 #    with values identifying each category/group when specified, and the
-#    corresponding groupLegend function
-# 2. implement sizeParameters makeSizes and sizeLegend
+#    corresponding GroupLegend function
+# 2. implement SizeParameters MakeSizes and SizeLegend
 # 3. combine with a better management of transparency
 # 4. implement nested definitions (subgroups with specific color mapping)
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{updateDefinition},
-#'   \link{makeColors},
-#'   \link{colorLegend},
-#'   \link{defineGroups}
+#'   \link{UpdateDefinition},
+#'   \link{MakeColors},
+#'   \link{ColorLegend},
+#'   \link{DefineGroupStyles}
 # -----------------------------------------------------------------------------.
 #' @description
-#' defineColors provides a general method to define piecewise translations
+#' DefineColorMap provides a general method to define piecewise translations
 #' of numeric values into colors. It can be used in combination with
-#' \link{makeColors} and \link{colorLegend} to produce plots with precise
+#' \link{MakeColors} and \link{ColorLegend} to produce plots with precise
 #' and easy to interpret color informations.
 #'
 #' @param thresholds
@@ -59,7 +59,7 @@
 #'
 #' @param extra
 #' numeric value between 1.0 and above, defining the fraction of the colorscale
-#' used to represent below and above colors with \link{colorLegend}. The default
+#' used to represent below and above colors with \link{ColorLegend}. The default
 #' values are either 1.0, 1.15 or 1.2, depending how below and above colors are
 #' specified.
 #'
@@ -67,8 +67,8 @@
 #' recall a predefined set of color mapping parameters.
 #'
 #' @return
-#' \code{defineColors} returns a \code{list} (S3 class = \code{colorParameters})
-#' containing the following elements:
+#' \code{DefineColorMap} returns a ColorParameters object which consists in
+#' a \code{list} containing the following elements:
 #' \code{thresholds}, \code{colors}, \code{range}, \code{number},
 #' \code{below}, \code{above}, \code{na}, \code{levels}, \code{centered},
 #' \code{extra}, \code{name}.
@@ -80,14 +80,14 @@
 #
 #' z <- 2 * sqrt(x^2 + y^2)
 #'
-#' col.par <- defineColors(seq(0, 5, 1))
-#' clrs    <- makeColors(z, parameters = col.par)
+#' col.par <- DefineColorMap(seq(0, 5, 1))
+#' clrs    <- MakeColors(z, parameters = col.par)
 #'
 #' plot(x, y, xlim = c(-3, 3), ylim = c(-3, 3), pch = 20, col = clrs)
-#' colorLegend("topright", parameters = col.par)
+#' ColorLegend("topright", parameters = col.par)
 # -----------------------------------------------------------------------------.
 #' @export
-defineColors <- function(
+DefineColorMap <- function(
   thresholds = NULL,
   colors     = NULL,
   range      = NULL,
@@ -211,6 +211,6 @@ defineColors <- function(
     extra      = extra,
     name       = name
   )
-  class(prm) <- c("colorParameters", "list")
+  class(prm) <- c("ColorParameters", "list")
   prm
 }

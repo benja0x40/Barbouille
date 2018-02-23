@@ -1,20 +1,20 @@
 # =============================================================================.
-#' Group representation definition
+#' Definition of GroupParameters
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{groupIndex},
-#'   \link{groupLegend},
+#'   \link{GroupIndex},
+#'   \link{GroupLegend},
 #'   \link{ScatterPlot},
-#'   \link{updateDefinition},
-#'   \link{defineColors}
+#'   \link{UpdateDefinition},
+#'   \link{DefineColorMap}
 # -----------------------------------------------------------------------------.
 #' @param ids
 #' group identifiers that are referred to when resolving group memberships
-#' with \link{groupIndex}.
+#' with \link{GroupIndex}.
 #'
 #' @param labels
 #' readable names for the groups, which are used as text labels by
-#' \link{groupLegend}.
+#' \link{GroupLegend}.
 #'
 #' @param colors
 #' The color representing each group.
@@ -25,8 +25,8 @@
 #' with the \link{ScatterPlot} function.
 #'
 #' @return
-#' \code{defineGroups} returns a \code{data.frame} including at least
-#' the following elements:
+#' \code{DefineGroupStyles} returns a GroupParameters object which consist in
+#' a \code{data.frame} containing at least the following columns:
 #' \code{id}, \code{label}, \code{colors}.
 # -----------------------------------------------------------------------------.
 #' @examples
@@ -40,10 +40,10 @@
 #' z <- sqrt(x^2 + y^2)
 #'
 #' # Color mapping parameters for z
-#' clr.prm <- defineColors(seq(-2, 2, 0.5), grey(c(0.2, 0.8)))
+#' clr.prm <- DefineColorMap(seq(-2, 2, 0.5), grey(c(0.2, 0.8)))
 #'
 #' # Define 2 groups: 1 = border, 2 = center ///////////////////////////////////
-#' grp.prm <- defineGroups(
+#' grp.prm <- DefineGroupStyles(
 #'   ids = 1:2, colors = rgb(1:2/2,0,0), cex = c(NA, 1), pch = c(15, 18),
 #'   label <- c("border", "center")
 #' )
@@ -56,7 +56,7 @@
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
 #' )
-#' groupLegend("br", parameters = grp.prm, N = table(grp)[c("1", "2")])
+#' GroupLegend("br", parameters = grp.prm, N = table(grp)[c("1", "2")])
 #'
 #' # 2. Group membership = list of indices /////////////////////////////////////
 #' grp <- list(
@@ -69,7 +69,7 @@
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
 #' )
-#' groupLegend("br", parameters = grp.prm, N = sapply(grp, length))
+#' GroupLegend("br", parameters = grp.prm, N = sapply(grp, length))
 #'
 #' # 3. Group membership = matrix of booleans //////////////////////////////////
 #' grp <- cbind(
@@ -81,10 +81,10 @@
 #'   clr = x + y, clr.prm = clr.prm,
 #'   grp = grp, grp.prm = grp.prm
 #' )
-#' groupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
+#' GroupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
 #' @export
-defineGroups <- function(ids, labels = NULL, colors = "",  ...) {
+DefineGroupStyles <- function(ids, labels = NULL, colors = "",  ...) {
   if(missing(ids) & ! is.null(labels)) ids <- 1:length(labels)
   if(any(duplicated(ids))) stop("Group identifiers are not unique")
   if(is.null(labels)) labels <- as.character(ids)
@@ -104,6 +104,6 @@ defineGroups <- function(ids, labels = NULL, colors = "",  ...) {
     }
     prm[[p]] <- parameters[[p]]
   }
-  class(prm) <- c("groupParameters", "data.frame")
+  class(prm) <- c("GroupParameters", "data.frame")
   prm
 }

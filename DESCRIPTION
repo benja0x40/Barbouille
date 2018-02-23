@@ -1,21 +1,19 @@
 Package: Barbouille
 Type: Package
-Title: Barbouille - R Plot Functions
-Version: 0.3.0
+Title: Barbouille - Plot functions built upon base R graphics
+Version: 0.5.0
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
 Imports:
     methods,
-    stringr,
     colorspace,
     ash,
     triangle,
     caTools
 Depends:
-    R (>= 3.2.0),
+    R (>= 3.4.0),
     methods,
-    stringr,
     colorspace,
     ash,
     triangle,
@@ -29,7 +27,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-Description: A small set of extra plot functions based on standard R graphics
+Description: Plot functions built upon base R graphics
 License: GPL (>= 2)
 LazyData: TRUE
 RoxygenNote: 6.0.1
