@@ -2,10 +2,10 @@
 % Please edit documentation in R/SuperRainbow.R
 \name{SuperRainbow}
 \alias{SuperRainbow}
-\title{Rainbow colors}
+\title{Presumably an improved rainbow color generator}
 \usage{
 SuperRainbow(n, mod = "++", s.rng = 1, l.rng = 1, f = "hsv",
-  alpha = 1, ordering = NULL)
+  alpha = 1)
 }
 \arguments{
 \item{n}{number of colors.}
@@ -19,12 +19,14 @@ SuperRainbow(n, mod = "++", s.rng = 1, l.rng = 1, f = "hsv",
 \item{f}{"hsv" or "hcl".}
 
 \item{alpha}{transparency value (default = 1). See alpha argument in function \link{hcl}.}
-
-\item{ordering}{color order}
 }
 \value{
 \code{SuperRainbow} returns a character vector of RGBA colors in hexadecimal.
 }
 \description{
-Rainbow colors
+Presumably an improved rainbow color generator
+}
+\seealso{
+\link{DefinecolorMap},
+  \link{MakeColors}
 }

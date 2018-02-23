@@ -1,7 +1,7 @@
 # LIBRARIES ####################################################################
 
-library(Barbouille)
 library(stringr)
+library(Barbouille)
 
 # FUNCTIONS ####################################################################
 
@@ -35,7 +35,7 @@ close_img <- function(counter = NULL) {
 image_counter <- 0
 
 # =============================================================================.
-# Examples for defineColors and makeColors
+# Examples for DefineColorMap and MakeColors
 # -----------------------------------------------------------------------------.
 # Random sample of normal distribution N(mu = 0, sigma = 1)
 x <- rnorm(2000)
@@ -49,28 +49,28 @@ z <- sqrt(x^2 + y^2)
 rng <- c(-4.5, 4.5)
 
 # Colors used for above and below limits
-red    <- transformColors("red", S.range = 0.8)
-orange <- transformColors(rgb(1, 0.5, 0), S.range = 0.8)
+red    <- TransformColors("red", S.range = 0.8)
+orange <- TransformColors(rgb(1, 0.5, 0), S.range = 0.8)
 
 # //// Example 3 ////
-clr.prm <- defineColors(seq(0, 2, 0.5), grey(c(0.2, 0.8)), above = red)
-clr <- makeColors(z, parameters = clr.prm)
+clr.prm <- DefineColorMap(seq(0, 2, 0.5), grey(c(0.2, 0.8)), above = red)
+clr <- MakeColors(z, parameters = clr.prm)
 
 image_counter <- open_img(image_counter)
 plot(x, y, xlim = rng, ylim = rng, col = clr, xlab = "", ylab = "")
-colorLegend("topleft", parameters = clr.prm, cex = 0.8)
+ColorLegend("topleft", parameters = clr.prm, cex = 0.8)
 title(expression(sqrt(x^2 + y^2)))
 close_img(image_counter)
 
 # //// Example 4 ////
-clr.prm <- defineColors(
+clr.prm <- DefineColorMap(
   thresholds = c(0, 2), colors = grey(c(0.2, 1.0)), above = red, levels = 4
 )
-clr <- makeColors(z, parameters = clr.prm)
+clr <- MakeColors(z, parameters = clr.prm)
 
 image_counter <- open_img(image_counter)
 plot(x, y, xlim = rng, ylim = rng, col = clr, xlab = "", ylab = "")
-colorLegend(
+ColorLegend(
   "topleft", parameters = clr.prm,
   ticks = seq(0, 2, length.out = 5), cex = 0.8
 )
@@ -84,14 +84,14 @@ close_img(image_counter)
 x <- runif(2000, -3, 3)
 y <- runif(2000, -3, 3)
 rng <- c(-3, 3)
-clr.prm <- defineColors(seq(-4, 4, 2), grey(c(0.2, 0.8)), below = orange, above = red)
+clr.prm <- DefineColorMap(seq(-4, 4, 2), grey(c(0.2, 0.8)), below = orange, above = red)
 
 image_counter <- open_img(image_counter)
 ScatterPlot(
   x, y, clr = x + y, clr.prm = clr.prm,
   xlim = 1.2 * rng, ylim = c(1.1, 1.3) * rng
 )
-colorLegend(
+ColorLegend(
   "t", parameters = clr.prm, horiz = T, size = c(60, 3),
   tick.pos = -1, cex = 0.8
 )
@@ -102,14 +102,14 @@ close_img(image_counter)
 z <- 1 / sqrt(x^2 + y^2)                    # color mapped values
 q <- 1/c(2, 1, 0.5)                         # thresholds
 r <- exp(log(1/c(2, 0.5))) # + c(-0.25, 0.25)) # range
-clr.prm <- defineColors(
+clr.prm <- DefineColorMap(
   q, c(grey(1:0/2), "red"), above = orange, below = grey(0.8), range = r
 )
-clr <- makeColors(z, parameters = clr.prm)
+clr <- MakeColors(z, parameters = clr.prm)
 
 image_counter <- open_img(image_counter)
 plot(x, y, xlim = c(1.1, 1.3) * rng, ylim = 1.2 * rng, pch = 20, col = clr, xlab = "", ylab = "")
-colorLegend("r", parameters = clr.prm, cex = 0.8, tick.pos = -1, log = T)
+ColorLegend("r", parameters = clr.prm, cex = 0.8, tick.pos = -1, log = T)
 title(expression(over(1, sqrt(x^2 + y^2))))
 close_img(image_counter)
 
@@ -122,17 +122,17 @@ if(F) {
   y <- y[z < 1]
   rng <- c(-2, 2)
   a <-  180 - 180 * atan2(y, x) / pi
-  clr.prm <- defineColors(seq(0, 360, 30))
-  clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+  clr.prm <- DefineColorMap(seq(0, 360, 30))
+  clr.prm <- TransformColors(clr.prm, S.range = 0.6, V.range = 0.95)
 
   image_counter <- open_img(image_counter)
   ScatterPlot(x, y, clr = a, clr.prm = clr.prm, pch = 20, cex = 0.5, xlim = rng, ylim = rng)
-  colorLegend("r", parameters = clr.prm, size = c(90, 3), cex = 0.8)
+  ColorLegend("r", parameters = clr.prm, size = c(90, 3), cex = 0.8)
   a <- pi - c(0, 120, 240) * pi / 180
-  b <- transformColors(c(rgb(1, 0, 0), rgb(0, 1, 0), rgb(0, 0, 1)), S.range = 0.6, V.range = 0.95)
+  b <- TransformColors(c(rgb(1, 0, 0), rgb(0, 1, 0), rgb(0, 0, 1)), S.range = 0.6, V.range = 0.95)
   points(cos(a) * 1.05, sin(a) * 1.1, pch = 19, col = b)
   a <- a - pi / 3
-  b <- transformColors(c(rgb(1, 1, 0), rgb(0, 1, 1), rgb(1, 0, 1)), S.range = 0.6, V.range = 0.95)
+  b <- TransformColors(c(rgb(1, 1, 0), rgb(0, 1, 1), rgb(1, 0, 1)), S.range = 0.6, V.range = 0.95)
   points(cos(a) * 1.05, sin(a) * 1.1, pch = 19, col = b)
   close_img(image_counter)
 }
@@ -140,7 +140,7 @@ if(F) {
 # SET 3 ########################################################################
 
 # =============================================================================.
-# Examples for defineColors and makeColors
+# Examples for DefineColorMap and MakeColors
 # -----------------------------------------------------------------------------.
 # Random sample of normal distribution N(mu = 0, sigma = 1)
 x <- rnorm(2000)
@@ -157,58 +157,58 @@ rng <- c(-4.5, 4.5)
 clr <- SuperRainbow(
   7, mod = c("-+", "++", "+-"), s.rng = c(0.6, 1.0), l.rng = c(0.7, 1.0)
 )
-clr.prm <- defineColors(seq(-180, 180, 60), colors = clr)
+clr.prm <- DefineColorMap(seq(-180, 180, 60), colors = clr)
 
 image_counter <- open_img(image_counter)
 ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+ColorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
 
 # //// Example 2 ////
-clr.prm <- defineColors(seq(-180, 180, 60), colors = clr, levels = 3)
+clr.prm <- DefineColorMap(seq(-180, 180, 60), colors = clr, levels = 3)
 
 image_counter <- open_img(image_counter)
 ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+ColorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 title(expression(over(180 ~~ atan2(y, x), pi)))
 close_img(image_counter)
 
 # //// Example 1 ////
-# clr.prm <- defineColors(seq(-180, 180, 60))
-# clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+# clr.prm <- DefineColorMap(seq(-180, 180, 60))
+# clr.prm <- TransformColors(clr.prm, S.range = 0.6, V.range = 0.95)
 #
 # image_counter <- open_img(image_counter)
 # ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# ColorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)
 
 # //// Example 2 ////
-# clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
-# clr.prm <- transformColors(clr.prm, S.range = 0.6, V.range = 0.95)
+# clr.prm <- DefineColorMap(seq(-180, 180, 60), levels = 3)
+# clr.prm <- TransformColors(clr.prm, S.range = 0.6, V.range = 0.95)
 #
 # image_counter <- open_img(image_counter)
 # ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# ColorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)
 
 # //// Example 1 ////
-# clr.prm <- defineColors(seq(-180, 180, 60))
+# clr.prm <- DefineColorMap(seq(-180, 180, 60))
 #
 # image_counter <- open_img(image_counter)
 # ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# ColorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)
 
 # //// Example 2 ////
-# clr.prm <- defineColors(seq(-180, 180, 60), levels = 3)
+# clr.prm <- DefineColorMap(seq(-180, 180, 60), levels = 3)
 #
 # image_counter <- open_img(image_counter)
 # ScatterPlot(x, y, clr = a, clr.prm = clr.prm, xlim = rng, ylim = rng)
-# colorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
+# ColorLegend("t", parameters = clr.prm, horiz = T, size = c(60, 3), cex = 0.8)
 # title(expression(over(180 ~~ atan2(y, x), pi)))
 # close_img(image_counter)
 
@@ -217,33 +217,50 @@ close_img(image_counter)
 # //// Example ////
 n <- 50000
 x <- cbind(
-  A = rnorm(n,  0, 3),
-  B = rnorm(n, -5),
-  C = rnorm(n,  0, 2),
-  D = rnorm(n,  c(-2, 2))
+  rnorm(n, c(-4, 4, -6, 2), c(2, 2, 1, 1)),
+  rnorm(n, c(-6, -2, 2), c(1, 1, 2)),
+  rnorm(n, c(-6, 0, 6), c(1, 2, 1)),
+  rnorm(n, c(-2, 2, 6), c(2, 1, 1)),
+  rnorm(n, c(-4, 4, 6, -2), c(2, 2, 1, 1))
 )
+colnames(x) <- LETTERS[1:ncol(x)]
 
 # layout(matrix(1:9, 3, 3, byrow = T))
 
-clr.map <- function(k) colorize(k, mode = "rank")
-
 image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map)
+h <- SideBySideDensity(x, nx = 200, plot = T)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map, smoothx = 15)
+h <- SideBySideDensity(x, nx = 200, plot = T, smoothx = 25)
 close_img(image_counter)
 
-clr.map <- function(k) colorize(k, mode = "01", col = "ry")
-
-image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, plot = T, jitter = "norm", clrmap = clr.map)
-close_img(image_counter)
+cmf <- function(k) colorize(k, mode = "01", col = "ry")
 
 image_counter <- open_img(image_counter)
-h <- ParallelHist2D(x, nx = 200, plot = T, clrmap = clr.map)
+h <- SideBySideDensity(x, nx = 200, plot = T, jitter = "norm", clr.mapper = cmf)
 close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+h <- SideBySideDensity(x, nx = 200, plot = T, clr.mapper = cmf, smoothx = 5)
+close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+par(mar = c(4.1, 4.1, 4.1, 1.1))
+h <- BivariateDensity(x[, c(1, 3)], plot = T, method = "ash")
+close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+par(mar = c(4.1, 4.1, 4.1, 1.1))
+h <- BivariateDensity(x[, c(1, 5)], plot = T, clr.mapper = cmf)
+close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+par(mar = c(4.1, 4.1, 4.1, 1.1))
+h <- BivariateDensity(x[, c(2, 4)], plot = T, clr.mapper = cmf)
+close_img(image_counter)
+
+
 
 # //// Example ////
 # n <- 10000
@@ -251,6 +268,6 @@ close_img(image_counter)
 # y <- c(runif(n, -1, 1), rnorm(n, c(-1, 1), 1/5) / 2)
 #
 # image_counter <- open_img(image_counter)
-# h <- Histogram2D(x, y, plot = T)
+# h <- BivariateDensity(x, y, plot = T, parameters = list(mode = "01", colors = "ry"))
 # close_img(image_counter)
 

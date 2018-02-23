@@ -1,16 +1,100 @@
-# HIDDEN #######################################################################
+# VISIBLE ######################################################################
 
-# > Plots ######################################################################
+# =============================================================================.
+#' Quick and dirty color mapping
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{autoscale},
+#'   \link{AutoColorParameters},
+#'   \link{ColorLegend}
+# -----------------------------------------------------------------------------.
+#' @inheritParams autoscale
+#'
+#' @param clr.prm
+#' a ColorParameter object defined by \link{DefineColorMap}.
+#'
+#' @inheritParams AutoColorParameters
+#'
+#' @return
+#' \code{colorize} returns a vector of RGBA colors.
+# -----------------------------------------------------------------------------.
+#' @export
+colorize <- function(x, mode = NULL, clr.prm = NULL, ...) {
+
+  if(is.null(clr.prm)) clr.prm <- AutoColorParameters(...)
+  clr <- MakeColors(autoscale(x, mode = mode), parameters = clr.prm)
+
+  clr
+}
+
+# =============================================================================.
+#' As the name suggests...
+# -----------------------------------------------------------------------------.
+#' @param axes
+#' logical, show axes (default = T, yes)
+#'
+#' @param xlab
+#' character, name of the horizontal axis (default = none).
+#'
+#' @param ylab
+#' character, name of the vertical axis (default = none).
+#'
+#' @param ...
+#' optional arguments forwarded to the \link{plot.default} function.
+#'
+#' @return NULL
+# -----------------------------------------------------------------------------.
+#' @export
+EmptyPlot <- function(axes = T, xlab = '', ylab = '', ...) {
+  plot(0, type = 'n', axes = axes, xlab = xlab, ylab = ylab, ...)
+}
+
+# =============================================================================.
+#' Plot a matrix of colors
+# -----------------------------------------------------------------------------.
+#' @param m
+#' matrix of color values.
+#'
+#' @param x
+#' coordinates of the x axis bins.
+#'
+#' @param y
+#' coordinates of the y axis bins.
+#'
+#' @return NULL
+# -----------------------------------------------------------------------------.
+#' @export
+PlotImage <- function(m, x = NULL, y = NULL, ...) {
+  image(
+    x = x,
+    y = y,
+    z = matrix(1:length(m), nrow(m), ncol(m)),
+    col = m, ...
+  )
+}
+
+# HIDDEN #######################################################################
 
 # =============================================================================.
 #' Make plot limits including space for legends
 # -----------------------------------------------------------------------------.
-#' @param x numeric
-#' @param y numeric
-#' @param symetric logical
-#' @param spacing percentage
-#' @param margin percentage
-#' @return list
+#' @param x
+#' numeric vector or matrix with two columns.
+#'
+#' @param y
+#' numeric vector (default = NULL).
+#'
+#' @param symetric
+#' logical (default = F, no)
+#'
+#' @param spacing
+#' numeric.
+#'
+#' @param margin
+#' numeric.
+#'
+#' @return
+#' \code{xylim} returns a list.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -43,72 +127,190 @@ xylim <- function(x, y = NULL, symetric = F, spacing = 0, margin = 0) {
 }
 
 # =============================================================================.
-#' empty.plot
+#' Rescale x non-linearly into ]0, 1[
 # -----------------------------------------------------------------------------.
-#' @param axes logical
-#' @param xlab character
-#' @param ylab character
-#' @param ...
+#' @seealso
+#'   \link{S01},
+#'   \link{autoscale}
+# -----------------------------------------------------------------------------.
+#' @description
+#' rescale values non-linearly to the unit interval using ranks
 #'
-#' @return NULL
+#' @param x
+#' numeric vector
+#'
+#' @return
+#' \code{rankstat} returns \eqn{q = (rank(x) - 0.5) / N} where N = length(x)
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-empty.plot <- function(axes = T, xlab = '', ylab = '', ...) {
-  plot(0, type = 'n', axes = axes, xlab = xlab, ylab = ylab, ...)
-}
+rankstat <- function(x) { (rank(x) - 0.5) / length(x) }
 
 # =============================================================================.
-#' Plot matrix of colors as an image
-# -----------------------------------------------------------------------------.
-#' @param m
-#' matrix of color values
-#'
-#' @param x
-#' coordinates of the x axis bins
-#'
-#' @param y
-#' coordinates of the y axis bins
-#'
-#' @return NULL
-# -----------------------------------------------------------------------------.
-#' @export
-PlotImage <- function(m, x = NULL, y = NULL, ...) {
-  image(
-    x = x,
-    y = y,
-    z = matrix(1:length(m), nrow(m), ncol(m)),
-    col = m, ...
-  )
-}
-
-# > Colors #####################################################################
-
-# =============================================================================.
-#' Replace transparency values
+#' Rescale x linearly into [0, 1]
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{transformColors}
+#'   \link{rankstat},
+#'   \link{autoscale}
+# -----------------------------------------------------------------------------.
+#' @description
+#' rescale values linearly to the unit interval.
+#'
+#' @param x
+#' numeric vector.
+#'
+#' @return
+#' \code{S01} returns x linearly rescaled such that range(x) = [0, 1]
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+S01 <- function(x) { (x - min(x)) / diff(range(x)) }
+
+# =============================================================================.
+#' As the name suggests...
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{colorize},
+#'   \link{S01},
+#'   \link{rankstat}
+# -----------------------------------------------------------------------------.
+#' @param x
+#' numeric vector.
+#'
+#' @param mode
+#' either \code{"rank"} or \code{"01"} (default).
+#'
+#' @return
+#' \code{autoscale} returns a numeric vector.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+autoscale <- function(x, mode = NULL) {
+
+  if(is.null(mode)) mode <- "01"
+
+  if(mode == "rank") {
+    x <- rankstat(x)
+  }
+
+  if(mode == "01") {
+    x <- S01(x)
+    # => prevent use of the "above" color
+    x <- x * (1 - .Machine$double.neg.eps)
+  }
+
+  x
+}
+
+# =============================================================================.
+#' Quick and dirty color mapping parameters
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{colorize},
+#'   \link{DefineColorMap}
+# -----------------------------------------------------------------------------.
+#' @param colors
+#' vector of colors (optional).
+#'
+#' @return
+#' \code{AutoColorParameters} returns a ColorParameters object.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+AutoColorParameters <- function(colors = NULL) {
+
+  if(is.null(colors)) colors <- grey(c(0.8, 0.7, 0.5, 0))
+
+  chk <- length(colors) == 1
+  if(chk & colors[1] == "WB") colors <- grey(1:0)
+  if(chk & colors[1] == "BW") colors <- grey(0:1)
+
+  if(chk & colors[1] == "Br") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 0))
+  if(chk & colors[1] == "Bg") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 0))
+  if(chk & colors[1] == "Bc") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 1))
+  if(chk & colors[1] == "By") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 1, 0))
+  if(chk & colors[1] == "Bp") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 1))
+
+  if(chk & colors[1] == "rW") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:1))
+  if(chk & colors[1] == "gW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:1))
+  if(chk & colors[1] == "bW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 0:1, 1:1))
+
+  if(chk & colors[1] == "ry") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:0))
+  if(chk & colors[1] == "yr") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 1:0, 0:0))
+
+  if(chk & colors[1] == "gy") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:0))
+  if(chk & colors[1] == "yg") colors <- c(grey(c(0.8, 0.4)), rgb(1:0, 1:1, 0:0))
+
+  if(chk & colors[1] == "bc") colors <- c(grey(c(0.8, 0.4)), rgb(0:0, 0:1, 1:1))
+  if(chk & colors[1] == "cb") colors <- c(grey(c(0.8, 0.4)), rgb(0:0, 1:0, 1:1))
+
+  n <- length(colors)
+  q <- 0:(n-1)/(n-1)
+
+  DefineColorMap(thresholds = q, colors = colors)
+}
+
+# =============================================================================.
+#' Extract color channel values
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{TransformColors}
 # -----------------------------------------------------------------------------.
 #' @param x
 #' character vector of colors.
 #'
-#' @param a
-#' transparency given as a numeric value between \code{0} and \code{1}.
+#' @param k
+#' name of a color channel (e.g. "red", "green", "blue" and "alpha"
+#' for transparency). Abbreviated names are allowed (e.g. "r", "g", "b", "a").
 #'
 #' @return
-#' \code{ReplaceAlpha} returns a character vector of RGBA colors in hexadecimal.
+#' \code{ColorChannel} returns a numeric vector.
 # -----------------------------------------------------------------------------.
+#' @keywords internal
 #' @export
-ReplaceAlpha <- function(x, a) {
-  a <- substr(rgb(0, 0, 0, alpha = a), 8, 9)
-  if(length(a) == 1) a <- rep(a, length(x))
-  chk <- nchar(x) == 9 & grepl("^#[0-9A-F]+", x, perl = T)
-  substr(x[chk], 8, 9) <- a[chk]
-  x[! chk] <- rgb(t(col2rgb(x)/255))[! chk]
-  x[! chk] <- paste(x[! chk], a[! chk], sep = "")
+ColorChannel <- function(x, k) {
+  chk <- is.na(x)
+  x <- t(col2rgb(x, alpha = T) / 255)
+  k <- substr(match.arg(tolower(k), colnames(x)), 1, 1)
+  if(k == "r") i <- 1
+  if(k == "g") i <- 2
+  if(k == "b") i <- 3
+  if(k == "a") i <- 4
+  x <- x[, i]
+  x[chk] <- NA
   x
 }
+
+# =============================================================================.
+#' Replace color channel values
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{TransformColors}
+# -----------------------------------------------------------------------------.
+#' @inheritParams ColorChannel
+#'
+#' @param value
+#' numeric values between \code{0} and \code{1}.
+#'
+#' @return
+#' \code{ColorChannel} returns a character vector of RGBA colors in hexadecimal.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+`ColorChannel<-` <- function(x, k, value) {
+  chk <- is.na(x)
+  x <- t(col2rgb(x, alpha = T) / 255)
+  k <- substr(match.arg(tolower(k), colnames(x)), 1, 1)
+  if(k == "r") i <- 1
+  if(k == "g") i <- 2
+  if(k == "b") i <- 3
+  if(k == "a") i <- 4
+  x[, i] <- value
+  x <- rgb(x[, 1:3, drop = F], alpha = x[, 4])
+  x[chk] <- NA
+  x
+}
+
 # =============================================================================.
 #' Convert colors from HSV matrix to RGB matrix
 # -----------------------------------------------------------------------------.
@@ -257,40 +459,22 @@ hsv2R <- function(x) {
 
 # NOT EXPORTED #################################################################
 
-# > Rescaling ##################################################################
-
 # =============================================================================.
-#' rankstat
+#
 # -----------------------------------------------------------------------------.
-#' @description
-#' rank statistics
-#'
-#' @param x
-#' numeric vector
-#'
-#' @return
-#' \eqn{(rank(x) - 0.5) / N} where N = length(x)
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-rankstat <- function(x) { (rank(x) - 0.5) / length(x) }
-
+m2v <- function(i, j, nrow) {
+  (j - 1) * nrow + i
+}
 # =============================================================================.
-#' S01
+#
 # -----------------------------------------------------------------------------.
-#' @description
-#' rescale x into [0, 1]
-#'
-#' @param x
-#' numeric vector
-#'
-#' @return
-#' \code{S01} returns x rescaled such that range(x) = [0, 1]
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-S01 <- function(x) { (x - min(x)) / diff(range(x)) }
-
-# > Safe values ##############################################################
-
+v2m <- function(x, nrow) {
+  j <- (x - 1) %/% nrow + 1
+  i <- (x - 1) %% nrow + 1
+  x <- cbind(i, j)
+  attributes(x) <- attributes(x)[1] # remove auto-generated dimnames
+  x
+}
 # =============================================================================.
 #' Detect computable values (i.e. not NA nor Inf)
 # -----------------------------------------------------------------------------.
@@ -312,8 +496,6 @@ FiniteValues <- function(x) {
   x
 }
 
-# > Legends ####################################################################
-
 # =============================================================================.
 # Function for internal use
 # -----------------------------------------------------------------------------.
@@ -334,57 +516,4 @@ resolve.legend.position <- function(pos) {
   }
   p <- p[pos,]
   p
-}
-
-# > Matrices & vectors #########################################################
-
-# =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-.m2v. <- function(i, j, nrow) {
-  (j - 1) * nrow + i
-}
-# =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-.v2m. <- function(x, nrow) {
-  j <- (x - 1) %/% nrow + 1
-  i <- (x - 1) %% nrow + 1
-  x <- cbind(i, j)
-  attributes(x) <- attributes(x)[1] # remove auto-generated dimnames
-  x
-}
-# =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-.to.matrix. <- function(x) {
-  if(is.null(dim(x))) x <- t(as.matrix(x))
-  x
-}
-# =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-.rep.rows. <- function(x, n) {
-  x <- .to.matrix.(x)
-  nc <- ncol(x)
-  i <- matrix(1:length(x), nrow(x), nc, byrow = T)
-  x <- rep(x[as.vector(i)], length.out = nc * n)
-  matrix(x, n, nc, byrow = T)
-}
-# =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-.cbind.args. <- function(..., n = 1, k = 2) {
-  x <- list(...)
-  v <- sapply(x , function(x) min(1, nrow(x))) == 1
-  l <- sapply(x, length)
-  s <- max(which(cumsum(l > 0) == 1:length(l)))
-  chk <- all(v) & (all(l[1:s] == 1) | all(l[1:s] == k) | s == 1)
-  if(chk & sum(l) %in% (k * n)) {
-    x <- matrix(unlist(x), 1)
-  } else {
-    x <- do.call(cbind, x)
-  }
-  if(! ncol(x) %in% (k * n)) stop("Unexpected parameter dimensions")
-  x
 }

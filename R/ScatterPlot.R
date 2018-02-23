@@ -1,12 +1,12 @@
 # =============================================================================.
-#' Scatter plot with color mapping and group representation
+#' Scatter plots with color mapping and group highlighting
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{defineColors},
-#'   \link{makeColors},
-#'   \link{colorLegend},
-#'   \link{defineGroups},
-#'   \link{groupLegend}
+#'   \link{DefineColorMap},
+#'   \link{MakeColors},
+#'   \link{ColorLegend},
+#'   \link{DefineGroupStyles},
+#'   \link{GroupLegend}
 # -----------------------------------------------------------------------------.
 #' @param x
 #' horizontal axis coordinate.
@@ -15,21 +15,21 @@
 #' vertical axis coordinate.
 #'
 #' @param clr
-#' vector of numeric values passed to \link{makeColors} for color mapping
+#' vector of numeric values passed to \link{MakeColors} for color mapping
 #' (default = none).
 #'
 #' @param clr.prm
-#' list of color mapping parameters defined by \link{defineColors}.
+#' list of color mapping parameters defined by \link{DefineColorMap}.
 #'
 #' @param alpha
 #' transparency (numeric value(s) between \code{0} and \code{1}).
 #'
 #' @param grp
 #' group memberships for group highlighting (default = none).
-#' See \link{groupIndex} for documentation on how to specify group memeberships.
+#' See \link{GroupIndex} for documentation on how to specify group memeberships.
 #'
 #' @param grp.prm
-#' list of group representation parameters defined by \link{defineGroups}.
+#' list of group representation parameters defined by \link{DefineGroupStyles}.
 #'
 #' @param xlab
 #' label for the horizontal axis (default = description of x).
@@ -41,7 +41,7 @@
 #' add to existing plot (logical, default = F).
 #'
 #' @param ...
-#' optional parameters passed to the \link{plot.default} function.
+#' optional parameters forwarded to the \link{plot.default} function.
 #'
 #' @return NULL
 # -----------------------------------------------------------------------------.
@@ -60,21 +60,21 @@
 #' grp.ids <- sort(unique(grp))
 #' grp.lbl <- paste(grp.ids, "° < a < ", grp.ids + 60, "°", sep="")
 #'
-#' grp.prm <- defineGroups(
+#' grp.prm <- DefineGroupStyles(
 #'   grp.ids, labels = grp.lbl, color = grey(c(0.2, 0.6)), pch = 1:6, cex = 0.7
 #' )
 #'
 #' ScatterPlot(x, y, grp = grp, grp.prm = grp.prm, xlab = "x", ylab = "y")
-#' groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
+#' GroupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 #'
 #' ScatterPlot(a, z, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "z")
-#' groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
+#' GroupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 #'
 #' ScatterPlot(a, x, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "x")
-#' groupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
+#' GroupLegend("tr", grp.prm, xjust = 1, title = "angle from atan2")
 #'
 #' ScatterPlot(a, y, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "y")
-#' groupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
+#' GroupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
 # -----------------------------------------------------------------------------.
 #' @export
 ScatterPlot <- function(
@@ -93,7 +93,7 @@ ScatterPlot <- function(
   # Default group parameters
   if(is.null(grp.prm) & is.numeric(grp)) {
     grp.prm <- table(grp)
-    grp.prm <- defineGroups(
+    grp.prm <- DefineGroupStyles(
       ids = as.numeric(names(grp.prm)), colors = SuperRainbow(length(grp.prm))
     )
   }
@@ -103,18 +103,19 @@ ScatterPlot <- function(
       if(is.null(clr.prm) & is.null(grp.prm)) {
         clr.prm <- AutoColorParameters()
       }
-      clr <- makeColors(
+      clr <- MakeColors(
         clr, parameters = clr.prm, grp = grp, grp.prm = grp.prm
       )
     }
     if(is.null(clr)) clr <- grey(0)
     args$col <- clr
   }
-  args$col <- ReplaceAlpha(args$col, alpha)
+  ColorChannel(args$col, "a") <- alpha
+  # args$col <- ReplaceAlpha(args$col, alpha)
 
   if(! (is.null(grp) | is.null(grp.prm))) {
-    grp.prm <- updateDefinition(grp.prm)
-    g.i <- groupIndex(grp, grp.prm)
+    grp.prm <- UpdateDefinition(grp.prm)
+    g.i <- GroupIndex(grp, grp.prm)
     lst <- colnames(grp.prm)
     lst <- lst[lst %in% c("pch", "cex", "lty", "lwd")]
     if(length(lst) > 0) {
