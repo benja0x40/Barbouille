@@ -44,9 +44,9 @@
 #' numeric range (default = NULL, automatic).
 #'
 #' @param plot
-#' logical (default = F, no).
+#' logical (default = T, yes).
 #'
-#' @param clr.mapper
+#' @param mapper
 #' color mapping function. If \code{NULL} \code{SideBySideDensity} uses
 #' the \link{colorize} function with \code{mode = "rank", color = NULL}.
 #'
@@ -77,18 +77,18 @@
 SideBySideDensity <- function(
   m, nx = 100, ny = nx, method = "bin", jitter = "unif",
   spacing = 0.2, smoothx = F, xlim = NULL, ylim = NULL,
-  plot = F, clr.mapper = NULL, parameters = NULL, global = F,
+  plot = T, mapper = NULL, parameters = NULL, global = F,
   x.labels = T, las = 1, grid = T, ...
 ) {
 
-  if(is.null(clr.mapper)) {
-    clr.mapper <- colorize
+  if(is.null(mapper)) {
+    mapper <- colorize
     if(is.null(parameters)) parameters <- list(mode = "rank")
   }
   if(is.list(parameters)) {
-    cmf <- function(k) do.call(clr.mapper, args = c(list(k), parameters))
+    cmf <- function(k) do.call(mapper, args = c(list(k), parameters))
   } else {
-    cmf <- clr.mapper
+    cmf <- mapper
   }
 
   nc <- ncol(m)

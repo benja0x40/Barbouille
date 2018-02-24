@@ -5,8 +5,8 @@
 \title{Bivariate empirical distribution}
 \usage{
 BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
-  ylim = NULL, method = c("bin", "ash", "bin.table"), plot = F,
-  clr.mapper = NULL, parameters = NULL, alpha = 1, xlab = NULL,
+  ylim = NULL, method = c("bin", "ash", "bin.table"), plot = T,
+  mapper = NULL, parameters = NULL, alpha = 1, xlab = NULL,
   ylab = NULL, ...)
 }
 \arguments{
@@ -24,9 +24,9 @@ BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
 
 \item{method}{either "bin" or "ash" for hard or smoothed binning (see \link{ash2}).}
 
-\item{plot}{logical (default = F).}
+\item{plot}{logical (default = T, yes).}
 
-\item{clr.mapper}{color mapping function. If \code{NULL} \code{BivariateDensity} uses
+\item{mapper}{color mapping function. If \code{NULL} \code{BivariateDensity} uses
 the \link{colorize} function with \code{mode = "01", color = "WB"}.}
 
 \item{parameters}{optional list of arguments passed to the color mapping function
@@ -48,12 +48,12 @@ n <- 100000
 xy <- matrix(rnorm(2 * n), n, 2)
 xy[1:100,] <- 2
 layout(matrix(1:9, 3, 3, byrow = T))
-h <- BivariateDensity(xy, plot = T, method = "bin.table")
-h <- BivariateDensity(xy, plot = T, method = "bin")
-h <- BivariateDensity(xy, plot = T, method = "ash")
-h <- BivariateDensity(xy, plot = T, method = "bin.table", parameters = list(mode = "rank"))
-h <- BivariateDensity(xy, plot = T, method = "bin", parameters = list(mode = "rank"))
-h <- BivariateDensity(xy, plot = T, method = "ash", parameters = list(mode = "rank"))
+h <- BivariateDensity(xy, method = "bin.table")
+h <- BivariateDensity(xy, method = "bin")
+h <- BivariateDensity(xy, method = "ash")
+h <- BivariateDensity(xy, method = "bin.table", parameters = list(mode = "rank"))
+h <- BivariateDensity(xy, method = "bin", parameters = list(mode = "rank"))
+h <- BivariateDensity(xy, method = "ash", parameters = list(mode = "rank"))
 }
 \seealso{
 \link{SideBySideDensity},

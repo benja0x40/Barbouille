@@ -227,47 +227,60 @@ colnames(x) <- LETTERS[1:ncol(x)]
 
 # layout(matrix(1:9, 3, 3, byrow = T))
 
+# //// SideBySideDensity ////
+
 image_counter <- open_img(image_counter)
-h <- SideBySideDensity(x, nx = 200, plot = T)
+h <- SideBySideDensity(x, nx = 200)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-h <- SideBySideDensity(x, nx = 200, plot = T, smoothx = 25)
+h <- SideBySideDensity(x, nx = 200, smoothx = 25)
+close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+h <- SideBySideDensity(x, nx = 200, method = "ash")
 close_img(image_counter)
 
 cmf <- function(k) colorize(k, mode = "01", col = "ry")
 
 image_counter <- open_img(image_counter)
-h <- SideBySideDensity(x, nx = 200, plot = T, jitter = "norm", clr.mapper = cmf)
+h <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-h <- SideBySideDensity(x, nx = 200, plot = T, clr.mapper = cmf, smoothx = 5)
+h <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf)
+close_img(image_counter)
+
+image_counter <- open_img(image_counter)
+h <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash")
+close_img(image_counter)
+
+# //// BivariateDensity ////
+
+image_counter <- open_img(image_counter)
+par(mar = c(4.1, 4.1, 4.1, 1.1))
+h <- BivariateDensity(x[, c(1, 5)], method = "ash")
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
-h <- BivariateDensity(x[, c(1, 3)], plot = T, method = "ash")
+h <- BivariateDensity(x[, c(1, 5)], mapper = cmf)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
-h <- BivariateDensity(x[, c(1, 5)], plot = T, clr.mapper = cmf)
+h <- BivariateDensity(x[, c(1, 5)], method = "ash", mapper = cmf)
+close_img(image_counter)
+
+# //// Not shown ////
+
+image_counter <- open_img(image_counter)
+par(mar = c(4.1, 4.1, 4.1, 1.1))
+h <- BivariateDensity(x[, c(1, 3)], method = "ash")
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
-h <- BivariateDensity(x[, c(2, 4)], plot = T, clr.mapper = cmf)
+h <- BivariateDensity(x[, c(2, 4)], mapper = cmf)
 close_img(image_counter)
-
-
-
-# //// Example ////
-# n <- 10000
-# x <- c(runif(n, -1, 1), rnorm(n, c(-1, 1), 1/5) / 2)
-# y <- c(runif(n, -1, 1), rnorm(n, c(-1, 1), 1/5) / 2)
-#
-# image_counter <- open_img(image_counter)
-# h <- BivariateDensity(x, y, plot = T, parameters = list(mode = "01", colors = "ry"))
-# close_img(image_counter)
 

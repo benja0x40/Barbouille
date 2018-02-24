@@ -32,9 +32,9 @@
 #' either "bin" or "ash" for hard or smoothed binning (see \link{ash2}).
 #'
 #' @param plot
-#' logical (default = F).
+#' logical (default = T, yes).
 #'
-#' @param clr.mapper
+#' @param mapper
 #' color mapping function. If \code{NULL} \code{BivariateDensity} uses
 #' the \link{colorize} function with \code{mode = "01", color = "WB"}.
 #'
@@ -57,29 +57,29 @@
 #' xy <- matrix(rnorm(2 * n), n, 2)
 #' xy[1:100,] <- 2
 #' layout(matrix(1:9, 3, 3, byrow = T))
-#' h <- BivariateDensity(xy, plot = T, method = "bin.table")
-#' h <- BivariateDensity(xy, plot = T, method = "bin")
-#' h <- BivariateDensity(xy, plot = T, method = "ash")
-#' h <- BivariateDensity(xy, plot = T, method = "bin.table", parameters = list(mode = "rank"))
-#' h <- BivariateDensity(xy, plot = T, method = "bin", parameters = list(mode = "rank"))
-#' h <- BivariateDensity(xy, plot = T, method = "ash", parameters = list(mode = "rank"))
+#' h <- BivariateDensity(xy, method = "bin.table")
+#' h <- BivariateDensity(xy, method = "bin")
+#' h <- BivariateDensity(xy, method = "ash")
+#' h <- BivariateDensity(xy, method = "bin.table", parameters = list(mode = "rank"))
+#' h <- BivariateDensity(xy, method = "bin", parameters = list(mode = "rank"))
+#' h <- BivariateDensity(xy, method = "ash", parameters = list(mode = "rank"))
 # -----------------------------------------------------------------------------.
 #' @export
 BivariateDensity <- function(
   x, y = NULL, nx = 100, ny = nx, xlim = NULL, ylim = NULL,
   method = c("bin", "ash", "bin.table"),
-  plot = F, clr.mapper = NULL, parameters = NULL, alpha = 1.0,
+  plot = T, mapper = NULL, parameters = NULL, alpha = 1.0,
   xlab = NULL, ylab = NULL, ...
 ) {
 
-  if(is.null(clr.mapper)) {
-    clr.mapper <- colorize
+  if(is.null(mapper)) {
+    mapper <- colorize
     if(is.null(parameters)) parameters <- list(mode = "01", color = "WB")
   }
   if(is.list(parameters)) {
-    cmf <- function(k) do.call(clr.mapper, args = c(list(k), parameters))
+    cmf <- function(k) do.call(mapper, args = c(list(k), parameters))
   } else {
-    cmf <- clr.mapper
+    cmf <- mapper
   }
 
   method <- method[1]

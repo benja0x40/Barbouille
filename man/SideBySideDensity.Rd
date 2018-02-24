@@ -5,9 +5,9 @@
 \title{Compact visualization of multiple empirical distributions}
 \usage{
 SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
-  spacing = 0.2, smoothx = F, xlim = NULL, ylim = NULL, plot = F,
-  clr.mapper = NULL, parameters = NULL, global = F, x.labels = T,
-  las = 1, grid = T, ...)
+  spacing = 0.2, smoothx = F, xlim = NULL, ylim = NULL, plot = T,
+  mapper = NULL, parameters = NULL, global = F, x.labels = T, las = 1,
+  grid = T, ...)
 }
 \arguments{
 \item{m}{matrix of numerical values.}
@@ -30,9 +30,9 @@ SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
 
 \item{ylim}{numeric range (default = NULL, automatic).}
 
-\item{plot}{logical (default = F, no).}
+\item{plot}{logical (default = T, yes).}
 
-\item{clr.mapper}{color mapping function. If \code{NULL} \code{SideBySideDensity} uses
+\item{mapper}{color mapping function. If \code{NULL} \code{SideBySideDensity} uses
 the \link{colorize} function with \code{mode = "rank", color = NULL}.}
 
 \item{parameters}{optional parameters passed to the color mapping function

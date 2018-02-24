@@ -1,7 +1,7 @@
 Barbouille
 ================================================================================
 
-My collection of plotting and coloring functions, home cooked with the base
+My collection of plotting and color mapping functions, home cooked with the base
 R graphics library.
 
 ### Main features
@@ -9,10 +9,75 @@ R graphics library.
 * Empirical distributions: `BivariateDensity` and `SideBySideDensity` functions
 * Piecewise color mapping: `DefineColorMap`, `MakeColors`, `ColorLegend` functions
 
-Basic documentation of each function is available in the reference manual.  
-See also the [code examples and images](#examples) below.
+Basic documentation of each function is available in the `Barbouille` package
+reference manual.  
+See also the [code examples and images](#examples)
+and the [installation instructions](#install)
+in the following sections.
 
-### Installation
+### <a name="examples"></a>Examples
+
+```r
+# Load package
+library(Barbouille)
+```
+
+#### Empirical distributions
+
+```r
+# Create a color mapping function
+cmf <- function(k) colorize(k, mode = "01", col = "ry")
+```
+
+With any matrix representing observations of numeric variables,
+the `SideBySideDensity` function can be useful to visualize the empirical
+distributions of these variables.
+In the following examples, `x` is a matrix of
+50000 observations (rows) x 5 variables (columns named `A`, `B`, `C`, `D`, `E`)
+which was randomly generated using mixtures of normal distributions.
+
+```r
+# Examples using the default color mapping function
+h <- SideBySideDensity(x, nx = 200)
+h <- SideBySideDensity(x, nx = 200, smoothx = 25)
+h <- SideBySideDensity(x, nx = 200, method = "ash")
+```
+
+![](./images/gallery/barbouille_07.png "example")
+![](./images/gallery/barbouille_08.png "example")
+![](./images/gallery/barbouille_09.png "example")
+
+```r
+# Examples using a custom color mapping function (cmf)
+h <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)
+h <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf)
+h <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash")
+```
+
+![](./images/gallery/barbouille_10.png "example")
+![](./images/gallery/barbouille_11.png "example")
+![](./images/gallery/barbouille_12.png "example")
+
+```r
+h <- BivariateDensity(x[, c(1, 5)], method = "ash")
+h <- BivariateDensity(x[, c(1, 5)], mapper = cmf)
+h <- BivariateDensity(x[, c(1, 5)], method = "ash", mapper = cmf)
+```
+
+![](./images/gallery/barbouille_13.png "example")
+![](./images/gallery/barbouille_14.png "example")
+![](./images/gallery/barbouille_15.png "example")
+
+#### Piecewise color mapping
+
+![](./images/gallery/barbouille_01.png "example")
+![](./images/gallery/barbouille_03.png "example")
+![](./images/gallery/barbouille_05.png "example")
+![](./images/gallery/barbouille_02.png "example")
+![](./images/gallery/barbouille_04.png "example")
+![](./images/gallery/barbouille_06.png "example")
+
+### <a name="install"></a>Installation
 
 Run the `R` code below to install `Barbouille`.
 
@@ -47,48 +112,3 @@ if(length(lst) > 0) install.packages(lst, dependencies = T)
 library("devtools")
 install_github("benja0x40/Barbouille")
 ```
-
-### <a name="examples"></a>Examples
-
-```r
-library(Barbouille)
-```
-
-#### Empirical distributions
-
-```r
-# x being a matrix of 50000 rows x 5 columns randomly generated with mixtures of normal distributions
-h <- SideBySideDensity(x, nx = 200, plot = T)
-h <- SideBySideDensity(x, nx = 200, plot = T, smoothx = 25)
-```
-
-![](./images/gallery/barbouille_07.png "example")
-![](./images/gallery/barbouille_08.png "example")
-
-```r
-cmf <- function(k) colorize(k, mode = "01", col = "ry")
-h <- SideBySideDensity(x, nx = 200, plot = T, clr.mapper = cmf, smoothx = 5)
-h <- SideBySideDensity(x, nx = 200, plot = T, clr.mapper = cmf, jitter = "norm")
-```
-
-![](./images/gallery/barbouille_10.png "example")
-![](./images/gallery/barbouille_09.png "example")
-
-```r
-h <- BivariateDensity(x[, c(1, 3)], plot = T, method = "ash")
-h <- BivariateDensity(x[, c(1, 5)], plot = T, clr.mapper = cmf)
-h <- BivariateDensity(x[, c(2, 4)], plot = T, clr.mapper = cmf)
-```
-
-![](./images/gallery/barbouille_11.png "example")
-![](./images/gallery/barbouille_12.png "example")
-![](./images/gallery/barbouille_13.png "example")
-
-#### Piecewise color mapping
-
-![](./images/gallery/barbouille_01.png "example")
-![](./images/gallery/barbouille_03.png "example")
-![](./images/gallery/barbouille_05.png "example")
-![](./images/gallery/barbouille_02.png "example")
-![](./images/gallery/barbouille_04.png "example")
-![](./images/gallery/barbouille_06.png "example")
