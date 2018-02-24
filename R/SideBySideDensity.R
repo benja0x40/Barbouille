@@ -25,7 +25,8 @@
 #' (representing the range of matrix values).
 #'
 #' @param method
-#' either "bin" or "ash" for hard or smoothed binning (see \link{ash2}).
+#' either "bin" (default) or "ash" for hard or smoothed binning
+#' (see \link{ash2}).
 #'
 #' @param jitter
 #' either "unif" (default), "norm" or "triangle".

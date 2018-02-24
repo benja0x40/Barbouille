@@ -17,7 +17,8 @@ SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
 \item{ny}{number of bins on the vertical axis
 (representing the range of matrix values).}
 
-\item{method}{either "bin" or "ash" for hard or smoothed binning (see \link{ash2}).}
+\item{method}{either "bin" (default) or "ash" for hard or smoothed binning
+(see \link{ash2}).}
 
 \item{jitter}{either "unif" (default), "norm" or "triangle".}
 

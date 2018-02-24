@@ -28,7 +28,8 @@
 # -----------------------------------------------------------------------------.
 #' @export
 SuperRainbow <- function(
-  n, mod = "++", s.rng = 1.0, l.rng = 1.0, f = "hsv", alpha = 1.0
+  # n, mod = "++", s.rng = 1.0, l.rng = 1.0, f = "hsv", alpha = 1.0 =>  same as rainbow
+  n, mod = c("-+", "++", "+-"), s.rng = c(0.6, 1.0), l.rng = c(0.7, 1.0), f = "hsv", alpha = 1.0
 ) {
   s.rng <- rep(s.rng, length.out = 2)
   l.rng <- rep(l.rng, length.out = 2)

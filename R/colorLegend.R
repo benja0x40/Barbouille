@@ -35,6 +35,11 @@
 #' logical. If \code{TRUE}, the color legend is represented in log scale
 #' (default = \code{F}).
 #'
+#' @param xpd
+#' logical.
+#' If FALSE, the legend position is relative to the plot region (default).
+#' If TRUE, the legend position is relative to the entire device region.
+#'
 #' @param size
 #' the size of the color legend given as a list or a vector in the form
 #' \code{c(}axial length, width\code{)} which are expressed in percentage of
@@ -92,7 +97,7 @@
 #' @export
 ColorLegend <- function(
   pos, parameters, ticks = NULL, labels = NULL, resolution = 100, log = F,
-  size = c(40, 3), margin = 5, horiz = F,
+  xpd = F, size = c(40, 3), margin = 5, horiz = F,
   tick.pos = 1, tick.size = 1.5, offset = 0.3, lwd = 1, border = T, ...
   ) {
 
@@ -103,10 +108,20 @@ ColorLegend <- function(
   if(length(margin) != 4) stop("Incorrect margin")
 
   # Capture graphic parameters of the current plot area
-  gp <- par(c("usr", "xlog", "ylog"))
+  gp <- par(c("usr", "xlog", "ylog", "fig", "oma", "mar"))
 
   # Reset the coordinates system of the current plot area
-  par(xlog = F, ylog = F, usr = (1 + margin/100) * c(-1, 1, -1, 1))
+  if(xpd) {
+    par(fig=c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
+    EmptyPlot(
+      axes = F,
+      xlim = (1 + margin[1:2]/100) * c(-1, 1),
+      ylim = (1 + margin[3:4]/100) * c(-1, 1),
+      xaxs = "i", yaxs = "i"
+    )
+  } else {
+    par(xlog = F, ylog = F, usr = (1 + margin/100) * c(-1, 1, -1, 1))
+  }
 
   # Extend range to show below and above colors
   if(log) parameters$range <- with(parameters, exp(log(range) * extra))
@@ -203,7 +218,7 @@ ColorLegend <- function(
   }
 
   # Restore graphics parameters of the current plot area
-  with(gp, par(usr = usr, xlog = xlog, ylog = ylog))
+  do.call(par, gp)
 }
 
 

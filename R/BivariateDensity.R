@@ -29,7 +29,8 @@
 #' range of y values.
 #'
 #' @param method
-#' either "bin" or "ash" for hard or smoothed binning (see \link{ash2}).
+#' either "bin" (default) or "ash" for hard or smoothed binning
+#' (see \link{ash2}).
 #'
 #' @param plot
 #' logical (default = T, yes).

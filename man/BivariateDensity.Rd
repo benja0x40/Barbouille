@@ -22,7 +22,8 @@ BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
 
 \item{ylim}{range of y values.}
 
-\item{method}{either "bin" or "ash" for hard or smoothed binning (see \link{ash2}).}
+\item{method}{either "bin" (default) or "ash" for hard or smoothed binning
+(see \link{ash2}).}
 
 \item{plot}{logical (default = T, yes).}
 

@@ -46,6 +46,7 @@ colorize <- function(x, mode = NULL, clr.prm = NULL, ...) {
 # -----------------------------------------------------------------------------.
 #' @export
 EmptyPlot <- function(axes = T, xlab = '', ylab = '', ...) {
+  # plot(0, 0, type='n', bty='n', xaxt='n', yaxt='n')
   plot(0, type = 'n', axes = axes, xlab = xlab, ylab = ylab, ...)
 }
 

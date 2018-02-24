@@ -5,9 +5,9 @@
 \title{Legend for color maps}
 \usage{
 ColorLegend(pos, parameters, ticks = NULL, labels = NULL,
-  resolution = 100, log = F, size = c(40, 3), margin = 5, horiz = F,
-  tick.pos = 1, tick.size = 1.5, offset = 0.3, lwd = 1, border = T,
-  ...)
+  resolution = 100, log = F, xpd = F, size = c(40, 3), margin = 5,
+  horiz = F, tick.pos = 1, tick.size = 1.5, offset = 0.3, lwd = 1,
+  border = T, ...)
 }
 \arguments{
 \item{pos}{the legend location which can be specified using either a single keyword in
@@ -30,6 +30,10 @@ represented color gradients (default = \code{100}).}
 
 \item{log}{logical. If \code{TRUE}, the color legend is represented in log scale
 (default = \code{F}).}
+
+\item{xpd}{logical.
+If FALSE, the legend position is relative to the plot region (default).
+If TRUE, the legend position is relative to the entire device region.}
 
 \item{size}{the size of the color legend given as a list or a vector in the form
 \code{c(}axial length, width\code{)} which are expressed in percentage of
