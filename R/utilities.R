@@ -128,46 +128,6 @@ xylim <- function(x, y = NULL, symetric = F, spacing = 0, margin = 0) {
 }
 
 # =============================================================================.
-#' Rescale x non-linearly into ]0, 1[
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{S01},
-#'   \link{autoscale}
-# -----------------------------------------------------------------------------.
-#' @description
-#' rescale values non-linearly to the unit interval using ranks
-#'
-#' @param x
-#' numeric vector
-#'
-#' @return
-#' \code{rankstat} returns \eqn{q = (rank(x) - 0.5) / N} where N = length(x)
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-#' @export
-rankstat <- function(x) { (rank(x) - 0.5) / length(x) }
-
-# =============================================================================.
-#' Rescale x linearly into [0, 1]
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{rankstat},
-#'   \link{autoscale}
-# -----------------------------------------------------------------------------.
-#' @description
-#' rescale values linearly to the unit interval.
-#'
-#' @param x
-#' numeric vector.
-#'
-#' @return
-#' \code{S01} returns x linearly rescaled such that range(x) = [0, 1]
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-#' @export
-S01 <- function(x) { (x - min(x)) / diff(range(x)) }
-
-# =============================================================================.
 #' As the name suggests...
 # -----------------------------------------------------------------------------.
 #' @seealso
@@ -461,43 +421,6 @@ hsv2R <- function(x) {
 # NOT EXPORTED #################################################################
 
 # =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-m2v <- function(i, j, nrow) {
-  (j - 1) * nrow + i
-}
-# =============================================================================.
-#
-# -----------------------------------------------------------------------------.
-v2m <- function(x, nrow) {
-  j <- (x - 1) %/% nrow + 1
-  i <- (x - 1) %% nrow + 1
-  x <- cbind(i, j)
-  attributes(x) <- attributes(x)[1] # remove auto-generated dimnames
-  x
-}
-# =============================================================================.
-#' Detect computable values (i.e. not NA nor Inf)
-# -----------------------------------------------------------------------------.
-#' @param x
-#' numeric vector or matrix
-#'
-#' @return
-#' \code{FiniteValues} returns a \code{logical} vector
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-FiniteValues <- function(x) {
-  if(is.null(dim(x))) {
-    x <- sapply(x, FUN = is.finite)
-  } else {
-    n <- ncol(x)
-    x <- t(apply(x, MARGIN = 1, FUN = is.finite))
-    x <- rowSums(x) == n
-  }
-  x
-}
-
-# =============================================================================.
 # Function for internal use
 # -----------------------------------------------------------------------------.
 resolve.legend.position <- function(pos) {
@@ -517,4 +440,81 @@ resolve.legend.position <- function(pos) {
   }
   p <- p[pos,]
   p
+}
+
+# =============================================================================.
+#
+# -----------------------------------------------------------------------------.
+m2v <- function(i, j, nrow) {
+  (j - 1) * nrow + i
+}
+# =============================================================================.
+#
+# -----------------------------------------------------------------------------.
+v2m <- function(x, nrow) {
+  j <- (x - 1) %/% nrow + 1
+  i <- (x - 1) %% nrow + 1
+  x <- cbind(i, j)
+  attributes(x) <- attributes(x)[1] # remove auto-generated dimnames
+  x
+}
+
+# =============================================================================.
+#' Rescale x non-linearly into ]0, 1[
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{S01},
+#'   \link{autoscale}
+# -----------------------------------------------------------------------------.
+#' @description
+#' rescale values non-linearly to the unit interval using rank scores calculated
+#' by \eqn{q = (rank(x) - 0.5) / N} where N = length(x).
+#'
+#' @param x
+#' numeric vector
+#'
+#' @return
+#' \code{rankstat} returns rank scores
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+rankstat <- function(x) { (rank(x) - 0.5) / length(x) }
+
+# =============================================================================.
+#' Rescale x linearly into [0, 1]
+# -----------------------------------------------------------------------------.
+#' @seealso
+#'   \link{rankstat},
+#'   \link{autoscale}
+# -----------------------------------------------------------------------------.
+#' @description
+#' rescale values linearly to the unit interval.
+#'
+#' @param x
+#' numeric vector.
+#'
+#' @return
+#' \code{S01} returns x linearly rescaled such that range(x) = [0, 1]
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+S01 <- function(x) { (x - min(x)) / diff(range(x)) }
+
+# =============================================================================.
+#' Localise safe numeric values (i.e. not NA nor Inf)
+# -----------------------------------------------------------------------------.
+#' @param x
+#' numeric vector or matrix.
+#'
+#' @return
+#' \code{FiniteValues} returns a logical vector.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+FiniteValues <- function(x) {
+  if(is.null(dim(x))) {
+    x <- sapply(x, FUN = is.finite)
+  } else {
+    n <- ncol(x)
+    x <- t(apply(x, MARGIN = 1, FUN = is.finite))
+    x <- rowSums(x) == n
+  }
+  x
 }

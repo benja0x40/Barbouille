@@ -10,10 +10,11 @@ rankstat(x)
 \item{x}{numeric vector}
 }
 \value{
-\code{rankstat} returns \eqn{q = (rank(x) - 0.5) / N} where N = length(x)
+\code{rankstat} returns rank scores
 }
 \description{
-rescale values non-linearly to the unit interval using ranks
+rescale values non-linearly to the unit interval using rank scores calculated
+by \eqn{q = (rank(x) - 0.5) / N} where N = length(x).
 }
 \seealso{
 \link{S01},

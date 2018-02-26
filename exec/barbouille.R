@@ -154,13 +154,7 @@ close_img(image_counter)
 # Example 2
 image_counter <- open_img(image_counter)
 cmp <- UpdateDefinition(cmp, levels = 3)
-ScatterPlot(x, y, clr = a, clr.prm = cmp, xlim = rng, ylim = rng, main = v)
-ColorLegend("t", parameters = cmp, horiz = T, size = c(60, 3), cex = 0.8)
-close_img(image_counter)
-
-# Example 3
-image_counter <- open_img(image_counter)
-cmp <- TransformColors(cmp, S.range = 0.5)
+cmp <- TransformColors(cmp, S.range = 0.6)
 ScatterPlot(x, y, clr = a, clr.prm = cmp, xlim = rng, ylim = rng, main = v)
 ColorLegend("t", parameters = cmp, horiz = T, size = c(60, 3), cex = 0.8)
 close_img(image_counter)

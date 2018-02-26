@@ -2,11 +2,9 @@ Barbouille
 ================================================================================
 
 My collection of plotting and color mapping functions, home cooked with
-[base R graphics](https://stat.ethz.ch/R-manual/R-patched/library/graphics/html/00Index.html)
-as well as the
+[base R graphics](https://stat.ethz.ch/R-manual/R-patched/library/graphics/html/00Index.html),
 [ash](https://CRAN.R-project.org/package=ash) and
-[colorspace](https://cran.r-project.org/package=colorspace)
-`R` packages.
+[colorspace](https://cran.r-project.org/package=colorspace).
 
 ### Main features
 
@@ -112,25 +110,20 @@ ColorLegend("t", parameters = cmp, horiz = T, size = c(60, 3), cex = 0.8)
 
 # Example 2
 cmp <- UpdateDefinition(cmp, levels = 3)
-ScatterPlot(x, y, clr = a, clr.prm = cmp, xlim = rng, ylim = rng, main = v)
-ColorLegend("t", parameters = cmp, horiz = T, size = c(60, 3), cex = 0.8)
-
-# Example 3
-cmp <- TransformColors(cmp, S.range = 0.5)
+cmp <- TransformColors(cmp, S.range = 0.6)
 ScatterPlot(x, y, clr = a, clr.prm = cmp, xlim = rng, ylim = rng, main = v)
 ColorLegend("t", parameters = cmp, horiz = T, size = c(60, 3), cex = 0.8)
 ```
 
 ![](./images/gallery/barbouille_12.png "example")
 ![](./images/gallery/barbouille_13.png "example")
-![](./images/gallery/barbouille_14.png "example")
 
 ```r
 # Work in progress...
 ```
 
+![](./images/gallery/barbouille_14.png "example")
 ![](./images/gallery/barbouille_15.png "example")
-![](./images/gallery/barbouille_16.png "example")
 
 ### <a name="install"></a>Installation
 
@@ -145,6 +138,7 @@ If the installation fails, try to install dependencies as indicated
 in the following section.
 
 #### Dependencies
+
   - [R environment](https://www.r-project.org/) version 3.4 or newer
   - To develop and execute `R` scripts we recommend using [RStudio](https://www.rstudio.com/products/rstudio/download)
   - CRAN packages `devtools`, `colorspace`, `ash`, `triangle`, `caTools`

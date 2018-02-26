@@ -2,17 +2,17 @@
 % Please edit documentation in R/utilities.R
 \name{FiniteValues}
 \alias{FiniteValues}
-\title{Detect computable values (i.e. not NA nor Inf)}
+\title{Localise safe numeric values (i.e. not NA nor Inf)}
 \usage{
 FiniteValues(x)
 }
 \arguments{
-\item{x}{numeric vector or matrix}
+\item{x}{numeric vector or matrix.}
 }
 \value{
-\code{FiniteValues} returns a \code{logical} vector
+\code{FiniteValues} returns a logical vector.
 }
 \description{
-Detect computable values (i.e. not NA nor Inf)
+Localise safe numeric values (i.e. not NA nor Inf)
 }
 \keyword{internal}
