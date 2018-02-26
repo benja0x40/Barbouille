@@ -3,6 +3,7 @@
 export("ColorChannel<-")
 export(AutoColorParameters)
 export(BivariateDensity)
+export(BoxPlot)
 export(ColorChannel)
 export(ColorLegend)
 export(DefineColorMap)

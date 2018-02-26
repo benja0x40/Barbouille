@@ -9,11 +9,13 @@
 #'   \link{ColorLegend}
 # -----------------------------------------------------------------------------.
 #' @inheritParams autoscale
+#' @inheritParams AutoColorParameters
 #'
 #' @param clr.prm
 #' a ColorParameter object defined by \link{DefineColorMap}.
 #'
-#' @inheritParams AutoColorParameters
+#' @param ...
+#' optional arguments forwarded to the \link{AutoColorParameters} function.
 #'
 #' @return
 #' \code{colorize} returns a vector of RGBA colors.

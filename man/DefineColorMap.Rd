@@ -2,7 +2,7 @@
 % Please edit documentation in R/DefineColorMap.R
 \name{DefineColorMap}
 \alias{DefineColorMap}
-\title{Definition of ColoParameters}
+\title{Definition of ColorParameters}
 \usage{
 DefineColorMap(thresholds = NULL, colors = NULL, range = NULL,
   number = NULL, below = NA, above = NA, na = NA, levels = 256,

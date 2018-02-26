@@ -1,5 +1,5 @@
 # =============================================================================.
-#' Definition of ColoParameters
+#' Definition of ColorParameters
 # -----------------------------------------------------------------------------.
 # 1. implement DefineGroupStyles to override color, symbol and size
 #    with values identifying each category/group when specified, and the

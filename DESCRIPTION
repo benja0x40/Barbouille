@@ -1,10 +1,15 @@
 Package: Barbouille
 Type: Package
-Title: Barbouille - Plot functions built upon base R graphics
-Version: 0.5.3
+Version: 0.5.4
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
+URL: https://github.com/benja0x40/Barbouille
+Title: Barbouille - Plot functions built upon base R graphics
+Description:
+    A collection of plotting and color mapping functions built upon
+    base R graphics.
+License: GPL (>= 2)
 Imports:
     methods,
     colorspace,
@@ -27,8 +32,6 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-Description: Plot functions built upon base R graphics
-License: GPL (>= 2)
 LazyData: TRUE
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

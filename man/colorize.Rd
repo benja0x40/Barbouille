@@ -12,6 +12,8 @@ colorize(x, mode = NULL, clr.prm = NULL, ...)
 \item{mode}{either \code{"rank"} or \code{"01"} (default).}
 
 \item{clr.prm}{a ColorParameter object defined by \link{DefineColorMap}.}
+
+\item{...}{optional arguments forwarded to the \link{AutoColorParameters} function.}
 }
 \value{
 \code{colorize} returns a vector of RGBA colors.

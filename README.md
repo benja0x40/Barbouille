@@ -40,9 +40,9 @@ which was randomly generated using mixtures of normal distributions.
 
 ```r
 # Examples using the default color mapping function
-r <- SideBySideDensity(x, nx = 200)
-r <- SideBySideDensity(x, nx = 200, smoothx = 25)
-r <- SideBySideDensity(x, nx = 200, method = "ash")
+r <- SideBySideDensity(x, nx = 200)                 # Example 1
+r <- SideBySideDensity(x, nx = 200, smoothx = 25)   # Example 2
+r <- SideBySideDensity(x, nx = 200, method = "ash") # Example 3
 ```
 
 ![](./images/gallery/barbouille_01.png "example")
@@ -51,9 +51,9 @@ r <- SideBySideDensity(x, nx = 200, method = "ash")
 
 ```r
 # Examples using a custom color mapping function (cmf)
-r <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)
-r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf)
-r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash")
+r <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)                     # Example 1
+r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf)                 # Example 2
+r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash") # Example 3
 ```
 
 ![](./images/gallery/barbouille_04.png "example")
@@ -61,9 +61,10 @@ r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash
 ![](./images/gallery/barbouille_06.png "example")
 
 ```r
-r <- BivariateDensity(x[, c(1, 5)], method = "ash")
-r <- BivariateDensity(x[, c(1, 5)], mapper = cmf)
-r <- BivariateDensity(x[, c(1, 5)], method = "ash", mapper = cmf)
+# Examples showing the joint distribution of variables A and E from the matrix x
+r <- BivariateDensity(x[, c(1, 5)], method = "ash")               # Example 1
+r <- BivariateDensity(x[, c(1, 5)], mapper = cmf)                 # Example 2
+r <- BivariateDensity(x[, c(1, 5)], method = "ash", mapper = cmf) # Example 3
 ```
 
 ![](./images/gallery/barbouille_07.png "example")
