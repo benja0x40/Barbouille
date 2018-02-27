@@ -32,6 +32,10 @@
 #' either "bin" (default) or "ash" for hard or smoothed binning
 #' (see \link{ash2}).
 #'
+#' @param ash
+#' list of arguments passed to the \link{ash} function when using this method.
+#' (defaut = \code{list(m = c(5, 5))}).
+#'
 #' @param plot
 #' logical (default = T, yes).
 #'
@@ -68,7 +72,7 @@
 #' @export
 BivariateDensity <- function(
   x, y = NULL, nx = 100, ny = nx, xlim = NULL, ylim = NULL,
-  method = c("bin", "ash", "bin.table"),
+  method = c("bin", "ash", "bin.table"), ash = list(m = c(5, 5)),
   plot = T, mapper = NULL, parameters = NULL, alpha = 1.0,
   xlab = NULL, ylab = NULL, ...
 ) {
@@ -118,7 +122,10 @@ BivariateDensity <- function(
     z <- d$nc
   }
   if(method == "ash") {
-    d <- ash2(bin2(cbind(x, y), ab = rbind(xlim, ylim), nbin = c(nx, ny)))
+    d <- do.call(
+      ash2,
+      c(list(bin2(cbind(x, y), ab = rbind(xlim, ylim), nbin = c(nx, ny))), ash)
+    )
     x <- d$x
     y <- d$y
     z <- d$z

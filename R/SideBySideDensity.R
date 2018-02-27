@@ -38,6 +38,10 @@
 #' smoothing factor along the horizontal axis, in number of bins
 #' (defaut = F, disabled).
 #'
+#' @param ash
+#' list of arguments passed to the \link{ash} function when using this method.
+#' (defaut = \code{list(m = c(5, 5))}).
+#'
 #' @param xlim
 #' numeric range (default = NULL, automatic).
 #'
@@ -77,7 +81,7 @@
 #' @export
 SideBySideDensity <- function(
   m, nx = 100, ny = nx, method = "bin", jitter = "unif",
-  spacing = 0.2, smoothx = F, xlim = NULL, ylim = NULL,
+  spacing = 0.2, smoothx = F, ash = list(m = c(5, 5)), xlim = NULL, ylim = NULL,
   plot = T, mapper = NULL, parameters = NULL, global = F,
   x.labels = T, las = 1, grid = T, ...
 ) {
@@ -112,7 +116,9 @@ SideBySideDensity <- function(
   j <- j * (1 - spacing) / 2
   x <- rep(1:nc, each = nr)
   h <- cbind(x + j, as.vector(m))
-  h <- BivariateDensity(h, nx = nx, ny = ny, method = method)
+  h <- BivariateDensity(
+    h, nx = nx, ny = ny, method = method, ash = ash, plot = F
+  )
 
   x <- with(h, (x[-1] + x[-(nx+1)]) / 2)
 

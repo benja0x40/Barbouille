@@ -5,9 +5,9 @@
 \title{Bivariate empirical distribution}
 \usage{
 BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
-  ylim = NULL, method = c("bin", "ash", "bin.table"), plot = T,
-  mapper = NULL, parameters = NULL, alpha = 1, xlab = NULL,
-  ylab = NULL, ...)
+  ylim = NULL, method = c("bin", "ash", "bin.table"), ash = list(m = c(5,
+  5)), plot = T, mapper = NULL, parameters = NULL, alpha = 1,
+  xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{numeric vector or matrix with two columns.}
@@ -24,6 +24,9 @@ BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
 
 \item{method}{either "bin" (default) or "ash" for hard or smoothed binning
 (see \link{ash2}).}
+
+\item{ash}{list of arguments passed to the \link{ash} function when using this method.
+(defaut = \code{list(m = c(5, 5))}).}
 
 \item{plot}{logical (default = T, yes).}
 
