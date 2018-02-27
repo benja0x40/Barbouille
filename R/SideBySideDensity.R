@@ -32,7 +32,9 @@
 #' either "unif" (default), "norm" or "triangle".
 #'
 #' @param spacing
-#' numeric, spacing factor along the horizontal axis (default = 0.2).
+#' numeric, spacing factor along the horizontal axis
+#' from 0 (no spacing) to 1 (maximal spacing).
+#' By default \code{spacing = 0.2}.
 #'
 #' @param smoothx
 #' smoothing factor along the horizontal axis, in number of bins
@@ -86,6 +88,7 @@ SideBySideDensity <- function(
   x.labels = T, las = 1, grid = T, ...
 ) {
 
+  if(spacing < 0 | spacing > 1) stop("spacing values ")
   if(is.null(mapper)) {
     mapper <- colorize
     if(is.null(parameters)) parameters <- list(mode = "rank")
@@ -113,18 +116,22 @@ SideBySideDensity <- function(
     j <- runif(nc * nr, - j, j)
   }
 
-  j <- j * (1 - spacing) / 2
+  spacing <- 0.5 - spacing / 2
+  j <- j * spacing
   x <- rep(1:nc, each = nr)
   h <- cbind(x + j, as.vector(m))
+  r <- range(h[, 1]) + c(-spacing, spacing)
   h <- BivariateDensity(
-    h, nx = nx, ny = ny, method = method, ash = ash, plot = F
+    h, nx = nx, ny = ny, xlim = r,
+    method = method, ash = ash, plot = F
   )
 
-  x <- with(h, (x[-1] + x[-(nx+1)]) / 2)
+  if(method == "bin") x <- with(h, (x[-1] + x[-(nx+1)]) / 2)
+  if(method == "ash") x <- h$x
 
   if(smoothx > 0) {
     for(i in 1:nc) {
-      k <- abs(x - i) <= (1 - spacing) / 2
+      k <- abs(x - i) <= spacing
       h$z[k, ] <- apply(h$z[k, ], 2, caTools::runmean, k = smoothx)
     }
   }
@@ -147,7 +154,7 @@ SideBySideDensity <- function(
     if(! is.null(xlim)) lim$x <- xlim
     if(! is.null(ylim)) lim$y <- ylim
 
-    EmptyPlot(xlim = lim$x, ylim = lim$y, axes = F, ...)
+    EmptyPlot(xlim = lim$x, ylim = lim$y, axes = F, xaxs = "i", ...)
     if(grid) grid(nx = 0, ny = NULL)
     axis(2)
     if(x.labels) axis(1, at = 1:nc, labels = colnames(m), las = las, tick = F)

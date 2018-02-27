@@ -22,7 +22,9 @@ SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
 
 \item{jitter}{either "unif" (default), "norm" or "triangle".}
 
-\item{spacing}{numeric, spacing factor along the horizontal axis (default = 0.2).}
+\item{spacing}{numeric, spacing factor along the horizontal axis
+from 0 (no spacing) to 1 (maximal spacing).
+By default \code{spacing = 0.2}.}
 
 \item{smoothx}{smoothing factor along the horizontal axis, in number of bins
 (defaut = F, disabled).}
