@@ -45,7 +45,7 @@ x <- cbind(
 colnames(x) <- LETTERS[1:ncol(x)]
 
 # Create a color mapping function
-cmf <- function(k) colorize(k, mode = "01", col = "ry")
+cmf <- function(k) colorize(k, mode = "01", col = "Wry")
 
 # //// SideBySideDensity ////
 
@@ -71,8 +71,9 @@ close_img(image_counter)
 # Examples using a custom color mapping function (cmf)
 
 cmp <- UpdateDefinition(
-  AutoColorParameters("ry"), range = c(-1, 1), below = grey(1), extra = c(0.03, 1)
+  AutoColorParameters("Wry"), range = c(-1, 1), below = grey(1), extra = c(0.03, 1)
 )
+cmp <- AutoColorParameters("Wry")
 
 image_counter <- open_img(image_counter)
 r <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)
@@ -91,12 +92,12 @@ close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
-r <- BivariateDensity(x[, c(1, 5)], method = "ash")
+r <- BivariateDensity(x[, c(1, 5)])
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
-r <- BivariateDensity(x[, c(1, 5)], mapper = cmf)
+r <- BivariateDensity(x[, c(1, 5)], method = "ash")
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)

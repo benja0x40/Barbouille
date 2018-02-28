@@ -182,21 +182,26 @@ autoscale <- function(x, mode = NULL) {
 #' @export
 AutoColorParameters <- function(colors = NULL) {
 
+  # W, B, G => white, black, grey
+  # r, g, b => red, green, blue
+  # c, m, y => cyan, magenta, yellow
+
   if(is.null(colors)) colors <- grey(c(0.8, 0.7, 0.5, 0))
 
   chk <- length(colors) == 1
   if(chk & colors[1] == "WB") colors <- grey(1:0)
   if(chk & colors[1] == "BW") colors <- grey(0:1)
 
-  if(chk & colors[1] == "Br") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 0))
-  if(chk & colors[1] == "Bg") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 0))
-  if(chk & colors[1] == "Bc") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 1))
-  if(chk & colors[1] == "By") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 1, 0))
-  if(chk & colors[1] == "Bp") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 1))
-
   if(chk & colors[1] == "rW") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:1))
   if(chk & colors[1] == "gW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 1:1, 0:1))
   if(chk & colors[1] == "bW") colors <- c(grey(c(0.8, 0.4)), rgb(0:1, 0:1, 1:1))
+
+  if(chk & colors[1] == "Br") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 0))
+  if(chk & colors[1] == "Bg") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 0))
+
+  if(chk & colors[1] == "Bc") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(0, 1, 1))
+  if(chk & colors[1] == "Bm") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 0, 1))
+  if(chk & colors[1] == "By") colors <- c(grey(c(0.8, 0.5, 0.2)), rgb(1, 1, 0))
 
   if(chk & colors[1] == "ry") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 0:1, 0:0))
   if(chk & colors[1] == "yr") colors <- c(grey(c(0.8, 0.4)), rgb(1:1, 1:0, 0:0))
@@ -210,6 +215,18 @@ AutoColorParameters <- function(colors = NULL) {
   n <- length(colors)
   q <- 0:(n-1)/(n-1)
 
+  if(chk & colors[1] == "Wry") {
+    colors <- c(
+      grey(c(1.0, 0.9, 0.4)), rgb(1.0, 0, 0), rgb(1, 0.5, 0), rgb(1, 1, 0.5)
+    )
+    n <- 5
+    q <- c(0, 0.01, 1:(n-1)/(n-1))
+  }
+  if(chk & colors[1] == "WGB") {
+    colors <- grey(c(1.0, 0.9, 0.5, 0.3, 0))
+    n <- 4
+    q <- c(0, 0.01, 1:(n-1)/(n-1))
+  }
   DefineColorMap(thresholds = q, colors = colors)
 }
 

@@ -5,9 +5,9 @@
 \title{Bivariate empirical distribution}
 \usage{
 BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
-  ylim = NULL, method = c("bin", "ash", "bin.table"), ash = list(m = c(5,
-  5)), plot = T, mapper = NULL, parameters = NULL, alpha = 1,
-  xlab = NULL, ylab = NULL, ...)
+  ylim = NULL, method = "bin", ash = list(m = c(5, 5)), plot = T,
+  mapper = NULL, parameters = NULL, alpha = 1, xlab = NULL,
+  ylab = NULL, ...)
 }
 \arguments{
 \item{x}{numeric vector or matrix with two columns.}

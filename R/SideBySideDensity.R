@@ -91,7 +91,10 @@ SideBySideDensity <- function(
   if(spacing < 0 | spacing > 1) stop("spacing values ")
   if(is.null(mapper)) {
     mapper <- colorize
-    if(is.null(parameters)) parameters <- list(mode = "rank")
+    if(is.null(parameters)) {
+      if(method == "bin") parameters <- list(mode = "rank")
+      if(method == "ash") parameters <- list(mode = "rank", color = "WGB")
+    }
   }
   if(is.list(parameters)) {
     cmf <- function(k) do.call(mapper, args = c(list(k), parameters))

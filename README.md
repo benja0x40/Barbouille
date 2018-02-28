@@ -62,8 +62,8 @@ r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash
 
 ```r
 # Examples showing the joint distribution of variables A and E from the matrix x
-r <- BivariateDensity(x[, c(1, 5)], method = "ash")               # Example 1
-r <- BivariateDensity(x[, c(1, 5)], mapper = cmf)                 # Example 2
+r <- BivariateDensity(x[, c(1, 5)])                               # Example 1
+r <- BivariateDensity(x[, c(1, 5)], method = "ash")               # Example 2
 r <- BivariateDensity(x[, c(1, 5)], method = "ash", mapper = cmf) # Example 3
 ```
 

@@ -72,14 +72,17 @@
 #' @export
 BivariateDensity <- function(
   x, y = NULL, nx = 100, ny = nx, xlim = NULL, ylim = NULL,
-  method = c("bin", "ash", "bin.table"), ash = list(m = c(5, 5)),
+  method = "bin", ash = list(m = c(5, 5)),
   plot = T, mapper = NULL, parameters = NULL, alpha = 1.0,
   xlab = NULL, ylab = NULL, ...
 ) {
 
   if(is.null(mapper)) {
     mapper <- colorize
-    if(is.null(parameters)) parameters <- list(mode = "01", color = "WB")
+    if(is.null(parameters)) {
+      if(method == "bin") parameters <- list(mode = "01")
+      if(method == "ash") parameters <- list(mode = "01", color = "WGB")
+    }
   }
   if(is.list(parameters)) {
     cmf <- function(k) do.call(mapper, args = c(list(k), parameters))
@@ -87,7 +90,6 @@ BivariateDensity <- function(
     cmf <- mapper
   }
 
-  method <- method[1]
   if(is.null(y)) {
     if(! is.null(colnames(x))) {
       if(is.null(ylab)) ylab <- colnames(x)[2]
