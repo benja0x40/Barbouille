@@ -46,18 +46,14 @@ colnames(x) <- LETTERS[1:ncol(x)]
 
 # Create a color mapping function
 cmf <- function(k) colorize(k, mode = "01", col = "Wry")
+cmp <- AutoColorParameters("Wry")
 
 # //// SideBySideDensity ////
 
 # Examples using the default color mapping function
 
-cmp <- UpdateDefinition(
-  AutoColorParameters(), range = c(-1, 1), below = grey(1), extra = c(0.03, 1)
-)
-
 image_counter <- open_img(image_counter)
 r <- SideBySideDensity(x, nx = 200)
-ColorLegend("t", parameters = cmp, horiz = T, ticks = 0:2/2, tick.pos = -1, size = c(60, 2), margin = c(5, 5, 5, 25), cex = 0.8, xpd = T)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
@@ -70,14 +66,8 @@ close_img(image_counter)
 
 # Examples using a custom color mapping function (cmf)
 
-cmp <- UpdateDefinition(
-  AutoColorParameters("Wry"), range = c(-1, 1), below = grey(1), extra = c(0.03, 1)
-)
-cmp <- AutoColorParameters("Wry")
-
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)
-ColorLegend("t", parameters = cmp, horiz = T, ticks = 0:4/4, tick.pos = -1, size = c(60, 2), margin = c(5, 5, 5, 25), cex = 0.8, xpd = T)
+r <- SideBySideDensity(x, nx = 200, jitter = "unif", mapper = cmf, smoothx = 5)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
@@ -86,6 +76,10 @@ close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash")
+ColorLegend(
+  "t", parameters = cmp, ticks = 0:4/4, tick.pos = -1, cex = 0.8,
+  xpd = T, horiz = T, size = c(60, 2), margin = c(5, 5, 5, 25)
+)
 close_img(image_counter)
 
 # //// BivariateDensity ////
@@ -98,11 +92,19 @@ close_img(image_counter)
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
 r <- BivariateDensity(x[, c(1, 5)], method = "ash")
+ColorLegend(
+  "tr", parameters = AutoColorParameters("WGB"), ticks = 0:4/4, cex = 0.8,
+  xpd = T, horiz = T, size = c(60, 2), margin = c(5, 9, 5, 15)
+)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
 par(mar = c(4.1, 4.1, 4.1, 1.1))
 r <- BivariateDensity(x[, c(1, 5)], method = "ash", mapper = cmf)
+ColorLegend(
+  "tr", parameters = cmp, ticks = 0:4/4, cex = 0.8,
+  xpd = T, horiz = T, size = c(60, 2), margin = c(5, 9, 5, 15)
+)
 close_img(image_counter)
 
 # COLOR MAPPING ################################################################

@@ -28,7 +28,7 @@ library(Barbouille)
 
 ```r
 # Create a color mapping function
-cmf <- function(k) colorize(k, mode = "01", col = "ry")
+cmf <- function(k) colorize(k, mode = "01", col = "Wry")
 ```
 
 With any matrix representing observations of numeric variables,
@@ -52,8 +52,8 @@ r <- SideBySideDensity(x, nx = 200, method = "ash") # Example 3
 ```r
 # Examples using a custom color mapping function (cmf)
 r <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)                     # Example 1
-r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf)                 # Example 2
-r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash") # Example 3
+r <- SideBySideDensity(x, nx = 200, mapper = cmf, jitter = "norm")                 # Example 2
+r <- SideBySideDensity(x, nx = 200, mapper = cmf, jitter = "norm", method = "ash") # Example 3
 ```
 
 ![](./images/gallery/barbouille_04.png "example")
@@ -132,7 +132,7 @@ Run the `R` code below to install `Barbouille`.
 
 ```R
 library("devtools")
-install_github("benja0x40/Barbouille")
+install_github("benja0x40/Barbouille", dependencies = T)
 ```
 
 If the installation fails, try to install dependencies as indicated

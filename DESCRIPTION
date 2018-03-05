@@ -1,6 +1,6 @@
 Package: Barbouille
 Type: Package
-Version: 0.5.7
+Version: 0.5.8
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
@@ -8,7 +8,8 @@ URL: https://github.com/benja0x40/Barbouille
 Title: Barbouille - Plot functions built upon base R graphics
 Description:
     A collection of plotting and color mapping functions built upon
-    base R graphics.
+    base R graphics and partly dedicated to the representation of empirical
+    distributions.
 License: GPL (>= 2)
 Imports:
     methods,
