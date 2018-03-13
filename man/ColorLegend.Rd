@@ -33,7 +33,9 @@ represented color gradients (default = \code{100}).}
 
 \item{xpd}{logical.
 If FALSE, the legend position is relative to the plot region (default).
-If TRUE, the legend position is relative to the entire device region.}
+If TRUE, the legend position is relative to the entire device region.
+This second option works fine for separated plots but not for multipanel
+layouts (see \link{layout}).}
 
 \item{size}{the size of the color legend given as a list or a vector in the form
 \code{c(}axial length, width\code{)} which are expressed in percentage of

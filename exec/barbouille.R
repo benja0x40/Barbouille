@@ -229,6 +229,19 @@ if(F) {
   close_img(image_counter)
 }
 
+# TESTS ########################################################################
+
+# prm <- AutoColorParameters(colors = "Wry")
+# layout(matrix(1:4, 2, 2))
+# EmptyPlot()
+# ColorLegend("l", prm)
+# EmptyPlot()
+# ColorLegend("r", prm)
+# EmptyPlot()
+# ColorLegend("t", prm)
+# EmptyPlot()
+# ColorLegend("b", prm)
+
 # # SET 3 ########################################################################
 #
 # # =============================================================================.
