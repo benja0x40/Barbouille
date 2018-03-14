@@ -5,7 +5,7 @@
 \title{Compact visualization of multiple empirical distributions}
 \usage{
 SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
-  spacing = 0.2, smoothx = F, ash = list(m = c(5, 5)), xlim = NULL,
+  spacing = 0.2, smoothx = F, ash = list(m = c(3, 3)), xlim = NULL,
   ylim = NULL, plot = T, mapper = NULL, parameters = NULL, global = F,
   x.labels = T, las = 1, grid = T, ...)
 }
@@ -30,7 +30,7 @@ By default \code{spacing = 0.2}.}
 (defaut = F, disabled).}
 
 \item{ash}{list of arguments passed to the \link{ash} function when using this method.
-(defaut = \code{list(m = c(5, 5))}).}
+(defaut = \code{list(m = c(3, 3))}).}
 
 \item{xlim}{numeric range (default = NULL, automatic).}
 

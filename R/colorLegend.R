@@ -39,6 +39,8 @@
 #' logical.
 #' If FALSE, the legend position is relative to the plot region (default).
 #' If TRUE, the legend position is relative to the entire device region.
+#' This second option works fine for separated plots but not for multipanel
+#' layouts (see \link{layout}).
 #'
 #' @param size
 #' the size of the color legend given as a list or a vector in the form
@@ -108,7 +110,7 @@ ColorLegend <- function(
   if(length(margin) != 4) stop("Incorrect margin")
 
   # Capture graphic parameters of the current plot area
-  gp <- par(c("usr", "xlog", "ylog", "fig", "oma", "mar"))
+  gp <- par(c("usr", "xlog", "ylog")) # , "fig", "oma", "mar", "xpd"
 
   # Reset the coordinates system of the current plot area
   if(xpd) {
@@ -120,7 +122,7 @@ ColorLegend <- function(
       xaxs = "i", yaxs = "i"
     )
   } else {
-    par(xlog = F, ylog = F, usr = (1 + margin/100) * c(-1, 1, -1, 1))
+    par(usr = (1 + margin/100) * c(-1, 1, -1, 1), xlog = F, ylog = F)
   }
 
   # Extend range to show below and above colors

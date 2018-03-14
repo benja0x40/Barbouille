@@ -80,7 +80,7 @@ BivariateDensity <- function(
   if(is.null(mapper)) {
     mapper <- colorize
     if(is.null(parameters)) {
-      if(method == "bin") parameters <- list(mode = "01")
+      if(method == "bin") parameters <- list(mode = "01", color = "WGB")
       if(method == "ash") parameters <- list(mode = "01", color = "WGB")
     }
   }

@@ -42,7 +42,7 @@
 #'
 #' @param ash
 #' list of arguments passed to the \link{ash} function when using this method.
-#' (defaut = \code{list(m = c(5, 5))}).
+#' (defaut = \code{list(m = c(3, 3))}).
 #'
 #' @param xlim
 #' numeric range (default = NULL, automatic).
@@ -83,7 +83,7 @@
 #' @export
 SideBySideDensity <- function(
   m, nx = 100, ny = nx, method = "bin", jitter = "unif",
-  spacing = 0.2, smoothx = F, ash = list(m = c(5, 5)), xlim = NULL, ylim = NULL,
+  spacing = 0.2, smoothx = F, ash = list(m = c(3, 3)), xlim = NULL, ylim = NULL,
   plot = T, mapper = NULL, parameters = NULL, global = F,
   x.labels = T, las = 1, grid = T, ...
 ) {
@@ -93,7 +93,7 @@ SideBySideDensity <- function(
     mapper <- colorize
     if(is.null(parameters)) {
       if(method == "bin") parameters <- list(mode = "rank")
-      if(method == "ash") parameters <- list(mode = "rank", color = "WGB")
+      if(method == "ash") parameters <- list(mode = "01", color = "WGB")
     }
   }
   if(is.list(parameters)) {
