@@ -23,7 +23,12 @@ BoxPlot <- function(
   x, whiskers = c(0.05,0.25, 0.5,0.75,0.95), medpch = 20, medcex=0.8, ...
 ) {
   bp <- boxplot(x, plot = F)
-  bp$stats <- apply(x, MARGIN = 2, FUN = quantile, probs = whiskers, na.rm = T)
+  if(is.null(dim(x))) {
+    bp$stats <- sapply(x, FUN = quantile, probs = whiskers, na.rm = T)
+  } else {
+    bp$stats <- apply(x, MARGIN = 2, FUN = quantile, probs = whiskers, na.rm = T)
+    bp$names <- colnames(x)
+  }
   bxp(
     bp, outline = F, show.names = T, axes = F, xaxs = 'i',
     pars = list(

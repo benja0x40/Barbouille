@@ -53,29 +53,29 @@ cmp <- AutoColorParameters("Wry")
 # Examples using the default color mapping function
 
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200)
+r <- SideBySideDensity(x)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200, smoothx = 25)
+r <- SideBySideDensity(x, smoothx = 10)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200, method = "ash")
+r <- SideBySideDensity(x, method = "ash")
 close_img(image_counter)
 
 # Examples using a custom color mapping function (cmf)
 
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200, jitter = "unif", mapper = cmf, smoothx = 5)
+r <- SideBySideDensity(x, jitter = "unif", mapper = cmf, smoothx = 5)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf)
+r <- SideBySideDensity(x, jitter = "norm", mapper = cmf)
 close_img(image_counter)
 
 image_counter <- open_img(image_counter)
-r <- SideBySideDensity(x, nx = 200, jitter = "norm", mapper = cmf, method = "ash")
+r <- SideBySideDensity(x, jitter = "norm", mapper = cmf, method = "ash")
 ColorLegend(
   "t", parameters = cmp, ticks = 0:4/4, tick.pos = -1, cex = 0.8,
   xpd = T, horiz = T, size = c(60, 2), margin = c(5, 5, 5, 25)

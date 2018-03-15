@@ -19,6 +19,7 @@
 #'
 #' @param nx
 #' number of bins on the horizontal axis (representing matrix columns).
+#' The default value is 25 bins for each column in the matrix \code{m}.
 #'
 #' @param ny
 #' number of bins on the vertical axis
@@ -82,13 +83,13 @@
 # -----------------------------------------------------------------------------.
 #' @export
 SideBySideDensity <- function(
-  m, nx = 100, ny = nx, method = "bin", jitter = "unif",
+  m, nx = 25, ny = 200, method = "bin", jitter = "unif",
   spacing = 0.2, smoothx = F, ash = list(m = c(3, 3)), xlim = NULL, ylim = NULL,
   plot = T, mapper = NULL, parameters = NULL, global = F,
   x.labels = T, las = 1, grid = T, ...
 ) {
 
-  if(spacing < 0 | spacing > 1) stop("spacing values ")
+  if(spacing < 0 | spacing > 1) stop("spacing value must be in [0;1]")
   if(is.null(mapper)) {
     mapper <- colorize
     if(is.null(parameters)) {
@@ -104,6 +105,7 @@ SideBySideDensity <- function(
 
   nc <- ncol(m)
   nr <- nrow(m)
+  nx <- ncol(m) * (nx + 1)
 
   j <- NULL
   if(jitter == "norm") {

@@ -4,7 +4,7 @@
 \alias{SideBySideDensity}
 \title{Compact visualization of multiple empirical distributions}
 \usage{
-SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
+SideBySideDensity(m, nx = 25, ny = 200, method = "bin", jitter = "unif",
   spacing = 0.2, smoothx = F, ash = list(m = c(3, 3)), xlim = NULL,
   ylim = NULL, plot = T, mapper = NULL, parameters = NULL, global = F,
   x.labels = T, las = 1, grid = T, ...)
@@ -12,7 +12,8 @@ SideBySideDensity(m, nx = 100, ny = nx, method = "bin", jitter = "unif",
 \arguments{
 \item{m}{matrix of numerical values.}
 
-\item{nx}{number of bins on the horizontal axis (representing matrix columns).}
+\item{nx}{number of bins on the horizontal axis (representing matrix columns).
+The default value is 25 bins for each column in the matrix \code{m}.}
 
 \item{ny}{number of bins on the vertical axis
 (representing the range of matrix values).}

@@ -40,9 +40,9 @@ which was randomly generated using mixtures of normal distributions.
 
 ```r
 # Examples using the default color mapping function
-r <- SideBySideDensity(x, nx = 200)                 # Example 1
-r <- SideBySideDensity(x, nx = 200, smoothx = 25)   # Example 2
-r <- SideBySideDensity(x, nx = 200, method = "ash") # Example 3
+r <- SideBySideDensity(x)                 # Example 1
+r <- SideBySideDensity(x, smoothx = 10)   # Example 2
+r <- SideBySideDensity(x, method = "ash") # Example 3
 ```
 
 ![](./images/gallery/barbouille_01.png "example")
@@ -51,9 +51,9 @@ r <- SideBySideDensity(x, nx = 200, method = "ash") # Example 3
 
 ```r
 # Examples using a custom color mapping function (cmf)
-r <- SideBySideDensity(x, nx = 200, mapper = cmf, smoothx = 5)                     # Example 1
-r <- SideBySideDensity(x, nx = 200, mapper = cmf, jitter = "norm")                 # Example 2
-r <- SideBySideDensity(x, nx = 200, mapper = cmf, jitter = "norm", method = "ash") # Example 3
+r <- SideBySideDensity(x, mapper = cmf, smoothx = 5)                     # Example 1
+r <- SideBySideDensity(x, mapper = cmf, jitter = "norm")                 # Example 2
+r <- SideBySideDensity(x, mapper = cmf, jitter = "norm", method = "ash") # Example 3
 ```
 
 ![](./images/gallery/barbouille_04.png "example")
