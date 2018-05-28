@@ -61,7 +61,7 @@
 #' n <- 100000
 #' xy <- matrix(rnorm(2 * n), n, 2)
 #' xy[1:100,] <- 2
-#' layout(matrix(1:9, 3, 3, byrow = T))
+#' layout(matrix(1:9, 3, 3, byrow = TRUE))
 #' h <- BivariateDensity(xy, method = "bin.table")
 #' h <- BivariateDensity(xy, method = "bin")
 #' h <- BivariateDensity(xy, method = "ash")

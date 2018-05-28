@@ -1,6 +1,6 @@
 ---
 title: "Barbouille documentation"
-subtitle: "`r paste('Package version', packageVersion('LittleThumb'), '-', format(Sys.time(), '%d.%m.%Y'))`"
+subtitle: "`r paste('Package version', packageVersion('Barbouille'), '-', format(Sys.time(), '%d.%m.%Y'))`"
 author: '[Benjamin Leblanc](https://github.com/benja0x40)'
 vignette: >
   %\VignetteIndexEntry{Barbouille documentation}
@@ -115,7 +115,7 @@ CFG$images <- list(
 
   build   = F,
   
-  path    = "../images/vignettes/Parameters/",
+  path    = "../devel/images/vignettes/Parameters/",
   name    = "img",
   counter = 0,
   
