@@ -30,7 +30,7 @@ Definition of GroupParameters
 \examples{
 
 # Simultaneous use of color mapping and group membership ////////////////////
-layout(matrix(1:4, 2, 2, byrow = T))
+layout(matrix(1:4, 2, 2, byrow = TRUE))
 
 # Test data /////////////////////////////////////////////////////////////////
 x <- runif(2000, -1, 1)

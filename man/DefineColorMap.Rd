@@ -6,7 +6,7 @@
 \usage{
 DefineColorMap(thresholds = NULL, colors = NULL, range = NULL,
   number = NULL, below = NA, above = NA, na = NA, levels = 256,
-  centered = F, extra = NULL, name = "")
+  centered = FALSE, extra = NULL, name = "")
 }
 \arguments{
 \item{thresholds}{numeric vector defining the boundaries for each range of values to be

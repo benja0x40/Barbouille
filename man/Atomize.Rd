@@ -32,7 +32,7 @@ Produce noise to be added to numeric values
 
 \dontrun{
 
-layout(matrix(1:8, 2, 4, byrow = T))
+layout(matrix(1:8, 2, 4, byrow = TRUE))
 par(pch = ".", col = grey(0, 0.2))
 
 lst <- c("uniform", "triangle", "cosine", "normal")

@@ -4,10 +4,10 @@
 \alias{EmptyPlot}
 \title{As the name suggests...}
 \usage{
-EmptyPlot(axes = T, xlab = "", ylab = "", ...)
+EmptyPlot(axes = TRUE, xlab = "", ylab = "", ...)
 }
 \arguments{
-\item{axes}{logical, show axes (default = T, yes)}
+\item{axes}{logical, show axes (default = TRUE, yes)}
 
 \item{xlab}{character, name of the horizontal axis (default = none).}
 

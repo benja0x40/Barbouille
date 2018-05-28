@@ -4,14 +4,14 @@
 \alias{xylim}
 \title{Make plot limits including space for legends}
 \usage{
-xylim(x, y = NULL, symetric = F, spacing = 0, margin = 0)
+xylim(x, y = NULL, symetric = FALSE, spacing = 0, margin = 0)
 }
 \arguments{
 \item{x}{numeric vector or matrix with two columns.}
 
 \item{y}{numeric vector (default = NULL).}
 
-\item{symetric}{logical (default = F, no)}
+\item{symetric}{logical (default = FALSE, no)}
 
 \item{spacing}{numeric.}
 

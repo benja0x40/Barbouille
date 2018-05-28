@@ -32,7 +32,7 @@
 #' @keywords internal
 #' @export
 Binning2D <- function(
-  V, z = NULL, n = 100, k = 0, xlim = NULL, ylim = NULL, breaks = T, safe = F
+  V, z = NULL, n = 100, k = 0, xlim = NULL, ylim = NULL, breaks = TRUE, safe = FALSE
 ) {
 
   # Initializations

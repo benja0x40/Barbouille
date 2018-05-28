@@ -166,7 +166,7 @@ grp.clr <- list(d = grp.clr, v = grp.clr)
 
 ```{r include=FALSE}
 img <- "Data"
-# LittleThumb::MakeObj(obs, overload = T, {
+# LittleThumb::MakeObj(obs, overload = TRUE, {
 #   obs <- with(SIM$chip, SimulateData(p = P, m = M, n = 50000))
 # })
 data(obs)

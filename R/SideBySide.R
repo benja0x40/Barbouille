@@ -35,8 +35,8 @@
 # -----------------------------------------------------------------------------.
 #' @export
 SideBySide <- function(
-  M, rng = NULL, safe = F, skip = NULL, pops = NULL,
-  proportions = NULL, ordering = NULL, violin = F,
+  M, rng = NULL, safe = FALSE, skip = NULL, pops = NULL,
+  proportions = NULL, ordering = NULL, violin = FALSE,
   colors = NULL, main = NULL, ...
 ) {
 
@@ -146,7 +146,7 @@ SideBySide <- function(
         # Binning
         r <- Binning2D(
           p[pops[rnd] == g, ], n = c(db, bins), k = smoothing$d,
-          xlim = 0:1, ylim = rng, breaks = F, safe = T
+          xlim = 0:1, ylim = rng, breaks = FALSE, safe = TRUE
         )
         if(scales$d == "absolute") r <- r * 1 / n.obs
         if(scales$d == "relative") r <- r * 1 / g.pop[g]
@@ -165,7 +165,7 @@ SideBySide <- function(
         # Binning
         r <- Binning2D(
           p[pops[rnd] == g, ], n = c(vb, bins), k = smoothing$v,
-          xlim = 0:1, ylim = rng, breaks = F, safe = T
+          xlim = 0:1, ylim = rng, breaks = FALSE, safe = TRUE
         )
         if(scales$d == "absolute") r <- r * 1 / n.obs
         if(scales$d == "relative") r <- r * 1 / g.pop[g]
@@ -185,14 +185,14 @@ SideBySide <- function(
       if(db) {
         dbi <- db_idx(1:db, i)
         MAP[, dbi] <- RenderLayers(
-          LYR[, dbi, , drop = F], master = clr$d[[i]], mappers = clr$p,
+          LYR[, dbi, , drop = FALSE], master = clr$d[[i]], mappers = clr$p,
           render = render$d, scoring = scoring
         )
       }
       if(vb & i < n.var & ! skip[i]) {
         vbi <- vb_idx(1:vb, i)
         MAP[, vbi] <- RenderLayers(
-          LYR[, vbi, , drop = F], master = clr$v[[i]], mappers = clr$p,
+          LYR[, vbi, , drop = FALSE], master = clr$v[[i]], mappers = clr$p,
           render = render$v, scoring = scoring
         )
       }
@@ -219,7 +219,7 @@ SideBySide <- function(
     if(layout == "horizontal") {
       PlotImage(
         t(MAP), x, y, xlim = c(0, mcn) + 1/2, ylim = rng,
-        axes = F, xaxs = 'i', yaxs = 'i', xlab = "", ylab = label,
+        axes = FALSE, xaxs = 'i', yaxs = 'i', xlab = "", ylab = label,
         useRaster = raster, main = main # ...
       )
       abline(v = mrk, col = grid)
@@ -229,7 +229,7 @@ SideBySide <- function(
     if(layout == "vertical") {
       PlotImage(
         MAP, y, x, ylim = c(mcn, 0) + 1/2, xlim = rng,
-        axes = F, xaxs = 'i', yaxs = 'i', ylab = "", xlab = label,
+        axes = FALSE, xaxs = 'i', yaxs = 'i', ylab = "", xlab = label,
         useRaster = raster, main = main # ...
       )
       abline(h = mrk, col = grid)
@@ -239,7 +239,7 @@ SideBySide <- function(
     if(names) {
       lbl <- colnames(M)
       if(is.null(lbl)) lbl <- 1:n.var
-      axis(a, at = tck, labels = lbl, tick = F, las = las)
+      axis(a, at = tck, labels = lbl, tick = FALSE, las = las)
     }
     if(box) graphics::box()
   }

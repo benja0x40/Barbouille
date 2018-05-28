@@ -6,8 +6,8 @@
 \usage{
 MakeColors(v, thresholds = NULL, colors = NULL, range = NULL,
   number = NULL, below = "white", above = "white", na = NA,
-  levels = 256, name = "", parameters = NULL, alpha = 1, override = T,
-  grp = NULL, grp.prm = NULL)
+  levels = 256, name = "", parameters = NULL, alpha = 1,
+  override = TRUE, grp = NULL, grp.prm = NULL)
 }
 \arguments{
 \item{v}{vector of numeric values.}
@@ -45,7 +45,7 @@ color interval (default = \code{256}, minimum = \code{2}).}
 \item{alpha}{transparency (numeric value(s) between \code{0} and \code{1}).}
 
 \item{override}{logical determining if the transparency of below and above colors should
-override the provided alpha value(s) (default = T, yes).}
+override the provided alpha value(s) (default = TRUE, yes).}
 
 \item{grp}{group memberships (default = none).
 See \link{GroupIndex} for documentation on how to specify group memberships.}
@@ -75,7 +75,7 @@ the first argument of this function).
 \examples{
 
 # Radial color gradients with two normally distributed random variables
-layout(matrix(1:4, 2, 2, byrow = T))
+layout(matrix(1:4, 2, 2, byrow = TRUE))
 
 x <- rnorm(2000)
 y <- rnorm(2000)
@@ -87,7 +87,7 @@ alpha <- ifelse(cos(8 * a) > 0, 0, 1)
 clr.prm <- DefineColorMap(
   c(0, 2), c("black", "white"), above = "red", range = c(0, 2.3)
 )
-clr <- MakeColors(z, parameters = clr.prm, alpha = alpha, override = F)
+clr <- MakeColors(z, parameters = clr.prm, alpha = alpha, override = FALSE)
 plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
 ColorLegend("topleft", parameters = clr.prm, cex = 0.8)
 
@@ -122,7 +122,7 @@ clr.prm <- DefineColorMap(
 )
 clr <- MakeColors(z, parameters = clr.prm)
 plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
-ColorLegend("topleft", parameters = clr.prm, cex = 0.8, log = T)
+ColorLegend("topleft", parameters = clr.prm, cex = 0.8, log = TRUE)
 }
 \seealso{
 \link{ColorLegend},

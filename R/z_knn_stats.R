@@ -82,8 +82,8 @@ knn_smoothing <- function(v, i, f = mean) {
 #'
 #' @param smoothing
 #' perfom a local average smoothing of
-#' the estimated density for \link{knn_density} (default = T)
-#' or the local variance for \link{knn_musigma2} (default = F).
+#' the estimated density for \link{knn_density} (default = TRUE)
+#' or the local variance for \link{knn_musigma2} (default = FALSE).
 #'
 #' @return
 #' \code{knn_density} returns a numeric vector.
@@ -91,7 +91,7 @@ knn_smoothing <- function(v, i, f = mean) {
 #' @keywords internal
 #' @export
 knn_density <- function(
-  x, k, data = NULL, i = NULL, d = NULL, smoothing = T, sum2one = T
+  x, k, data = NULL, i = NULL, d = NULL, smoothing = TRUE, sum2one = TRUE
 ) {
 
   x <- as.matrix(x)
@@ -141,7 +141,7 @@ knn_density <- function(
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-knn_musigma2 <- function(x, k, i = NULL, d = NULL, smoothing = F) {
+knn_musigma2 <- function(x, k, i = NULL, d = NULL, smoothing = FALSE) {
 
   x <- as.matrix(x)
 

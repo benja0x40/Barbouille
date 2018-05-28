@@ -26,7 +26,7 @@ test_that("Binning2D", {
 
   xy <- c(4, 5)
   k <- m2v(i = xy[2], j = xy[1], nrow = bins[2])
-  M <- matrix(xy, 9, 2, byrow = T)
+  M <- matrix(xy, 9, 2, byrow = TRUE)
   r <- Binning2D(M, n = bins, xlim = range(x), ylim = range(y))
   expect_identical(r$z[k], 9)
   expect_identical(r$z[setdiff(1:63, k)], rep(0, 62))

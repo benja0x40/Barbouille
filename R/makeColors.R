@@ -36,7 +36,7 @@
 #'
 #' @param override
 #' logical determining if the transparency of below and above colors should
-#' override the provided alpha value(s) (default = T, yes).
+#' override the provided alpha value(s) (default = TRUE, yes).
 #'
 #' @param grp
 #' group memberships (default = none).
@@ -52,7 +52,7 @@
 #' @examples
 #'
 #' # Radial color gradients with two normally distributed random variables
-#' layout(matrix(1:4, 2, 2, byrow = T))
+#' layout(matrix(1:4, 2, 2, byrow = TRUE))
 #'
 #' x <- rnorm(2000)
 #' y <- rnorm(2000)
@@ -64,7 +64,7 @@
 #' clr.prm <- DefineColorMap(
 #'   c(0, 2), c("black", "white"), above = "red", range = c(0, 2.3)
 #' )
-#' clr <- MakeColors(z, parameters = clr.prm, alpha = alpha, override = F)
+#' clr <- MakeColors(z, parameters = clr.prm, alpha = alpha, override = FALSE)
 #' plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
 #' ColorLegend("topleft", parameters = clr.prm, cex = 0.8)
 #'
@@ -99,7 +99,7 @@
 #' )
 #' clr <- MakeColors(z, parameters = clr.prm)
 #' plot(x, y, xlim = c(-5, 5), ylim = c(-5, 5), pch = 20, col = clr)
-#' ColorLegend("topleft", parameters = clr.prm, cex = 0.8, log = T)
+#' ColorLegend("topleft", parameters = clr.prm, cex = 0.8, log = TRUE)
 # -----------------------------------------------------------------------------.
 #' @export
 MakeColors <- function(
@@ -115,7 +115,7 @@ MakeColors <- function(
   name       = "",
   parameters = NULL,
   alpha      = 1,
-  override   = T,
+  override   = TRUE,
   grp        = NULL,
   grp.prm    = NULL
   ) {
@@ -147,7 +147,7 @@ MakeColors <- function(
     parameters <- UpdateDefinition(parameters)
 
     # Expose color mapping parameters
-    # attach(parameters, warn.conflicts = F)
+    # attach(parameters, warn.conflicts = FALSE)
     # on.exit(detach(parameters))
     thresholds <- parameters$thresholds
     colors     <- parameters$colors

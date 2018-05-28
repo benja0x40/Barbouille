@@ -38,7 +38,7 @@
 #' label for the vertical axis (default = description of x).
 #'
 #' @param add
-#' add to existing plot (logical, default = F).
+#' add to existing plot (logical, default = FALSE).
 #'
 #' @param ...
 #' optional parameters forwarded to the \link{plot.default} function.
@@ -49,7 +49,7 @@
 #'
 #' # Angular groups with two normally distributed random variables
 #'
-#' layout(matrix(1:4, 2, 2, byrow = T))
+#' layout(matrix(1:4, 2, 2, byrow = TRUE))
 #'
 #' x <- rnorm(2000)
 #' y <- rnorm(2000)
@@ -84,7 +84,7 @@ ScatterPlot <- function(
   clr = NULL, clr.prm = NULL, alpha = 1.0,
   grp = NULL, grp.prm = NULL,
   xlab = "", ylab = "",
-  add = F,
+  add = FALSE,
   ...
 ) {
 

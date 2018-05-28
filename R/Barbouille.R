@@ -4,6 +4,13 @@
 #' @description
 #' List of global options for the Barbouille package
 # -----------------------------------------------------------------------------.
+#' @import methods
+#' @import stats
+#' @import grDevices
+#' @import graphics
+#' @import abind
+#' @import colorspace
+# -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
 DefaultOptions <- function() {
@@ -13,11 +20,11 @@ DefaultOptions <- function() {
     # path     = "",
     # name     = "img",
     # counter  = 0,
-    # relative = T,
+    # relative = TRUE,
     # type     = "png",
     #
-    # makedir  = T,
-    # rebuild  = F,
+    # makedir  = TRUE,
+    # rebuild  = FALSE,
     #
     # resolution = 300,
     # width      = 4,
@@ -37,7 +44,7 @@ DefaultOptions <- function() {
     fwhm       = 1/2,
     stencil    = "linear",
     scales     = "absolute",
-    ranking    = F,
+    ranking    = FALSE,
     render     = "prevalence",
     scoring    = "glf",
     gradient   = "bright",
@@ -46,14 +53,14 @@ DefaultOptions <- function() {
     layout     = "horizontal",
     spacing    = 0,
     grid       = grey(0.5, alpha = 0.5),
-    axes       = T,
-    box        = T,
-    names      = T,
+    axes       = TRUE,
+    box        = TRUE,
+    names      = TRUE,
     las        = 1,
     label      = NA,
 
     # Traceability
-    messages = T,
+    messages = TRUE,
     history  = "Barbouille"
   )
 }

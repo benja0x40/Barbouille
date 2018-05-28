@@ -6,8 +6,8 @@
 \alias{Variations}
 \title{SideBySide}
 \usage{
-SideBySide(M, rng = NULL, safe = F, skip = NULL, pops = NULL,
-  proportions = NULL, ordering = NULL, violin = F, colors = NULL,
+SideBySide(M, rng = NULL, safe = FALSE, skip = NULL, pops = NULL,
+  proportions = NULL, ordering = NULL, violin = FALSE, colors = NULL,
   main = NULL, ...)
 
 Distributions(...)

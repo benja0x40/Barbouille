@@ -97,7 +97,7 @@ TransformColors <- function(
 
   # Transparency management
   extract.alpha <- function(x) {
-    chk <- nchar(x) == 9 & grepl("^#[0-9A-F]+", x, perl = T)
+    chk <- nchar(x) == 9 & grepl("^#[0-9A-F]+", x, perl = TRUE)
     x[! chk] <- rgb(t(col2rgb(x)/255))[! chk]
     substr(x, 8, 9)
   }

@@ -5,7 +5,7 @@
 \title{ColorMapper (early prototype)}
 \usage{
 ColorMapper(H, shift = 30, gradient = "bright", saturation = 1,
-  contrast = 0.5, luminance = 1, greyscale = F)
+  contrast = 0.5, luminance = 1, greyscale = FALSE)
 }
 \description{
 ColorMapper (early prototype)

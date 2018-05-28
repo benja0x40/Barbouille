@@ -6,14 +6,14 @@
 \alias{PlotVariations}
 \title{PlotSideBySide}
 \usage{
-PlotSideBySide(X, rng = NULL, grp = NULL, safe = F, bins = 200,
+PlotSideBySide(X, rng = NULL, grp = NULL, safe = FALSE, bins = 200,
   uv = 50, bv = 50, mask = NULL, spray = NA, fwhm = NA,
   stencil = "linear", smoothing = NA, runs = NA, sampling = 5e+05,
-  densities = "global", proportions = NULL, ordering = NULL, violin = F,
-  colors = NA, gradient = "bright", saturation = 1, grp.colors = list(),
-  spacing = 0, grid = grey(0.5, alpha = 0.5), axis = T, box = T,
-  layout = c("horizontal", "vertical"), names = T, las = 1,
-  label = NULL, ...)
+  densities = "global", proportions = NULL, ordering = NULL,
+  violin = FALSE, colors = NA, gradient = "bright", saturation = 1,
+  grp.colors = list(), spacing = 0, grid = grey(0.5, alpha = 0.5),
+  axis = TRUE, box = TRUE, layout = c("horizontal", "vertical"),
+  names = TRUE, las = 1, label = NULL, ...)
 
 PlotDistributions(...)
 

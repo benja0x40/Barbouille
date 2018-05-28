@@ -4,9 +4,10 @@
 \alias{ScatterMaps}
 \title{Empirical distributions as scatter plots}
 \usage{
-ScatterMaps(M, rng = NULL, meandiff = F, safe = F, x = NULL, y = NULL,
-  f = NULL, xlab = NULL, ylab = NULL, maps = NULL, pops = NULL,
-  layers = c("pops", "maps"), colors = NULL, main = NULL, ...)
+ScatterMaps(M, rng = NULL, meandiff = FALSE, safe = FALSE, x = NULL,
+  y = NULL, f = NULL, xlab = NULL, ylab = NULL, maps = NULL,
+  pops = NULL, layers = c("pops", "maps"), colors = NULL, main = NULL,
+  ...)
 }
 \description{
 Empirical distributions as scatter plots

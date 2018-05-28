@@ -5,9 +5,9 @@
 \title{Legend for color maps}
 \usage{
 ColorLegend(pos, parameters, ticks = NULL, labels = NULL,
-  resolution = 100, log = F, xpd = F, size = c(40, 3), margin = 5,
-  horiz = F, tick.pos = 1, tick.size = 1.5, offset = 0.3, lwd = 1,
-  border = T, ...)
+  resolution = 100, log = FALSE, xpd = FALSE, size = c(40, 3),
+  margin = 5, horiz = FALSE, tick.pos = 1, tick.size = 1.5,
+  offset = 0.3, lwd = 1, border = TRUE, ...)
 }
 \arguments{
 \item{pos}{the legend location which can be specified using either a single keyword in
@@ -80,7 +80,7 @@ clrs    <- MakeColors(z, parameters = col.par)
 
 plot(x, y, xlim = c(-4.5, 4.5), ylim = c(-5, 4), pch = 20, col = clrs)
 ColorLegend(
-  "bottom", parameters = col.par, log = T, size = c(70, 3), horiz = T
+  "bottom", parameters = col.par, log = TRUE, size = c(70, 3), horiz = TRUE
 )
 }
 \seealso{

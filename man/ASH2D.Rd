@@ -5,7 +5,7 @@
 \title{Bivariate density estimation for given observations}
 \usage{
 ASH2D(V, data = NULL, n = c(200, 200), k = c(5, 5), rx = c(1.1, 1.1),
-  safe = T, interpolation = c("fields", "akima"), ...)
+  safe = TRUE, interpolation = c("fields", "akima"), ...)
 }
 \arguments{
 \item{V}{numeric matrix with 2 columns.}
@@ -18,7 +18,7 @@ ASH2D(V, data = NULL, n = c(200, 200), k = c(5, 5), rx = c(1.1, 1.1),
 
 \item{rx}{range expansion.}
 
-\item{safe}{logical (defautl = T, yes).}
+\item{safe}{logical (defautl = TRUE, yes).}
 
 \item{...}{optional argument (\code{kopt}) forwarded to the \link{ash2} function.}
 }
@@ -46,7 +46,7 @@ d2 <- ASH2D(V, data = V[g == 2, ], k = c(10, 10))
 
 # Preview of densities using projection on the x axis
 
-layout(matrix(1:4, 2, 2, byrow = T))
+layout(matrix(1:4, 2, 2, byrow = TRUE))
 
 ylim <- range(dt, d1, d2, d1 + d2)
 r <- BivariateDensity(
@@ -67,7 +67,7 @@ r <- BivariateDensity(
 o <- order(dt)
 r <- range(V)
 
-layout(matrix(1:4, 2, 2, byrow = T))
+layout(matrix(1:4, 2, 2, byrow = TRUE))
 par(pch = 20)
 
 EmptyPlot(xlim = r, ylim = r, main = "d1")

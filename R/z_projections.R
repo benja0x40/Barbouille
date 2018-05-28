@@ -33,7 +33,7 @@
 #'
 #'\dontrun{
 #'
-#' layout(matrix(1:8, 2, 4, byrow = T))
+#' layout(matrix(1:8, 2, 4, byrow = TRUE))
 #' par(pch = ".", col = grey(0, 0.2))
 #'
 #' lst <- c("uniform", "triangle", "cosine", "normal")
@@ -129,7 +129,7 @@ Atomize <- function(
 #' integer (default = 2).
 #'
 #' @param violin
-#' logical (default = F, no).
+#' logical (default = FALSE, no).
 #'
 #' @param vmode
 #' either "linear" (default) or "rank".
@@ -142,7 +142,7 @@ Atomize <- function(
 #' @export
 UnivariateProjection <- function(
   X, Y = NULL, grp = NULL, proportions = NULL, ordering = NULL, rounding = 2,
-  spray = "uniform", fwhm = 1/2, violin = F, vmode ="linear"
+  spray = "uniform", fwhm = 1/2, violin = FALSE, vmode ="linear"
 ) {
 
   # 2D (row, col) indices to 1D indices for a matrix with given number of rows
@@ -171,14 +171,14 @@ UnivariateProjection <- function(
 
   # Atomizeing factors (depends on group proportions)
   # TODO: add the total density as parameter to avoid recomputing it
-  # rsm <- Rfast::rowsums(X, parallel = T)
+  # rsm <- Rfast::rowsums(X, parallel = TRUE)
   rsm <- matrixStats::rowSums2(X)
   SPD <- matrix(1, n.obs, n.grp)
   if(n.grp > 1 & proportions == "static") {
     SPD <- matrix(1 / n.grp, n.obs, n.grp)
   }
   if(n.grp > 1 & proportions == "global") {
-    SPD <- matrix(g.pop, n.obs, n.grp, byrow = T) / sum(g.pop)
+    SPD <- matrix(g.pop, n.obs, n.grp, byrow = TRUE) / sum(g.pop)
   }
   # TODO: smooth proportions using 1D binning Y??? (may be redundant with ASH)
   if(n.grp > 1 & proportions == "local") {
@@ -190,7 +190,7 @@ UnivariateProjection <- function(
   if(n.grp > 1 & rounding > 0 & ! proportions %in% c("", "static")) {
     # SPD <- Rfast::Round(SPD, rounding)
     SPD <- round(SPD, rounding)
-    # tot <- Rfast::rowsums(SPD, parallel = T)
+    # tot <- Rfast::rowsums(SPD, parallel = TRUE)
     tot <- matrixStats::rowSums2(SPD)
     SPD <- SPD / tot
     SPD[which(tot == 0), ] <- 0

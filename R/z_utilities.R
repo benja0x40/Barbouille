@@ -19,7 +19,7 @@ FiniteValues <- function(x) {
   x <- is.finite(x)
 
   if(! is.null(dim(x))) {
-    # x <- Rfast::rowsums(x, parallel = T) == ncol(x)
+    # x <- Rfast::rowsums(x, parallel = TRUE) == ncol(x)
     x <- matrixStats::rowSums2(x) == ncol(x)
   }
 
@@ -139,7 +139,7 @@ colorize <- function(x, mode = NULL, clr.prm = NULL, ...) {
 #' As the name suggests...
 # -----------------------------------------------------------------------------.
 #' @param axes
-#' logical, show axes (default = T, yes)
+#' logical, show axes (default = TRUE, yes)
 #'
 #' @param xlab
 #' character, name of the horizontal axis (default = none).
@@ -154,7 +154,7 @@ colorize <- function(x, mode = NULL, clr.prm = NULL, ...) {
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-EmptyPlot <- function(axes = T, xlab = '', ylab = '', ...) {
+EmptyPlot <- function(axes = TRUE, xlab = '', ylab = '', ...) {
   # plot(0, 0, type='n', bty='n', xaxt='n', yaxt='n')
   graphics::plot.default(
     0, type = 'n', axes = axes, xlab = xlab, ylab = ylab, ...
@@ -250,7 +250,7 @@ SimulateData <- function(p, m, n = 10000) {
 #' numeric vector (default = NULL).
 #'
 #' @param symetric
-#' logical (default = F, no)
+#' logical (default = FALSE, no)
 #'
 #' @param spacing
 #' numeric.
@@ -263,7 +263,7 @@ SimulateData <- function(p, m, n = 10000) {
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-xylim <- function(x, y = NULL, symetric = F, spacing = 0, margin = 0) {
+xylim <- function(x, y = NULL, symetric = FALSE, spacing = 0, margin = 0) {
 
   if(is.null(y)) {
     y <- x[, 2]

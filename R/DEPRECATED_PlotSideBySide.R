@@ -121,15 +121,15 @@
 #' @keywords internal
 #' @export
 PlotSideBySide <- function(
-  X, rng = NULL, grp = NULL, safe = F,
+  X, rng = NULL, grp = NULL, safe = FALSE,
   bins = 200, uv = 50, bv = 50, mask = NULL,
   spray = NA, fwhm = NA, stencil = "linear", smoothing = NA,
   runs = NA, sampling = 5E5,
-  densities = "global", proportions = NULL, ordering = NULL, violin = F,
+  densities = "global", proportions = NULL, ordering = NULL, violin = FALSE,
   colors = NA, gradient = "bright", saturation = 1.0, grp.colors = list(),
-  spacing = 0, grid = grey(0.5, alpha = 0.5), axis = T, box = T,
+  spacing = 0, grid = grey(0.5, alpha = 0.5), axis = TRUE, box = TRUE,
   layout = c("horizontal", "vertical"),
-  names = T, las = 1, label = NULL, ...
+  names = TRUE, las = 1, label = NULL, ...
 ) {
 
   # TODO: make recursive to properly handle any level of detail
@@ -262,7 +262,7 @@ PlotSideBySide <- function(
         chk <- rep(grp == g, length.out = n.obs * runs$uv)
         r <- Binning2D(
           p[chk, ], n = c(uv, bins), k = smoothing$uv,
-          xlim = 0:1, ylim = rng, breaks = F, safe = T
+          xlim = 0:1, ylim = rng, breaks = FALSE, safe = TRUE
         )
         if(densities$uv == "relative") r <- S01(r)
         UVG[, uv_idx(1:uv, i), g] <- r
@@ -287,7 +287,7 @@ PlotSideBySide <- function(
           chk <- rep(grp == g, length.out = n.obs * runs$uv)
           r <- Binning2D(
             p[chk, ], n = c(bv, bins), k = smoothing$bv,
-            xlim = 0:1, ylim = rng, breaks = F, safe = T
+            xlim = 0:1, ylim = rng, breaks = FALSE, safe = TRUE
           )
           if(densities$bv == "relative") r <- S01(r)
           BVG[, bv_idx(1:bv, i), g] <- r
@@ -338,8 +338,8 @@ PlotSideBySide <- function(
     # Combine uv and bv densities (total)
     if(n.grp > 1) {
       # TODO: use aperm and colSums
-      # UVT <- Rfast::colsums(aperm(UVG, c(3, 1, 2)), parallel = T)
-      # BVT <- Rfast::colsums(aperm(BVG, c(3, 1, 2)), parallel = T)
+      # UVT <- Rfast::colsums(aperm(UVG, c(3, 1, 2)), parallel = TRUE)
+      # BVT <- Rfast::colsums(aperm(BVG, c(3, 1, 2)), parallel = TRUE)
       UVT <- matrixStats::colSums2(aperm(UVG, c(3, 1, 2)))
       BVT <- matrixStats::colSums2(aperm(BVG, c(3, 1, 2)))
       # UVT <- apply(UVG, MARGIN = c(1, 2), sum)
@@ -381,7 +381,7 @@ PlotSideBySide <- function(
     if(layout == "horizontal") {
       PlotImage(
         t(MAP), x, y, xlim = c(0, mcn) + 1/2, ylim = rng,
-        axes = F, xaxs = 'i', yaxs = 'i', xlab = "", ylab = label,
+        axes = FALSE, xaxs = 'i', yaxs = 'i', xlab = "", ylab = label,
         useRaster = raster, ...
       )
       abline(v = mrk, col = grid)
@@ -391,7 +391,7 @@ PlotSideBySide <- function(
     if(layout == "vertical") {
       PlotImage(
         MAP, y, x, ylim = c(mcn, 0) + 1/2, xlim = rng,
-        axes = F, xaxs = 'i', yaxs = 'i', ylab = "", xlab = label,
+        axes = FALSE, xaxs = 'i', yaxs = 'i', ylab = "", xlab = label,
         useRaster = raster, ...
       )
       abline(h = mrk, col = grid)
@@ -401,7 +401,7 @@ PlotSideBySide <- function(
     if(names) {
       lbl <- colnames(X)
       if(is.null(lbl)) lbl <- 1:n.var
-      axis(a, at = tck, labels = lbl, tick = F, las = las)
+      axis(a, at = tck, labels = lbl, tick = FALSE, las = las)
     }
     if(box) box()
   }

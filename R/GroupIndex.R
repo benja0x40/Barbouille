@@ -27,7 +27,7 @@
 #'
 #' # Simultaneous use of color mapping and group membership ////////////////////
 #'
-#' layout(matrix(1:4, 2, 2, byrow = T))
+#' layout(matrix(1:4, 2, 2, byrow = TRUE))
 #'
 #' # Test data /////////////////////////////////////////////////////////////////
 #' x <- runif(2000, -1, 1)
@@ -94,7 +94,7 @@ GroupIndex <- function(v, parameters) {
       colnames(v) <- parameters$id
     }
     if(is.null(colnames(v))) stop("Missing group identifiers")
-    v <- as.data.frame(v, stringsAsFactors = F)
+    v <- as.data.frame(v, stringsAsFactors = FALSE)
   }
   # Build indexes from a list or data.frame
   if(is.list(v) & n.v > 0) {

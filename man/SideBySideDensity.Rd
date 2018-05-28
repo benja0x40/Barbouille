@@ -5,9 +5,9 @@
 \title{Compact visualization of multiple empirical distributions}
 \usage{
 SideBySideDensity(m, nx = 25, ny = 200, method = "bin", jitter = "unif",
-  spacing = 0.2, smoothx = F, ash = list(m = c(3, 3)), xlim = NULL,
-  ylim = NULL, plot = T, mapper = NULL, parameters = NULL, global = F,
-  x.labels = T, las = 1, grid = T, ...)
+  spacing = 0.2, smoothx = FALSE, ash = list(m = c(3, 3)), xlim = NULL,
+  ylim = NULL, plot = TRUE, mapper = NULL, parameters = NULL,
+  global = FALSE, x.labels = TRUE, las = 1, grid = TRUE, ...)
 }
 \arguments{
 \item{m}{matrix of numerical values.}
@@ -28,7 +28,7 @@ from 0 (no spacing) to 1 (maximal spacing).
 By default \code{spacing = 0.2}.}
 
 \item{smoothx}{smoothing factor along the horizontal axis, in number of bins
-(defaut = F, disabled).}
+(defaut = FALSE, disabled).}
 
 \item{ash}{list of arguments passed to the \link{ash} function when using this method.
 (defaut = \code{list(m = c(3, 3))}).}
@@ -37,7 +37,7 @@ By default \code{spacing = 0.2}.}
 
 \item{ylim}{numeric range (default = NULL, automatic).}
 
-\item{plot}{logical (default = T, yes).}
+\item{plot}{logical (default = TRUE, yes).}
 
 \item{mapper}{color mapping function. If \code{NULL} \code{SideBySideDensity} uses
 the \link{colorize} function with \code{mode = "rank", color = NULL}.}
@@ -45,13 +45,13 @@ the \link{colorize} function with \code{mode = "rank", color = NULL}.}
 \item{parameters}{optional parameters passed to the color mapping function
 (default = NULL, none).}
 
-\item{global}{logical, use global color mapping (default = F, per column color mapping).}
+\item{global}{logical, use global color mapping (default = FALSE, per column color mapping).}
 
-\item{x.labels}{logical, show column labels (default = T).}
+\item{x.labels}{logical, show column labels (default = TRUE).}
 
 \item{las}{interger, controls the orientation of column labels (see \link{param}).}
 
-\item{grid}{logical, show grid (default = T).}
+\item{grid}{logical, show grid (default = TRUE).}
 
 \item{...}{optional arguments forwarded to the \link{EmptyPlot} function.}
 }

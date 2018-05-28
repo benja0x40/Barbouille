@@ -6,7 +6,7 @@
 \usage{
 UnivariateProjection(X, Y = NULL, grp = NULL, proportions = NULL,
   ordering = NULL, rounding = 2, spray = "uniform", fwhm = 1/2,
-  violin = F, vmode = "linear")
+  violin = FALSE, vmode = "linear")
 }
 \arguments{
 \item{X}{numeric vector or matrix with positive values, for instance representing
@@ -43,7 +43,7 @@ The default value is 0.5 and produces normally distributed noise values with
 a similar span as when using the triangle and cosine distributions which
 both have the same FWHM of 0.5 by design.}
 
-\item{violin}{logical (default = F, no).}
+\item{violin}{logical (default = FALSE, no).}
 
 \item{vmode}{either "linear" (default) or "rank".}
 }

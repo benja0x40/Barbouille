@@ -4,8 +4,8 @@
 \alias{ASH1D}
 \title{Univariate density estimation for given observations}
 \usage{
-ASH1D(x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1, safe = T,
-  ...)
+ASH1D(x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1,
+  safe = TRUE, ...)
 }
 \arguments{
 \item{x}{numeric vector.}
@@ -18,7 +18,7 @@ ASH1D(x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1, safe = T,
 
 \item{rx}{range expansion.}
 
-\item{safe}{logical (defautl = T, yes).}
+\item{safe}{logical (defautl = TRUE, yes).}
 
 \item{...}{optional argument (\code{kopt}) forwarded to the \link{ash1} function.}
 }

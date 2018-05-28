@@ -22,7 +22,7 @@
 # -----------------------------------------------------------------------------.
 #' @export
 ScatterMaps <- function(
-  M, rng = NULL, meandiff = F, safe = F,
+  M, rng = NULL, meandiff = FALSE, safe = FALSE,
   x = NULL, y = NULL, f = NULL, xlab = NULL, ylab = NULL,
   maps = NULL, pops = NULL, layers = c("pops", "maps"),
   colors = NULL, main = NULL, ...
@@ -119,7 +119,7 @@ ScatterMaps <- function(
       s <- s / nrow(r)
       r <- Binning2D(
         r, n = bins, k = smoothing, xlim = rng[, 1], ylim = rng[, 2],
-        breaks = F, safe = T
+        breaks = FALSE, safe = TRUE
       )
       if(scales == "absolute")  r <- r * s / n.obs
       if(scales == "relative")  r <- r * s / g.pop[g]
@@ -182,7 +182,7 @@ ScatterMaps <- function(
     }
     PlotImage(
       t(MAP), x, y, xlim = rng[, 1] + dx / 2, ylim = rng[, 2] + dy / 2,
-      axes = F, xaxs = 'i', yaxs = 'i', xlab = xl, ylab = yl,
+      axes = FALSE, xaxs = 'i', yaxs = 'i', xlab = xl, ylab = yl,
       useRaster = raster, main = main # ...
     )
     if(axes) {

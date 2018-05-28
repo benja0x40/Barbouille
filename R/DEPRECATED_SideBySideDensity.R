@@ -39,7 +39,7 @@
 #'
 #' @param smoothx
 #' smoothing factor along the horizontal axis, in number of bins
-#' (defaut = F, disabled).
+#' (defaut = FALSE, disabled).
 #'
 #' @param ash
 #' list of arguments passed to the \link{ash} function when using this method.
@@ -52,7 +52,7 @@
 #' numeric range (default = NULL, automatic).
 #'
 #' @param plot
-#' logical (default = T, yes).
+#' logical (default = TRUE, yes).
 #'
 #' @param mapper
 #' color mapping function. If \code{NULL} \code{SideBySideDensity} uses
@@ -63,16 +63,16 @@
 #' (default = NULL, none).
 #'
 #' @param global
-#' logical, use global color mapping (default = F, per column color mapping).
+#' logical, use global color mapping (default = FALSE, per column color mapping).
 #'
 #' @param x.labels
-#' logical, show column labels (default = T).
+#' logical, show column labels (default = TRUE).
 #'
 #' @param las
 #' interger, controls the orientation of column labels (see \link{param}).
 #'
 #' @param grid
-#' logical, show grid (default = T).
+#' logical, show grid (default = TRUE).
 #'
 #' @param ...
 #' optional arguments forwarded to the \link{EmptyPlot} function.
@@ -85,9 +85,9 @@
 #' @export
 SideBySideDensity <- function(
   m, nx = 25, ny = 200, method = "bin", jitter = "unif",
-  spacing = 0.2, smoothx = F, ash = list(m = c(3, 3)), xlim = NULL, ylim = NULL,
-  plot = T, mapper = NULL, parameters = NULL, global = F,
-  x.labels = T, las = 1, grid = T, ...
+  spacing = 0.2, smoothx = FALSE, ash = list(m = c(3, 3)), xlim = NULL, ylim = NULL,
+  plot = TRUE, mapper = NULL, parameters = NULL, global = FALSE,
+  x.labels = TRUE, las = 1, grid = TRUE, ...
 ) {
 
   # warning(
@@ -165,12 +165,12 @@ SideBySideDensity <- function(
     if(! is.null(xlim)) lim$x <- xlim
     if(! is.null(ylim)) lim$y <- ylim
 
-    EmptyPlot(xlim = lim$x, ylim = lim$y, axes = F, xaxs = "i", ...)
+    EmptyPlot(xlim = lim$x, ylim = lim$y, axes = FALSE, xaxs = "i", ...)
     if(grid) grid(nx = 0, ny = NULL)
     axis(2)
-    if(x.labels) axis(1, at = 1:nc, labels = colnames(m), las = las, tick = F)
+    if(x.labels) axis(1, at = 1:nc, labels = colnames(m), las = las, tick = FALSE)
 
-    PlotImage(cm, x = h$x, y = h$y, add = T)
+    PlotImage(cm, x = h$x, y = h$y, add = TRUE)
   }
 
   h

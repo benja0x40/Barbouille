@@ -123,7 +123,7 @@ test_that("ClonalArg", {
 #
 # -----------------------------------------------------------------------------.
 elm_eq <- function(x, v) {
-  all(sapply(x, all.equal, current = v, check.attributes = F))
+  all(sapply(x, all.equal, current = v, check.attributes = FALSE))
 }
 
 # =============================================================================.

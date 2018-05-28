@@ -4,7 +4,7 @@
 \alias{knn_musigma2}
 \title{Local mean and variance}
 \usage{
-knn_musigma2(x, k, i = NULL, d = NULL, smoothing = F)
+knn_musigma2(x, k, i = NULL, d = NULL, smoothing = FALSE)
 }
 \arguments{
 \item{x}{numeric matrix representing multivariate data where rows = observations
@@ -18,8 +18,8 @@ of estimated densities (larger k values = smoother).}
 \item{d}{precomputed matrix of nearest neighbor distances (optional).}
 
 \item{smoothing}{perfom a local average smoothing of
-the estimated density for \link{knn_density} (default = T)
-or the local variance for \link{knn_musigma2} (default = F).}
+the estimated density for \link{knn_density} (default = TRUE)
+or the local variance for \link{knn_musigma2} (default = FALSE).}
 }
 \value{
 \code{knn_musigma2} returns a list with the following elements:

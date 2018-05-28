@@ -1,14 +1,14 @@
 # =============================================================================.
 #' ColorMapper (early prototype)
 # -----------------------------------------------------------------------------.
-# layout(matrix(1:12, 3, 4, byrow = T))
+# layout(matrix(1:12, 3, 4, byrow = TRUE))
 # par(mar = c(0, 1, 0, 1))
 # for(H in seq(0, 360, length.out = 10)[1:9]) {
-#   EmptyPlot(axes = F)
+#   EmptyPlot(axes = FALSE)
 #   ColorLegend("tl", ColorMapper(H)$cmp, ticks = 0:4/4)
-#   ColorLegend("t", ColorMapper(H, greyscale = T)$cmp, ticks = 0:4/4)
+#   ColorLegend("t", ColorMapper(H, greyscale = TRUE)$cmp, ticks = 0:4/4)
 #   ColorLegend("bl", ColorMapper(H, gradient = "dark")$cmp, ticks = 0:4/4)
-#   ColorLegend("b", ColorMapper(H, gradient = "dark", greyscale = T)$cmp, ticks = 0:4/4)
+#   ColorLegend("b", ColorMapper(H, gradient = "dark", greyscale = TRUE)$cmp, ticks = 0:4/4)
 # }
 # EmptyPlot(axes = F)
 # ColorLegend("tl", ColorMapper("grey")$cmp, ticks = 0:4/4)
@@ -16,7 +16,7 @@
 #' @export
 ColorMapper <- function(
   H, shift = 30, gradient = "bright", saturation = 1.0, contrast = 0.5,
-  luminance = 1.0, greyscale = F
+  luminance = 1.0, greyscale = FALSE
 ) {
 
   # if(gradient == "multi") {

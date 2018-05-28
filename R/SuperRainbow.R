@@ -40,7 +40,7 @@ SuperRainbow <- function(
     h <- 360 * 0:n / n
     s.rng = 100 * s.rng
     l.rng = 100 * l.rng
-    f <- function(...) hcl(..., fixup = T)
+    f <- function(...) hcl(..., fixup = TRUE)
   }
   k <- length(mod)
   clr <- matrix("", n, k)

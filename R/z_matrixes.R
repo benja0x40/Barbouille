@@ -93,8 +93,8 @@ List2Dataframe <- function(x, lbl) {
 RowSampler <- function(M, min = 0, max = Inf) {
   n <- nrow(M)
   i <- 1:n
-  if(n < min) i <- sample.int(n, size = min, replace = T)
-  if(n > max) i <- sample.int(n, size = max, replace = F)
+  if(n < min) i <- sample.int(n, size = min, replace = TRUE)
+  if(n > max) i <- sample.int(n, size = max, replace = FALSE)
   i
 }
 
@@ -263,7 +263,7 @@ ReCombine <- function(M, f = NULL) {
     k <- which(! chk)
     M[, i] <- V
     k <- c(k[k < i], i, k[k > i])
-    M[, k, drop = F]
+    M[, k, drop = FALSE]
   }
 
   f <- ReferenceArgs(f, unique(colnames(M)))
@@ -285,7 +285,7 @@ ReCombine <- function(M, f = NULL) {
     # Multiple columns
     if(ncl >= 1) {
       if(is.function(f[[cln]])) { # User function
-        V <- apply(M[, chk, drop = F], MARGIN = 1, FUN = f[[cln]])
+        V <- apply(M[, chk, drop = FALSE], MARGIN = 1, FUN = f[[cln]])
         M <- replace(M, V, chk)
       } else {
         lst <- c("merge", "min", "max", "mean", "sd", "var", "median", "mad")
@@ -307,7 +307,7 @@ ReCombine <- function(M, f = NULL) {
               for(i in which(chk)) A <- rbind(A, replace(M, M[, i], chk))
               M <- A
             } else{
-              V <- M[, chk, drop = F]
+              V <- M[, chk, drop = FALSE]
               if(k == 1) V <- matrixStats::rowMins(V)
               if(k == 2) V <- matrixStats::rowMaxs(V)
               if(k == 3) V <- matrixStats::rowMeans2(V)

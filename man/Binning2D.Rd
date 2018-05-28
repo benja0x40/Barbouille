@@ -5,7 +5,7 @@
 \title{** RESERVED FOR INTERNAL USE **}
 \usage{
 Binning2D(V, z = NULL, n = 100, k = 0, xlim = NULL, ylim = NULL,
-  breaks = T, safe = F)
+  breaks = TRUE, safe = FALSE)
 }
 \arguments{
 \item{V}{matrix with two columns (1st = x, 2nd = y).}

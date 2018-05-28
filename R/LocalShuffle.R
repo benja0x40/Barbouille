@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-LocalShuffle <- function(x, k, is.sorted = F) {
+LocalShuffle <- function(x, k, is.sorted = FALSE) {
 
   if(! is.sorted) {
     o <- order(x)

@@ -97,7 +97,7 @@ DefineColorMap <- function(
   above      = NA,
   na         = NA,
   levels     = 256,
-  centered   = F,
+  centered   = FALSE,
   extra      = NULL,
   name       = ""
 ) {
@@ -113,9 +113,9 @@ DefineColorMap <- function(
     if(is.null(colors))     colors     <- c("white", "blue", "yellow", "red", "black", "pink")
     if(is.null(na))         na         <- "grey"
   }
-  if(grepl("^EXWEXS\\.", name, perl = T, ignore.case = T)) {
+  if(grepl("^EXWEXS\\.", name, perl = TRUE, ignore.case = TRUE)) {
     if(is.null(colors)) {
-      if(grepl("intensity$", name, perl = T, ignore.case = T)) {
+      if(grepl("intensity$", name, perl = TRUE, ignore.case = TRUE)) {
         colors     <- c(
           rgb(0.0, 0.0, 0.5),
           rgb(0.0, 1.0, 1.0),
@@ -127,7 +127,7 @@ DefineColorMap <- function(
           rgb(0.0, 0.0, 0.0)
         )
       }
-      if(grepl("variation$", name, perl = T, ignore.case = T)) {
+      if(grepl("variation$", name, perl = TRUE, ignore.case = TRUE)) {
         colors     <- c(
           rgb(0.0, 1.0, 1.0),
           rgb(0.0, 0.3, 0.5),
@@ -138,7 +138,7 @@ DefineColorMap <- function(
           rgb(1.0, 1.0, 0.0)
         )
       }
-      if(grepl("direction$", name, perl = T, ignore.case = T)) {
+      if(grepl("direction$", name, perl = TRUE, ignore.case = TRUE)) {
         colors     <- c(
           rgb(1.00, 0.0, 1.0),
           rgb(0.00, 0.5, 1.0),

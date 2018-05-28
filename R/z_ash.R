@@ -5,7 +5,7 @@
 #' ash::ash1 modified to use message() instead of regular text output
 # -----------------------------------------------------------------------------.
 #' @keywords internal
-ash1 <- function(bins, m = 5, kopt = c(2, 2), quiet = T){
+ash1 <- function(bins, m = 5, kopt = c(2, 2), quiet = TRUE){
   nc <- bins$nc
   ab <- bins$ab
   nbin <- length(nc)
@@ -33,7 +33,7 @@ ash1 <- function(bins, m = 5, kopt = c(2, 2), quiet = T){
 #' ash::ash2 modified to use message() instead of regular text output
 # -----------------------------------------------------------------------------.
 #' @keywords internal
-ash2 <- function(bins, m = c(5, 5), kopt = c(2, 2), quiet = T){
+ash2 <- function(bins, m = c(5, 5), kopt = c(2, 2), quiet = TRUE){
   center <- function(ab, k) {
     h <- diff(ab) / k
     list(seq(ab[1] + h / 2, by = h, length = k) )
@@ -88,7 +88,7 @@ ash2 <- function(bins, m = c(5, 5), kopt = c(2, 2), quiet = T){
 #' range expansion.
 #'
 #' @param safe
-#' logical (defautl = T, yes).
+#' logical (defautl = TRUE, yes).
 #'
 #' @param ...
 #' optional argument (\code{kopt}) forwarded to the \link{ash1} function.
@@ -132,7 +132,7 @@ ash2 <- function(bins, m = c(5, 5), kopt = c(2, 2), quiet = T){
 #' @keywords internal
 #' @export
 ASH1D <- function(
-  x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1, safe = T, ...
+  x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1, safe = TRUE, ...
 ) {
 
   # Initializations
@@ -189,7 +189,7 @@ ASH1D <- function(
 #' range expansion.
 #'
 #' @param safe
-#' logical (defautl = T, yes).
+#' logical (defautl = TRUE, yes).
 #'
 #' @param ...
 #' optional argument (\code{kopt}) forwarded to the \link{ash2} function.
@@ -215,7 +215,7 @@ ASH1D <- function(
 #'
 #' # Preview of densities using projection on the x axis
 #'
-#' layout(matrix(1:4, 2, 2, byrow = T))
+#' layout(matrix(1:4, 2, 2, byrow = TRUE))
 #'
 #' ylim <- range(dt, d1, d2, d1 + d2)
 #' r <- BivariateDensity(
@@ -236,7 +236,7 @@ ASH1D <- function(
 #' o <- order(dt)
 #' r <- range(V)
 #'
-#' layout(matrix(1:4, 2, 2, byrow = T))
+#' layout(matrix(1:4, 2, 2, byrow = TRUE))
 #' par(pch = 20)
 #'
 #' EmptyPlot(xlim = r, ylim = r, main = "d1")
@@ -255,7 +255,7 @@ ASH1D <- function(
 #' @keywords internal
 #' @export
 ASH2D <- function(
-  V, data = NULL, n = c(200, 200), k = c(5, 5), rx = c(1.1, 1.1), safe = T,
+  V, data = NULL, n = c(200, 200), k = c(5, 5), rx = c(1.1, 1.1), safe = TRUE,
   interpolation = c("fields", "akima"), ...
 ) {
 

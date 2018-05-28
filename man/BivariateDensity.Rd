@@ -5,7 +5,7 @@
 \title{Bivariate empirical distribution}
 \usage{
 BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
-  ylim = NULL, method = "bin", ash = list(m = c(5, 5)), plot = T,
+  ylim = NULL, method = "bin", ash = list(m = c(5, 5)), plot = TRUE,
   mapper = NULL, parameters = NULL, alpha = 1, xlab = NULL,
   ylab = NULL, ...)
 }
@@ -28,7 +28,7 @@ BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
 \item{ash}{list of arguments passed to the \link{ash} function when using this method.
 (defaut = \code{list(m = c(5, 5))}).}
 
-\item{plot}{logical (default = T, yes).}
+\item{plot}{logical (default = TRUE, yes).}
 
 \item{mapper}{color mapping function. If \code{NULL} \code{BivariateDensity} uses
 the \link{colorize} function with \code{mode = "01", color = "WB"}.}

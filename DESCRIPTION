@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille
-Version: 0.6.6
+Version: 0.6.7
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
@@ -14,20 +14,20 @@ License: GPL + file LICENSE
 Imports:
     methods,
     stats,
-    matrixStats,
     grDevices,
     graphics,
+    abind,
+    matrixStats,
     stringr,
     distr,
     triangle,
     ash,
     akima,
     fields,
-    caTools
+    caTools,
+    colorspace
 Depends:
     R (>= 3.4.0),
-    abind,
-    colorspace
 Suggests:
     devtools,
     roxygen2,

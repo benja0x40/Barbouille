@@ -94,14 +94,14 @@
 #'
 #' plot(x, y, xlim = c(-4.5, 4.5), ylim = c(-5, 4), pch = 20, col = clrs)
 #' ColorLegend(
-#'   "bottom", parameters = col.par, log = T, size = c(70, 3), horiz = T
+#'   "bottom", parameters = col.par, log = TRUE, size = c(70, 3), horiz = TRUE
 #' )
 # -----------------------------------------------------------------------------.
 #' @export
 ColorLegend <- function(
-  pos, parameters, ticks = NULL, labels = NULL, resolution = 100, log = F,
-  xpd = F, size = c(40, 3), margin = 5, horiz = F,
-  tick.pos = 1, tick.size = 1.5, offset = 0.3, lwd = 1, border = T, ...
+  pos, parameters, ticks = NULL, labels = NULL, resolution = 100, log = FALSE,
+  xpd = FALSE, size = c(40, 3), margin = 5, horiz = FALSE,
+  tick.pos = 1, tick.size = 1.5, offset = 0.3, lwd = 1, border = TRUE, ...
   ) {
 
   if(! is(parameters, "ColorParameters")) stop("Class of parameters is invalid")
@@ -117,13 +117,13 @@ ColorLegend <- function(
   if(xpd) {
     par(fig=c(0, 1, 0, 1), oma = c(0, 0, 0, 0), mar = c(0, 0, 0, 0), new = TRUE)
     EmptyPlot(
-      axes = F,
+      axes = FALSE,
       xlim = (1 + margin[1:2]/100) * c(-1, 1),
       ylim = (1 + margin[3:4]/100) * c(-1, 1),
       xaxs = "i", yaxs = "i"
     )
   } else {
-    par(usr = (1 + margin/100) * c(-1, 1, -1, 1), xlog = F, ylog = F)
+    par(usr = (1 + margin/100) * c(-1, 1, -1, 1), xlog = FALSE, ylog = FALSE)
   }
 
   # Extend range to show below and above colors

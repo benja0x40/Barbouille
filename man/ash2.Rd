@@ -4,7 +4,7 @@
 \alias{ash2}
 \title{** RESERVED FOR INTERNAL USE **}
 \usage{
-ash2(bins, m = c(5, 5), kopt = c(2, 2), quiet = T)
+ash2(bins, m = c(5, 5), kopt = c(2, 2), quiet = TRUE)
 }
 \description{
 ash::ash2 modified to use message() instead of regular text output

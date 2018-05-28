@@ -4,8 +4,8 @@
 \alias{knn_density}
 \title{knn density estimator}
 \usage{
-knn_density(x, k, data = NULL, i = NULL, d = NULL, smoothing = T,
-  sum2one = T)
+knn_density(x, k, data = NULL, i = NULL, d = NULL, smoothing = TRUE,
+  sum2one = TRUE)
 }
 \arguments{
 \item{x}{numeric matrix representing multivariate data where rows = observations
@@ -19,8 +19,8 @@ of estimated densities (larger k values = smoother).}
 \item{d}{precomputed matrix of nearest neighbor distances (optional).}
 
 \item{smoothing}{perfom a local average smoothing of
-the estimated density for \link{knn_density} (default = T)
-or the local variance for \link{knn_musigma2} (default = F).}
+the estimated density for \link{knn_density} (default = TRUE)
+or the local variance for \link{knn_musigma2} (default = FALSE).}
 
 \item{y}{numeric matrix representing multivariate data where rows = observations
 and columns = measurement conditions.}

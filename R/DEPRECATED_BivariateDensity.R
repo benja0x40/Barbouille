@@ -37,7 +37,7 @@
 #' (defaut = \code{list(m = c(5, 5))}).
 #'
 #' @param plot
-#' logical (default = T, yes).
+#' logical (default = TRUE, yes).
 #'
 #' @param mapper
 #' color mapping function. If \code{NULL} \code{BivariateDensity} uses
@@ -74,7 +74,7 @@
 BivariateDensity <- function(
   x, y = NULL, nx = 100, ny = nx, xlim = NULL, ylim = NULL,
   method = "bin", ash = list(m = c(5, 5)),
-  plot = T, mapper = NULL, parameters = NULL, alpha = 1.0,
+  plot = TRUE, mapper = NULL, parameters = NULL, alpha = 1.0,
   xlab = NULL, ylab = NULL, ...
 ) {
 

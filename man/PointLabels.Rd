@@ -6,7 +6,7 @@
 \usage{
 PointLabels(x, y, centroid.shift = c(0, 0), distance = 1,
   pts.offset = 0.1, txt.offset = 0.2, labels = NULL, col = "black",
-  plot = T, show.centroid = F, ...)
+  plot = TRUE, show.centroid = FALSE, ...)
 }
 \arguments{
 \item{x}{the x axis coordinate of points to be labelled.}
