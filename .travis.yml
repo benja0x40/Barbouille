@@ -12,6 +12,13 @@ branches:
 
 r_packages:
   - covr
+  - Rfast
+  - distr
+  - triangle
+  - ash
+  - akima
+  - fields
+  - caTools
 
 # r_github_packages:
 #   - jimhester/covr
