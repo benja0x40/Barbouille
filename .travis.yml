@@ -11,6 +11,9 @@ branches:
    - master
 
 r_packages:
+  - Rcpp
+  - RcppGSL
+  - RcppZiggurat
   - covr
   - Rfast
   - distr
