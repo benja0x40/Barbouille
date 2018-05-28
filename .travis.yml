@@ -11,17 +11,7 @@ branches:
    - master
 
 r_packages:
-  - Rcpp
-  - RcppGSL
-  - RcppZiggurat
   - covr
-  - Rfast
-  - distr
-  - triangle
-  - ash
-  - akima
-  - fields
-  - caTools
 
 # r_github_packages:
 #   - jimhester/covr

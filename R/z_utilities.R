@@ -19,7 +19,8 @@ FiniteValues <- function(x) {
   x <- is.finite(x)
 
   if(! is.null(dim(x))) {
-    x <- Rfast::rowsums(x, parallel = T) == ncol(x)
+    # x <- Rfast::rowsums(x, parallel = T) == ncol(x)
+    x <- matrixStats::rowSums2(x) == ncol(x)
   }
 
   x

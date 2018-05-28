@@ -94,7 +94,7 @@ CFG$paths <- list(
 
 CFG$images <- list(
 
-  build   = F,
+  build   = T,
   
   path    = "../images/vignettes/Parameters/",
   name    = "img",

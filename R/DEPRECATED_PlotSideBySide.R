@@ -340,8 +340,8 @@ PlotSideBySide <- function(
       # TODO: use aperm and colSums
       # UVT <- Rfast::colsums(aperm(UVG, c(3, 1, 2)), parallel = T)
       # BVT <- Rfast::colsums(aperm(BVG, c(3, 1, 2)), parallel = T)
-      UVT <- colSums(aperm(UVG, c(3, 1, 2)))
-      BVT <- colSums(aperm(BVG, c(3, 1, 2)))
+      UVT <- matrixStats::colSums2(aperm(UVG, c(3, 1, 2)))
+      BVT <- matrixStats::colSums2(aperm(BVG, c(3, 1, 2)))
       # UVT <- apply(UVG, MARGIN = c(1, 2), sum)
       # BVT <- apply(BVG, MARGIN = c(1, 2), sum)
     } else {

@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille
-Version: 0.6.2
+Version: 0.6.3
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
@@ -12,8 +12,6 @@ Description:
     distributions.
 License: GPL + file LICENSE
 Imports:
-    Rcpp,
-    Rfast,
     methods,
     stats,
     grDevices,

@@ -171,7 +171,8 @@ UnivariateProjection <- function(
 
   # Atomizeing factors (depends on group proportions)
   # TODO: add the total density as parameter to avoid recomputing it
-  rsm <- Rfast::rowsums(X, parallel = T)
+  # rsm <- Rfast::rowsums(X, parallel = T)
+  rsm <- matrixStats::rowSums2(X)
   SPD <- matrix(1, n.obs, n.grp)
   if(n.grp > 1 & proportions == "static") {
     SPD <- matrix(1 / n.grp, n.obs, n.grp)
@@ -187,8 +188,10 @@ UnivariateProjection <- function(
 
   # TODO: correct noisy variance of proportions when values are very low
   if(n.grp > 1 & rounding > 0 & ! proportions %in% c("", "static")) {
-    SPD <- Rfast::Round(SPD, rounding)
-    tot <- Rfast::rowsums(SPD, parallel = T)
+    # SPD <- Rfast::Round(SPD, rounding)
+    SPD <- round(SPD, rounding)
+    # tot <- Rfast::rowsums(SPD, parallel = T)
+    tot <- matrixStats::rowSums2(SPD)
     SPD <- SPD / tot
     SPD[which(tot == 0), ] <- 0
   }
