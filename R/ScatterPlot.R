@@ -76,6 +76,7 @@
 #' ScatterPlot(a, y, grp = grp, grp.prm = grp.prm, xlab = "a (rad)", ylab = "y")
 #' GroupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
 # -----------------------------------------------------------------------------.
+#' @keywords internal
 #' @export
 ScatterPlot <- function(
   x, y = NULL,

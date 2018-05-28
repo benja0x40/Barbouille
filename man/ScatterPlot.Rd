@@ -73,3 +73,4 @@ GroupLegend("br", grp.prm, xjust = 1, title = "angle from atan2")
   \link{DefineGroupStyles},
   \link{GroupLegend}
 }
+\keyword{internal}

@@ -88,3 +88,4 @@ GroupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
   \link{UpdateDefinition},
   \link{DefineColorMap}
 }
+\keyword{internal}

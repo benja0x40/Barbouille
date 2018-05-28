@@ -77,6 +77,7 @@
 #' )
 #' GroupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
+#' @keywords internal
 #' @export
 GroupLegend <- function(pos, parameters, N = NA, ...) {
 

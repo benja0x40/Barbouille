@@ -80,3 +80,4 @@ GroupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
   \link{GroupIndex},
   \link{ScatterPlot}
 }
+\keyword{internal}

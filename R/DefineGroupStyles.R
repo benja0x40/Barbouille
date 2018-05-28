@@ -83,6 +83,7 @@
 #' )
 #' GroupLegend("br", parameters = grp.prm, N = apply(grp, MAR = 2, FUN = sum))
 # -----------------------------------------------------------------------------.
+#' @keywords internal
 #' @export
 DefineGroupStyles <- function(ids, labels = NULL, colors = "",  ...) {
   if(missing(ids) & ! is.null(labels)) ids <- 1:length(labels)
