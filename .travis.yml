@@ -12,6 +12,8 @@ branches:
 
 r_packages:
   - covr
+  - knitr
+  - ggplot2
 
 # r_github_packages:
 #   - jimhester/covr

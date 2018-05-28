@@ -24,6 +24,7 @@
 #' \link{GroupIndex} returns an integer vector
 # -----------------------------------------------------------------------------.
 #' @examples
+#'
 #' # Simultaneous use of color mapping and group membership ////////////////////
 #'
 #' layout(matrix(1:4, 2, 2, byrow = T))

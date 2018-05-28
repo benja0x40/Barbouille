@@ -75,7 +75,6 @@ the first argument of this function).
 \examples{
 
 # Radial color gradients with two normally distributed random variables
-
 layout(matrix(1:4, 2, 2, byrow = T))
 
 x <- rnorm(2000)

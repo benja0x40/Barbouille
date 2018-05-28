@@ -58,6 +58,7 @@ of numeric values into colors. It can be used in combination with
 and easy to interpret color informations.
 }
 \examples{
+
 # Radial color gradient with two normally distributed random variables
 x <- rnorm(2000)
 y <- rnorm(2000)

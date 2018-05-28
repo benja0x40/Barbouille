@@ -41,6 +41,7 @@ TransformColors returns color mapping parameters with modified threshold
 colors or group style parameters with modified group-associated colors.
 }
 \examples{
+
 layout(matrix(1:4, 2, 2))
 
 col.prm <- DefineColorMap(c(1,101), c("purple", "yellow"), levels = 5)

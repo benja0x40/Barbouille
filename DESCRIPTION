@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille
-Version: 0.6.4
+Version: 0.6.5
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
@@ -14,9 +14,10 @@ License: GPL + file LICENSE
 Imports:
     methods,
     stats,
+    matrixStats,
     grDevices,
     graphics,
-    matrixStats,
+    stringr,
     distr,
     triangle,
     ash,

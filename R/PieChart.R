@@ -1,5 +1,5 @@
 # =============================================================================.
-#' A slightly improved version of the builtin graphics::pie function
+#' A slightly modified version of the graphics::pie function
 # -----------------------------------------------------------------------------.
 #' @seealso
 #'   \link{pie}

@@ -14,7 +14,7 @@
 #' ColorParameters and GroupParameters definition functions).
 #'
 #' @return
-#' \code{UpdateDefinition} returns the updated ColorParameters or
+#' \code{UpdateDefinition} returns the updated ColorParameters or a
 #' GroupParameters object.
 # -----------------------------------------------------------------------------.
 #' @export

@@ -28,8 +28,8 @@ a \code{data.frame} containing at least the following columns:
 Definition of GroupParameters
 }
 \examples{
-# Simultaneous use of color mapping and group membership ////////////////////
 
+# Simultaneous use of color mapping and group membership ////////////////////
 layout(matrix(1:4, 2, 2, byrow = T))
 
 # Test data /////////////////////////////////////////////////////////////////

@@ -14,7 +14,7 @@ UpdateDefinition(prm, ...)
 ColorParameters and GroupParameters definition functions).}
 }
 \value{
-\code{UpdateDefinition} returns the updated ColorParameters or
+\code{UpdateDefinition} returns the updated ColorParameters or a
 GroupParameters object.
 }
 \description{

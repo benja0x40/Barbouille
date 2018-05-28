@@ -21,6 +21,7 @@ these 3 possibilities.}
 This function is used internally by \link{ScatterPlot}.
 }
 \examples{
+
 # Simultaneous use of color mapping and group membership ////////////////////
 
 layout(matrix(1:4, 2, 2, byrow = T))

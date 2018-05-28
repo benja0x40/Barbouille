@@ -2,11 +2,11 @@
 % Please edit documentation in R/ColorMapper.R
 \name{ColorMapper}
 \alias{ColorMapper}
-\title{ColorMapper}
+\title{ColorMapper (early prototype)}
 \usage{
 ColorMapper(H, shift = 30, gradient = "bright", saturation = 1,
   contrast = 0.5, luminance = 1, greyscale = F)
 }
 \description{
-ColorMapper
+ColorMapper (early prototype)
 }

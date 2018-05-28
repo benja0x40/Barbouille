@@ -2,7 +2,7 @@
 % Please edit documentation in R/PieChart.R
 \name{PieChart}
 \alias{PieChart}
-\title{A slightly improved version of the builtin graphics::pie function}
+\title{A slightly modified version of the graphics::pie function}
 \usage{
 PieChart(x, labels = names(x), edges = 200, radius = 0.8, tcl = 1.05,
   lbs = 1.1, clockwise = FALSE, init.angle = if (clockwise) 90 else 0,
@@ -63,7 +63,7 @@ PieChart(x, labels = names(x), edges = 200, radius = 0.8, tcl = 1.05,
     \code{pie}.  They will affect the main title and labels only.}
 }
 \description{
-A slightly improved version of the builtin graphics::pie function
+A slightly modified version of the graphics::pie function
 }
 \references{
 \url{http://stackoverflow.com/questions/33259275/how-to-place-the-labels-further-from-pie-chart}

@@ -46,6 +46,7 @@
 #' input argument \code{v}.
 # -----------------------------------------------------------------------------.
 #' @examples
+#'
 #' layout(matrix(1:4, 2, 2))
 #'
 #' col.prm <- DefineColorMap(c(1,101), c("purple", "yellow"), levels = 5)

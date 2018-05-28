@@ -95,7 +95,7 @@ GroupLegend <- function(pos, parameters, N = NA, ...) {
   idx <- which(! is.na(N))
   if(length(idx) > 0) {
     if(length(N) != length(txt)) stop("Inconsistent number of elements")
-    txt <- str_pad(txt, width = max(nchar(txt)), side = "right", pad = " ")
+    txt <- stringr::str_pad(txt, width = max(nchar(txt)), side = "right", pad = " ")
     txt[idx] <- paste(txt[idx], " (N = ", as.character(N[idx]), ")", sep="")
   }
 

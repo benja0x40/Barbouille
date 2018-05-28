@@ -69,6 +69,7 @@ plot area (default = \code{1.5}).}
 ColorLegend draws a color legend according to given color mapping parameters.
 }
 \examples{
+
 # Radial color gradient with two normally distributed random variables
 x <- rnorm(2000)
 y <- rnorm(2000)

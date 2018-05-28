@@ -1,5 +1,5 @@
 # =============================================================================.
-#' A visually cleaned alternative to the builtin graphics::boxplot function
+#' A visually cleaned version of the graphics::boxplot function
 # -----------------------------------------------------------------------------.
 #' @param x
 #' numeric matrix or data.frame.

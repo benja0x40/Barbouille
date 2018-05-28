@@ -30,8 +30,8 @@
 #' \code{id}, \code{label}, \code{colors}.
 # -----------------------------------------------------------------------------.
 #' @examples
-#' # Simultaneous use of color mapping and group membership ////////////////////
 #'
+#' # Simultaneous use of color mapping and group membership ////////////////////
 #' layout(matrix(1:4, 2, 2, byrow = T))
 #'
 #' # Test data /////////////////////////////////////////////////////////////////

@@ -2,7 +2,7 @@
 % Please edit documentation in R/BoxPlot.R
 \name{BoxPlot}
 \alias{BoxPlot}
-\title{A visually cleaned alternative to the builtin graphics::boxplot function}
+\title{A visually cleaned version of the graphics::boxplot function}
 \usage{
 BoxPlot(x, whiskers = c(0.05, 0.25, 0.5, 0.75, 0.95), medpch = 20,
   medcex = 0.8, ...)
@@ -19,5 +19,5 @@ BoxPlot(x, whiskers = c(0.05, 0.25, 0.5, 0.75, 0.95), medpch = 20,
 \item{...}{optional arguments forwarded to the \link{bxp} function.}
 }
 \description{
-A visually cleaned alternative to the builtin graphics::boxplot function
+A visually cleaned version of the graphics::boxplot function
 }

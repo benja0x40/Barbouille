@@ -46,6 +46,7 @@
 #' @return NULL
 # -----------------------------------------------------------------------------.
 #' @examples
+#'
 #' # Angular groups with two normally distributed random variables
 #'
 #' layout(matrix(1:4, 2, 2, byrow = T))

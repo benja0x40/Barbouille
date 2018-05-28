@@ -36,6 +36,7 @@ See \link{GroupIndex} for documentation on how to specify group memeberships.}
 Scatter plots with color mapping and group highlighting
 }
 \examples{
+
 # Angular groups with two normally distributed random variables
 
 layout(matrix(1:4, 2, 2, byrow = T))

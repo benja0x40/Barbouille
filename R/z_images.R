@@ -20,7 +20,7 @@ mkdir <- function(x) {
 img_path <- function(img = NULL) {
   if(is.null(img)) img <- CFG$images$name
   nbr <- CFG$images$counter
-  img <- paste0(img, "_Fig", str_pad(nbr, width = 2, pad = "0"))
+  img <- paste0(img, "_Fig", stringr::str_pad(nbr, width = 2, pad = "0"))
   img <- paste0(CFG$images$path, img, ".png")
   img
 }
