@@ -20,7 +20,7 @@ ASH1D(x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1,
 
 \item{safe}{logical (defautl = TRUE, yes).}
 
-\item{...}{optional argument (\code{kopt}) forwarded to the \link{ash1} function.}
+\item{...}{optional argument (\code{kopt}) forwarded to the \link{bin1} function.}
 }
 \value{
 \code{ASH1D} returns a numeric vector with estimated densities.

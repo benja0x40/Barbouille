@@ -1,10 +1,11 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille
-Version: 0.6.7
+Version: 0.6.8
 Author: Benjamin Leblanc
 Contributors: Itys Comet
 Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
+BugReports: https://github.com/benja0x40/Barbouille/issues
 URL: https://github.com/benja0x40/Barbouille
 Description:
     A collection of plotting and color mapping functions built upon
@@ -13,6 +14,7 @@ Description:
 License: GPL + file LICENSE
 Imports:
     methods,
+    lazyeval,
     stats,
     grDevices,
     graphics,
@@ -27,7 +29,7 @@ Imports:
     caTools,
     colorspace
 Depends:
-    R (>= 3.4.0),
+    R (>= 3.5.0),
 Suggests:
     devtools,
     roxygen2,
@@ -42,6 +44,7 @@ Suggests:
     RColorBrewer,
     viridis,
     shades
+Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

@@ -21,6 +21,22 @@ test_that("v2m", {
   expect_equal(a, b)
 })
 
+# + AddByRow -------------------------------------------------------------------
+test_that("AddByRow", {
+  v <- 5:1
+  m <- matrix(1:50, 10, 5)
+  r <- t(t(m) + v)
+  expect_equal(AddByRow(m, v), r)
+})
+
+# + MulByRow -------------------------------------------------------------------
+test_that("MulByRow", {
+  v <- 5:1
+  m <- matrix(1:50, 10, 5)
+  r <- t(t(m) * v)
+  expect_equal(MulByRow(m, v), r)
+})
+
 # + RowSampler -----------------------------------------------------------------
 test_that("RowSampler", {
   M <- matrix(0, 10, 5)

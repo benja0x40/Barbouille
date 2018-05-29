@@ -25,7 +25,7 @@ BivariateDensity(x, y = NULL, nx = 100, ny = nx, xlim = NULL,
 \item{method}{either "bin" (default) or "ash" for hard or smoothed binning
 (see \link{ash2}).}
 
-\item{ash}{list of arguments passed to the \link{ash} function when using this method.
+\item{ash}{list of arguments passed to the \link{bin2} function when using ash method.
 (defaut = \code{list(m = c(5, 5))}).}
 
 \item{plot}{logical (default = TRUE, yes).}
@@ -60,7 +60,7 @@ h <- BivariateDensity(xy, method = "bin", parameters = list(mode = "rank"))
 h <- BivariateDensity(xy, method = "ash", parameters = list(mode = "rank"))
 }
 \seealso{
-\link{SideBySideDensity},
+\link{SideBySide},
   \link{colorize},
   \link{ColorLegend},
   \link{PlotImage}

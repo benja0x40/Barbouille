@@ -5,11 +5,15 @@
 #' List of global options for the Barbouille package
 # -----------------------------------------------------------------------------.
 #' @import methods
+#' @import lazyeval
 #' @import stats
 #' @import grDevices
 #' @import graphics
 #' @import abind
-#' @import colorspace
+#' @importFrom ash bin1 bin2
+#' @importFrom matrixStats colSums2 colMeans2 rowSums2 rowMeans2
+#' @importFrom stringr str_pad
+#' @importFrom colorspace coords hex RGB HSV
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export

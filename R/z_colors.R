@@ -155,7 +155,9 @@ ColorChannel <- function(x, k) {
 #' @keywords internal
 #' @export
 hsv2rgb <- function(x) {
-  x[, 1:3] <- coords(as(HSV(x[, 1], x[, 2], x[, 3]), "RGB"))
+  x[, 1:3] <- colorspace::coords(
+    as(colorspace::HSV(x[, 1], x[, 2], x[, 3]), "RGB")
+  )
   x
 }
 
@@ -180,7 +182,9 @@ hsv2rgb <- function(x) {
 #' @keywords internal
 #' @export
 rgb2hsv <- function(x) {
-  x[, 1:3] <- coords(as(RGB(x[,1], x[,2], x[,3]), "HSV"))
+  x[, 1:3] <- colorspace::coords(
+    as(colorspace::RGB(x[,1], x[,2], x[,3]), "HSV")
+  )
   x[, 1] <- (x[, 1] != 360) * x[, 1]
   x
 }

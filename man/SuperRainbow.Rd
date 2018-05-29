@@ -27,6 +27,6 @@ SuperRainbow(n, mod = c("-+", "++", "+-"), s.rng = c(0.6, 1),
 Presumably an improved rainbow color generator
 }
 \seealso{
-\link{DefinecolorMap},
+\link{DefineColorMap},
   \link{MakeColors}
 }

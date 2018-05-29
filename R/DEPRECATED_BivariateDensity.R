@@ -2,7 +2,7 @@
 #' Bivariate empirical distribution
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{SideBySideDensity},
+#'   \link{SideBySide},
 #'   \link{colorize},
 #'   \link{ColorLegend},
 #'   \link{PlotImage}
@@ -33,7 +33,7 @@
 #' (see \link{ash2}).
 #'
 #' @param ash
-#' list of arguments passed to the \link{ash} function when using this method.
+#' list of arguments passed to the \link{bin2} function when using ash method.
 #' (defaut = \code{list(m = c(5, 5))}).
 #'
 #' @param plot

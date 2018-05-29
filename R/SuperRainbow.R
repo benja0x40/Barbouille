@@ -2,7 +2,7 @@
 #' Presumably an improved rainbow color generator
 # -----------------------------------------------------------------------------.
 #' @seealso
-#'   \link{DefinecolorMap},
+#'   \link{DefineColorMap},
 #'   \link{MakeColors}
 # -----------------------------------------------------------------------------.
 #' @param n

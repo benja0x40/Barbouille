@@ -4,4 +4,10 @@
 Barbouille (alpha)
 ================================================================================
 
-This package is currently under development...
+This R package is under development...
+
+### Author
+
+Benjamin Leblanc |
+[GitHub](https://github.com/benja0x40) -
+[ResearchGate](https://www.researchgate.net/profile/Benjamin_Leblanc)

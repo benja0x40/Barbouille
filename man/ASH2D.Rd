@@ -20,7 +20,7 @@ ASH2D(V, data = NULL, n = c(200, 200), k = c(5, 5), rx = c(1.1, 1.1),
 
 \item{safe}{logical (defautl = TRUE, yes).}
 
-\item{...}{optional argument (\code{kopt}) forwarded to the \link{ash2} function.}
+\item{...}{optional argument (\code{kopt}) forwarded to the \link{bin2} function.}
 }
 \value{
 \code{ASH2D} returns a numeric vector with estimated densities.

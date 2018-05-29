@@ -116,7 +116,7 @@ TransformColors <- function(
 
     # Convert colors into HSV matrix
     x <- t(sapply(x, col2rgb) / 255)
-    x <- RGB(x[,1], x[,2], x[,3])
+    x <- colorspace::RGB(x[,1], x[,2], x[,3])
     x <- coords(as(x, "HSV"))
 
     no.grey <- x[,2] != 0 # lock hue and saturation for black, white and greys
@@ -130,8 +130,8 @@ TransformColors <- function(
     # Modify value to match the given range
     if(! is.null(V.range)) x[,3] <- match.range(x[,3], V.range)
 
-    x <- HSV(x[,1], x[,2], x[,3])
-    x <- hex(x)
+    x <- colorspace::HSV(x[,1], x[,2], x[,3])
+    x <- colorspace::hex(x)
 
     x <- restore.alpha(x, a)
     clr <- x
@@ -148,7 +148,7 @@ TransformColors <- function(
 
     # Convert colors into RGB matrix
     x <- t(sapply(x, col2rgb) / 255)
-    x <- RGB(x[,1], x[,2], x[,3])
+    x <- colorspace::RGB(x[,1], x[,2], x[,3])
     x <- coords(x)
 
     # Modify R, G, B values to match the given range
@@ -156,8 +156,8 @@ TransformColors <- function(
     if(! is.null(G.range)) x[,2] <- match.range(x[,2], G.range)
     if(! is.null(B.range)) x[,3] <- match.range(x[,3], B.range)
 
-    x <- RGB(x[,1], x[,2], x[,3])
-    x <- hex(x)
+    x <- colorspace::RGB(x[,1], x[,2], x[,3])
+    x <- colorspace::hex(x)
 
     x <- restore.alpha(x, a)
     clr <- x

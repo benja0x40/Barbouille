@@ -91,7 +91,7 @@ ash2 <- function(bins, m = c(5, 5), kopt = c(2, 2), quiet = TRUE){
 #' logical (defautl = TRUE, yes).
 #'
 #' @param ...
-#' optional argument (\code{kopt}) forwarded to the \link{ash1} function.
+#' optional argument (\code{kopt}) forwarded to the \link{bin1} function.
 #'
 #' @return
 #' \code{ASH1D} returns a numeric vector with estimated densities.
@@ -192,7 +192,7 @@ ASH1D <- function(
 #' logical (defautl = TRUE, yes).
 #'
 #' @param ...
-#' optional argument (\code{kopt}) forwarded to the \link{ash2} function.
+#' optional argument (\code{kopt}) forwarded to the \link{bin2} function.
 #'
 #' @return
 #' \code{ASH2D} returns a numeric vector with estimated densities.
