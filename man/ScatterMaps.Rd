@@ -9,6 +9,37 @@ ScatterMaps(M, rng = NULL, meandiff = FALSE, safe = FALSE, x = NULL,
   pops = NULL, layers = c("pops", "maps"), colors = NULL, main = NULL,
   ...)
 }
+\arguments{
+\item{M}{numeric matrix.}
+
+\item{rng}{numeric range.}
+
+\item{meandiff}{not yet implemented.}
+
+\item{safe}{logical.}
+
+\item{x}{matrix column(s).}
+
+\item{y}{matrix column(s).}
+
+\item{f}{combining function.}
+
+\item{xlab}{horizontal axis label.}
+
+\item{ylab}{vertical axis label.}
+
+\item{maps}{list.}
+
+\item{pops}{sub-populations.}
+
+\item{layers}{either 'pops' or 'maps'}
+
+\item{colors}{work in progress...}
+
+\item{main}{title.}
+
+\item{...}{optional parameters (see the \link{Barbouille} function).}
+}
 \description{
 Empirical distributions as scatter plots
 }

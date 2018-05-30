@@ -74,7 +74,7 @@ img_close <- function() {
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-mkimg <- function(x, Rmd = TRUE) {
+MkImg <- function(x, Rmd = TRUE) {
   img <- globalenv()$img
   img <- if(is.list(img)) do.call(img_open, img) else img_open(img)
   if(img$build) {

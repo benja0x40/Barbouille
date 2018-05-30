@@ -7,6 +7,22 @@
 ColorMapper(H, shift = 30, gradient = "bright", saturation = 1,
   contrast = 0.5, luminance = 1, greyscale = FALSE)
 }
+\arguments{
+\item{H}{color or hue value.}
+
+\item{shift}{numeric hue shift in [0; 360]}
+
+\item{gradient}{keyword}
+
+\item{saturation}{numeric saturation in [0; 1]}
+
+\item{contrast}{numeric contrast in [0; 1]}
+
+\item{luminance}{numeric luminance}
+
+\item{greyscale}{logical}
+}
 \description{
 ColorMapper (early prototype)
 }
+\keyword{internal}

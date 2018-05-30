@@ -13,6 +13,28 @@
 # EmptyPlot(axes = F)
 # ColorLegend("tl", ColorMapper("grey")$cmp, ticks = 0:4/4)
 # -----------------------------------------------------------------------------.
+#' @param H
+#' color or hue value.
+#'
+#' @param shift
+#' numeric hue shift in [0; 360]
+#'
+#' @param gradient
+#' keyword
+#'
+#' @param saturation
+#' numeric saturation in [0; 1]
+#'
+#' @param contrast
+#' numeric contrast in [0; 1]
+#'
+#' @param luminance
+#' numeric luminance
+#'
+#' @param greyscale
+#' logical
+# -----------------------------------------------------------------------------.
+#' @keywords internal
 #' @export
 ColorMapper <- function(
   H, shift = 30, gradient = "bright", saturation = 1.0, contrast = 0.5,
@@ -112,7 +134,7 @@ ColorMapper <- function(
     if(is.character(H)) {
       if(H[1] == "grey") {
         H <- 0
-        greyscale <- T
+        greyscale <- TRUE
       } else {
         H <- R2hsv(H)[, 1]
       }

@@ -10,6 +10,7 @@
 #' @import grDevices
 #' @import graphics
 #' @import abind
+#' @importFrom triangle rtriangle
 #' @importFrom ash bin1 bin2
 #' @importFrom matrixStats colSums2 colMeans2 rowSums2 rowMeans2
 #' @importFrom stringr str_pad

@@ -8,6 +8,39 @@
 #' @inheritParams BivariateProjection
 #' @inheritParams RenderLayers
 # -----------------------------------------------------------------------------.
+#' @param M
+#' numeric matrix.
+#'
+#' @param rng
+#' numeric range.
+#'
+#' @param safe
+#' logical.
+#'
+#' @param skip
+#' column indices.
+#'
+#' @param pops
+#' sub-populations.
+#'
+#' @param proportions
+#' TODO: documentation
+#'
+#' @param ordering
+#' TODO: documentation
+#'
+#' @param violin
+#' logical.
+#'
+#' @param colors
+#' work in progress...
+#'
+#' @param main
+#' title.
+#'
+#' @param ...
+#' optional parameters (see the \link{Barbouille} function).
+# -----------------------------------------------------------------------------.
 # extend
 # bins
 # db

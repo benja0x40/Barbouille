@@ -14,6 +14,29 @@ Distributions(...)
 
 Variations(...)
 }
+\arguments{
+\item{M}{numeric matrix.}
+
+\item{rng}{numeric range.}
+
+\item{safe}{logical.}
+
+\item{skip}{column indices.}
+
+\item{pops}{sub-populations.}
+
+\item{proportions}{TODO: documentation}
+
+\item{ordering}{TODO: documentation}
+
+\item{violin}{logical.}
+
+\item{colors}{work in progress...}
+
+\item{main}{title.}
+
+\item{...}{optional parameters (see the \link{Barbouille} function).}
+}
 \description{
 SideBySide
 }

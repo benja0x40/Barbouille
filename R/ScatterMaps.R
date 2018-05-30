@@ -6,6 +6,51 @@
 # -----------------------------------------------------------------------------.
 #' @inheritParams RenderLayers
 # -----------------------------------------------------------------------------.
+#' @param M
+#' numeric matrix.
+#'
+#' @param rng
+#' numeric range.
+#'
+#' @param meandiff
+#' not yet implemented.
+#'
+#' @param safe
+#' logical.
+#'
+#' @param x
+#' matrix column(s).
+#'
+#' @param y
+#' matrix column(s).
+#'
+#' @param f
+#' combining function.
+#'
+#' @param xlab
+#' horizontal axis label.
+#'
+#' @param ylab
+#' vertical axis label.
+#'
+#' @param maps
+#' list.
+#'
+#' @param pops
+#' sub-populations.
+#'
+#' @param layers
+#' either 'pops' or 'maps'
+#'
+#' @param colors
+#' work in progress...
+#'
+#' @param main
+#' title.
+#'
+#' @param ...
+#' optional parameters (see the \link{Barbouille} function).
+# -----------------------------------------------------------------------------.
 # extend
 # bins
 # smoothing
