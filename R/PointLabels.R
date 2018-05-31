@@ -38,11 +38,11 @@
 #'
 #' @param plot
 #' logical activating the drawing of text labels and arrows
-#' (default = \code{T}).
+#' (default = \code{TRUE}).
 #'
 #' @param show.centroid
 #' logical activating the visualization of the focus point of labels and
-#' arrows (default = \code{F}).
+#' arrows (default = \code{FALSE}).
 #'
 #' @param ...
 #' optional arguments forwarded to the \link{text} function.

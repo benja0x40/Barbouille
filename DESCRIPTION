@@ -1,17 +1,21 @@
 Package: Barbouille
 Type: Package
 Title: Barbouille
-Version: 0.6.8.1
-Author: Benjamin Leblanc
+Version: 0.6.9
+Authors@R:
+    person(
+      "Benjamin", "Leblanc",
+      email = "benjaminolivierleblanc@gmail.com",
+      role = c("aut", "cre")
+    )
 Contributors: Itys Comet
-Maintainer: Benjamin Leblanc <benjaminolivierleblanc@gmail.com>
 BugReports: https://github.com/benja0x40/Barbouille/issues
 URL: https://github.com/benja0x40/Barbouille
 Description:
     A collection of plotting and color mapping functions built upon
     base R graphics and partly dedicated to the representation of empirical
     distributions.
-License: GPL + file LICENSE
+License: GPL-3
 Imports:
     methods,
     lazyeval,
@@ -27,14 +31,15 @@ Imports:
     akima,
     fields,
     caTools,
-    colorspace
+    colorspace,
+    knitr,
+    ggplot2
 Depends:
     R (>= 3.5.0),
 Suggests:
     devtools,
     roxygen2,
     testthat,
-    knitr,
     rmarkdown,
     covr,
     colorscience,

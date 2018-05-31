@@ -26,7 +26,7 @@ LocalShuffle <- function(x, k, is.sorted = FALSE) {
   k <- max(1, min(k, n))
 
   r <- rep(0, n)
-  a <- rep(T, n)
+  a <- rep(TRUE, n)
   for(i in 1:n) {
     if(a[i]) {
       j <- min(n, i + k - 1)
@@ -36,7 +36,7 @@ LocalShuffle <- function(x, k, is.sorted = FALSE) {
         s <- i + s - 1
         r[i] <- x[s]
         r[s] <- x[i]
-        a[s] <- F
+        a[s] <- FALSE
       }
     }
   }

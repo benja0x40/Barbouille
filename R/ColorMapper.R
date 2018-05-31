@@ -10,7 +10,7 @@
 #   ColorLegend("bl", ColorMapper(H, gradient = "dark")$cmp, ticks = 0:4/4)
 #   ColorLegend("b", ColorMapper(H, gradient = "dark", greyscale = TRUE)$cmp, ticks = 0:4/4)
 # }
-# EmptyPlot(axes = F)
+# EmptyPlot(axes = FALSE)
 # ColorLegend("tl", ColorMapper("grey")$cmp, ticks = 0:4/4)
 # -----------------------------------------------------------------------------.
 #' @param H
@@ -150,7 +150,7 @@ ColorMapper <- function(
       g[protect] <- mkv(g[protect], gradient, shift, contrast)
 
       g <- c(grey(1.0), g)
-      protect <- c(T, protect)
+      protect <- c(TRUE, protect)
 
       q <- c(0.0, 0.01, 0.05, 0.25, 0.50, 0.80, 0.95, 1.0 + .Machine$double.eps)
 

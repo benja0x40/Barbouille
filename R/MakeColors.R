@@ -172,7 +172,7 @@ MakeColors <- function(
     na.chk <- is.na(v)
     na.idx <- which(na.chk)
     if(sum(na.chk) == 0) {
-      na.chk <- F
+      na.chk <- FALSE
       na.idx <- integer(0)
     }
 

@@ -71,7 +71,7 @@ test_that("MetaSelect", {
   )
   rownames(meta) <- apply(meta, 1, paste, collapse = "")
 
-  v <- list(u = rownames(meta)[c(T, F)], v = rownames(meta)[c(F, T)])
+  v <- list(u = rownames(meta)[c(TRUE, FALSE)], v = rownames(meta)[c(FALSE, TRUE)])
   r <- MetaSelect(meta, cols = v)
   expect_identical(r, v)
 

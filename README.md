@@ -4,7 +4,7 @@
 Barbouille (alpha)
 ================================================================================
 
-This R package is under development...
+This R package is under development.
 
 ### Author
 

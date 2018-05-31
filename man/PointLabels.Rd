@@ -28,10 +28,10 @@ arrows.}
 \item{col}{vector of colors for text labels and arrows (default = \code{"black"}).}
 
 \item{plot}{logical activating the drawing of text labels and arrows
-(default = \code{T}).}
+(default = \code{TRUE}).}
 
 \item{show.centroid}{logical activating the visualization of the focus point of labels and
-arrows (default = \code{F}).}
+arrows (default = \code{FALSE}).}
 
 \item{...}{optional arguments forwarded to the \link{text} function.}
 }

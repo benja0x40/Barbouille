@@ -51,7 +51,7 @@ img_open <- function(
   if(build | ! file.exists(img)) {
     png(img, width = w, height = h, units = u, res = r)
     do.call(par, p)
-    build <- T
+    build <- TRUE
   } else{
     msg <- "[passing]"
   }
@@ -70,7 +70,13 @@ img_close <- function() {
 }
 
 # =============================================================================.
-#
+#' Generate an image file
+# -----------------------------------------------------------------------------.
+#' @param x
+#' R expression.
+#'
+#' @param Rmd
+#' logical.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -87,4 +93,3 @@ MkImg <- function(x, Rmd = TRUE) {
   }
   if(Rmd) include_graphics(img$path)
 }
-

@@ -4,7 +4,7 @@
 \alias{DefaultArgs}
 \title{** RESERVED FOR INTERNAL USE **}
 \usage{
-DefaultArgs(default, ignore = NULL, from = NULL, to = NULL, dots = NULL)
+DefaultArgs(default, ignore = NULL, from = NULL, to = NULL)
 }
 \description{
 Provide default values to unspecified arguments

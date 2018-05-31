@@ -94,7 +94,7 @@ DefineGroupStyles <- function(ids, labels = NULL, colors = "",  ...) {
     id     = ids,
     label  = labels,
     colors = colors,
-    stringsAsFactors = F
+    stringsAsFactors = FALSE
   )
   lst <- names(par())
   parameters <- list(...)

@@ -4,7 +4,7 @@ context("utilities")
 # + FiniteValues ---------------------------------------------------------------
 test_that("FiniteValues", {
   tst <- log(c(0, NA, 1, Inf))
-  res <- c(F, F, T, F)
+  res <- c(FALSE, FALSE, TRUE, FALSE)
   expect_equal(FiniteValues(tst), res)
   expect_equal(FiniteValues(cbind(1, tst)), res)
   expect_equal(FiniteValues(cbind(tst, 1)), res)

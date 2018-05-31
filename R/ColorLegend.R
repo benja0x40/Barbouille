@@ -33,7 +33,7 @@
 #'
 #' @param log
 #' logical. If \code{TRUE}, the color legend is represented in log scale
-#' (default = \code{F}).
+#' (default = \code{FALSE}).
 #'
 #' @param xpd
 #' logical.
@@ -55,7 +55,7 @@
 #' @param horiz
 #' logical controlling the legend layout.
 #' If \code{TRUE} the color legend spans horizontally from the given location,
-#' and vertically otherwise (default = \code{F}, vertical).
+#' and vertically otherwise (default = \code{FALSE}, vertical).
 #'
 #' @param tick.pos
 #' relative location of graduations, which is indicated by a value of \code{1}
@@ -74,7 +74,7 @@
 #'
 #' @param border
 #' logical activating the drawing of black borders around the color scale
-#' (default = \code{T}).
+#' (default = \code{TRUE}).
 #'
 #' @param ...
 #' optional parameters forwarded to the \link{text} function.

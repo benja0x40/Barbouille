@@ -29,7 +29,7 @@ or the corresponding index
 represented color gradients (default = \code{100}).}
 
 \item{log}{logical. If \code{TRUE}, the color legend is represented in log scale
-(default = \code{F}).}
+(default = \code{FALSE}).}
 
 \item{xpd}{logical.
 If FALSE, the legend position is relative to the plot region (default).
@@ -47,7 +47,7 @@ of the plot area and expressed in percentage of its dimensions
 
 \item{horiz}{logical controlling the legend layout.
 If \code{TRUE} the color legend spans horizontally from the given location,
-and vertically otherwise (default = \code{F}, vertical).}
+and vertically otherwise (default = \code{FALSE}, vertical).}
 
 \item{tick.pos}{relative location of graduations, which is indicated by a value of \code{1}
 or \code{-1} for a location to the right/above or to the left/below
@@ -61,7 +61,7 @@ plot area (default = \code{1.5}).}
 \item{lwd}{line width for tick marks and color scale borders.}
 
 \item{border}{logical activating the drawing of black borders around the color scale
-(default = \code{T}).}
+(default = \code{TRUE}).}
 
 \item{...}{optional parameters forwarded to the \link{text} function.}
 }

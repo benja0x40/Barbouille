@@ -8,9 +8,7 @@
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
-DefaultArgs <- function(
-  default, ignore = NULL, from = NULL, to = NULL, dots = NULL
-) {
+DefaultArgs <- function(default, ignore = NULL, from = NULL, to = NULL) {
 
   lst <- names(default)
 

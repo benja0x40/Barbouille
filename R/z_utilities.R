@@ -427,7 +427,7 @@ resolve.legend.position <- function(pos) {
   p <- c(-1, 0, 1)
   p <- data.frame(
     id = c("bl", "b", "br", "l", "c", "r", "tl", "t", "tr"),
-    name = "", x = rep(p, 3), y = p[gl(3, 3)], stringsAsFactors = F
+    name = "", x = rep(p, 3), y = p[gl(3, 3)], stringsAsFactors = FALSE
   )
   p$name <- c(
     "bottomleft", "bottom", "bottomright", "left", "center", "right",

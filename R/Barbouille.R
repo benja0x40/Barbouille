@@ -7,14 +7,16 @@
 #' @import methods
 #' @import lazyeval
 #' @import stats
+#' @import abind
 #' @import grDevices
 #' @import graphics
-#' @import abind
+#' @import ggplot2
 #' @importFrom triangle rtriangle
 #' @importFrom ash bin1 bin2
 #' @importFrom matrixStats colSums2 colMeans2 rowSums2 rowMeans2
 #' @importFrom stringr str_pad
-#' @importFrom colorspace coords hex RGB HSV
+#' @importFrom colorspace coords hex RGB HSV heat_hcl desaturate
+#' @importFrom knitr include_graphics
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
