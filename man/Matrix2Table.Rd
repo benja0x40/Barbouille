@@ -7,6 +7,6 @@
 Matrix2Table(X, grp = NULL)
 }
 \description{
-** RESERVED FOR INTERNAL USE **
+Convert a multi-column numeric matrix into data.frame with two columns.
 }
 \keyword{internal}

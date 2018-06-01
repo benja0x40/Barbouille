@@ -3,6 +3,11 @@
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
+#' @description
+#' Convert matrix indices into vector indices such that:
+#'
+#' x <- m2v(i, j) => M[i, j] = M[x] for each pair of indices
+# -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
 m2v <- function(i, j, nrow) {
@@ -11,6 +16,11 @@ m2v <- function(i, j, nrow) {
 
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
+#' Convert vector indices into matrix indices such that:
+#'
+#' ij <- v2m(x) => M[x] = M[ij[, 1], ij[, 2]] for each pair of indices
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -22,9 +32,11 @@ v2m <- function(x, nrow) {
   x
 }
 
-
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
+#' Add a column vector to a numeric matrix.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -34,6 +46,9 @@ AddByRow <- function(m, v) {
 
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
+#' Multiply a numeric matrix by a column vector.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -46,45 +61,8 @@ MulByRow <- function(m, v) {
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
-#' @keywords internal
-#' @export
-Matrix2Table <- function(X, grp = NULL) {
-  tbl <- data.frame(
-    X   = as.vector(X),
-    id  = gl(ncol(X), nrow(X), labels = colnames(X))
-  )
-  if(! is.null(grp)) tbl$grp <- grp
-  tbl
-}
-
-# =============================================================================.
-#' ** RESERVED FOR INTERNAL USE **
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-#' @export
-List2Dataframe <- function(x, lbl) {
-  nc <- length(lbl)
-  nx <- length(x)
-  nr <- nx / nc
-  d <- list()
-
-  for(k in lbl) {
-    j <- match(k, lbl)
-    d[[k]] <- unlist(x[(1:nr - 1) * nc + j])
-  }
-  d <- do.call(data.frame, d)
-  colnames(d) <- lbl
-  d
-}
-
-# =============================================================================.
-#' ** RESERVED FOR INTERNAL USE **
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{ExtractSelection}
-# -----------------------------------------------------------------------------.
 #' @description
-#' Random sampling of row indices
+#' Random sampling of row indices.
 #'
 #' @param M
 #' matrix.
@@ -111,12 +89,8 @@ RowSampler <- function(M, min = 0, max = Inf) {
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{ExtractSelection},
-#'   \link{ReCombine}
-# -----------------------------------------------------------------------------.
 #' @description
-#' Find column names from associated metadata
+#' Find column names from associated metadata.
 #'
 #' @param meta
 #' data.frame.
@@ -159,12 +133,8 @@ MetaSelect <- function(meta, cols, M = NULL) {
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{ReCombine},
-#'   \link{MetaSelect}
-# -----------------------------------------------------------------------------.
 #' @description
-#' Extract and rename matrix columns
+#' Extract and rename matrix columns.
 #'
 #' @param M
 #' matrix.
@@ -236,12 +206,8 @@ ExtractSelection <- function(M, cols, rows = NULL, meta = NULL) {
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{ExtractSelection},
-#'   \link{MetaSelect}
-# -----------------------------------------------------------------------------.
 #' @description
-#' Combine matrix columns
+#' Combine matrix columns.
 #'
 #' @param M
 #' numeric matrix.
@@ -334,4 +300,46 @@ ReCombine <- function(M, f = NULL) {
   }
 
   M
+}
+
+# NOT USED #####################################################################
+
+# =============================================================================.
+#' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
+#' Convert a multi-column numeric matrix into data.frame with two columns.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+Matrix2Table <- function(X, grp = NULL) {
+  tbl <- data.frame(
+    x   = as.vector(X),
+    id  = gl(ncol(X), nrow(X), labels = colnames(X))
+  )
+  if(! is.null(grp)) tbl$grp <- grp
+  tbl
+}
+
+# =============================================================================.
+#' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
+#' Convert a list into a data.frame.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+List2Dataframe <- function(x, lbl) {
+  nc <- length(lbl)
+  nx <- length(x)
+  nr <- nx / nc
+  d <- list()
+
+  for(k in lbl) {
+    j <- match(k, lbl)
+    d[[k]] <- unlist(x[(1:nr - 1) * nc + j])
+  }
+  d <- do.call(data.frame, d)
+  colnames(d) <- lbl
+  d
 }

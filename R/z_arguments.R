@@ -1,10 +1,10 @@
-# LittleThumb ##################################################################
+# COMMON #######################################################################
 
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
 #' @description
-#' Provide default values to unspecified arguments
+#' Provide default values to unspecified arguments.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -23,7 +23,7 @@ DefaultArgs <- function(default, ignore = NULL, from = NULL, to = NULL) {
   lst <- setdiff(lst, ignore)
 
   for(a in lst) {
-    if(! (is.null(from[[a]]) | identical(from, to))) {
+    if(is.null(to[[a]]) & ! (is.null(from[[a]]) | identical(from, to))) {
       to[[a]] <- from[[a]]
     }
     if(is.null(to[[a]]) & ! is.null(default[[a]])) {
@@ -36,7 +36,28 @@ DefaultArgs <- function(default, ignore = NULL, from = NULL, to = NULL) {
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
 #' @description
-#' Standardize the value of clonal arguments
+#' Standardize the length of vector arguments.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+VectorArgs <- function(lst, from = NULL, size = NULL) {
+
+  if(is.null(from)) from <- parent.frame()
+  if(is.null(size)) {
+    size <- 0
+    for(x in lst) size <- max(size, length(from[[x]]))
+  }
+
+  for(x in lst) from[[x]] <- rep(from[[x]], length.out = size)
+
+  if(! is.environment(from)) from
+}
+
+# =============================================================================.
+#' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
+#' Standardize the value of clonal arguments.
 # -----------------------------------------------------------------------------.
 #' @keywords internal
 #' @export
@@ -61,12 +82,6 @@ ClonalArg <- function(u, a, d) { # user value, arg names, default value
 
 # =============================================================================.
 #' Compose default atomic values merged with user values
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{ReferenceArgs},
-#'   \link{ComposeArgs},
-#'   \link{AssignArgs},
-#'   \link{FormatVectors}
 # -----------------------------------------------------------------------------.
 #' @param u
 #' user argument values.
@@ -110,12 +125,6 @@ AtomicArgs <- function(u, a) {
 # =============================================================================.
 #' Compose empty references merged with user values
 # -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{AtomicArgs},
-#'   \link{ComposeArgs},
-#'   \link{AssignArgs},
-#'   \link{FormatVectors}
-# -----------------------------------------------------------------------------.
 #' @param u
 #' user argument values.
 #'
@@ -153,12 +162,6 @@ ReferenceArgs <- function(u, r) {
 
 # =============================================================================.
 #' Compose default arguments merged with user values
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{AtomicArgs},
-#'   \link{ReferenceArgs},
-#'   \link{AssignArgs},
-#'   \link{FormatVectors}
 # -----------------------------------------------------------------------------.
 #' @param u
 #' list of user argument.
@@ -218,12 +221,6 @@ ComposeArgs <- function(u, d) {
 # =============================================================================.
 #' Compose default arguments merged with user values
 # -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{AtomicArgs},
-#'   \link{ReferenceArgs},
-#'   \link{ComposeArgs},
-#'   \link{FormatVectors}
-# -----------------------------------------------------------------------------.
 #' @description
 #' \code{AssignArgs} modifies user arguments in its parent environment.
 #'
@@ -279,49 +276,6 @@ AssignArgs <- function(u, d) {
 
   u <- ComposeArgs(u, d)
   for(lbl in names(u)) env[[lbl]] <- u[[lbl]]
-
-  suppressWarnings(rm(list = obj, pos = env))
-}
-
-# =============================================================================.
-#' Format simple vector arguments
-# -----------------------------------------------------------------------------.
-#' @seealso
-#'   \link{AtomicArgs},
-#'   \link{ReferenceArgs},
-#'   \link{ComposeArgs},
-#'   \link{AssignArgs}
-# -----------------------------------------------------------------------------.
-#' @param u
-#' user values.
-#'
-#' @param n
-#' required vector length.
-#'
-#' @param names
-#' optional names.
-#'
-#' @return
-#' \code{FormatVectors} returns an R vector of the same type as \code{u}.
-# -----------------------------------------------------------------------------.
-#' @examples
-#'
-#' nx <- ny <- 0
-#' u <- list(nx = nx, ny = ny)
-#' FormatVectors(u, 3)
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-#' @export
-FormatVectors <- function(u, n, names = NULL) {
-
-  obj <- deparse(substitute(u))
-  env <- parent.frame() # parent.env(environment())
-
-  for(lbl in names(u)) {
-    u[[lbl]] <- rep(u[[lbl]], length.out = n)
-    if(! is.null(names)) names(u[[lbl]]) <- names
-    env[[lbl]] <- u[[lbl]]
-  }
 
   suppressWarnings(rm(list = obj, pos = env))
 }

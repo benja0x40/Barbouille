@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
-Title: Barbouille
-Version: 0.6.9
+Title: Visualisation of empirical distributions
+Version: 0.6.10
 Authors@R:
     person(
       "Benjamin", "Leblanc",
@@ -11,10 +11,7 @@ Authors@R:
 Contributors: Itys Comet
 BugReports: https://github.com/benja0x40/Barbouille/issues
 URL: https://github.com/benja0x40/Barbouille
-Description:
-    A collection of plotting and color mapping functions built upon
-    base R graphics and partly dedicated to the representation of empirical
-    distributions.
+Description: Visualisation of empirical distributions.
 License: GPL-3
 Imports:
     methods,

@@ -17,10 +17,4 @@ ComposeArgs(u, d)
 \description{
 Compose default arguments merged with user values
 }
-\seealso{
-\link{AtomicArgs},
-  \link{ReferenceArgs},
-  \link{AssignArgs},
-  \link{FormatVectors}
-}
 \keyword{internal}

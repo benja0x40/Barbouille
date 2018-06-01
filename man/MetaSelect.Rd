@@ -17,7 +17,7 @@ MetaSelect(meta, cols, M = NULL)
 \code{MetaSelect} returns a \code{list}.
 }
 \description{
-Find column names from associated metadata
+Find column names from associated metadata.
 }
 \examples{
 
@@ -31,9 +31,5 @@ rownames(meta) <- apply(meta, 1, paste, collapse = "")
 MetaSelect(meta, cols = list(y == "A"))
 MetaSelect(meta, cols = list(x == "A" & z == "A"))
 MetaSelect(meta, cols = list(x == "A" | z == "A"))
-}
-\seealso{
-\link{ExtractSelection},
-  \link{ReCombine}
 }
 \keyword{internal}

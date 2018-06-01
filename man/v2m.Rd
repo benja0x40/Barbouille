@@ -7,6 +7,8 @@
 v2m(x, nrow)
 }
 \description{
-** RESERVED FOR INTERNAL USE **
+Convert vector indices into matrix indices such that:
+
+ij <- v2m(x) => M[x] = M[ij[, 1], ij[, 2]] for each pair of indices
 }
 \keyword{internal}

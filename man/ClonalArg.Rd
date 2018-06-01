@@ -7,6 +7,6 @@
 ClonalArg(u, a, d)
 }
 \description{
-Standardize the value of clonal arguments
+Standardize the value of clonal arguments.
 }
 \keyword{internal}

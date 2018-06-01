@@ -6,13 +6,35 @@ test_that("DefaultArgs", {
 
   cfg <- list(x = 1, y = 2, z = 3)
 
-  env <- new.env()
-  DefaultArgs(cfg, to = env)
-  expect_identical(as.list(env), cfg)
+  src <- new.env()
+  dst <- new.env()
 
-  env$y <- 0
-  DefaultArgs(cfg, to = env)
-  expect_identical(env$y, 0)
+  DefaultArgs(cfg, from = src)
+  expect_identical(names(src), character(0))
+
+  DefaultArgs(cfg, to = dst)
+  expect_identical(as.list(dst), cfg)
+
+  dst <- new.env()
+  dst$y <- 0
+  DefaultArgs(cfg, to = dst)
+  expect_identical(as.list(dst), list(x = 1, y = 0, z = 3))
+
+  alt <- list(x = 3, y = 2, z = 1)
+  dst <- as.environment(alt)
+
+  DefaultArgs(cfg, to = dst)
+  expect_identical(as.list(dst, sorted = TRUE), alt)
+
+  src <- new.env()
+  src$y <- 0
+
+  DefaultArgs(cfg, from = src, to = dst)
+  expect_identical(as.list(dst, sorted = TRUE), alt)
+
+  dst <- new.env()
+  DefaultArgs(cfg, from = src, to = dst)
+  expect_identical(as.list(dst), list(x = 1, y = 0, z = 3))
 
   f <- function(x = NULL, y = NULL, z = NULL, ...) {
     DefaultArgs(cfg)
@@ -37,6 +59,33 @@ test_that("DefaultArgs", {
   expect_identical(f(i = 1:10), cfg)
 
 })
+
+# + VectorArgs ------------------------------------------------------------------
+test_that("VectorArgs", {
+
+  x <- 0
+  y <- 1:10
+
+  VectorArgs(c("x", "y"))
+  expect_identical(x, rep(0, 10))
+  expect_identical(y, 1:10)
+
+  VectorArgs(c("x", "y"), size = 15)
+  expect_identical(x, rep(0, 15))
+  expect_identical(y[11:15], 1:5)
+
+  a <- list(x = 0, y = 1:10)
+
+  r <- VectorArgs(c("x", "y"), from = a)
+  expect_identical(r$x, rep(0, 10))
+  expect_identical(r$y, 1:10)
+
+  r <- VectorArgs(c("x", "y"), from = a, size = 15)
+  expect_identical(r$x, rep(0, 15))
+  expect_identical(r$y[11:15], 1:5)
+
+})
+
 
 # + ClonalArg ------------------------------------------------------------------
 test_that("ClonalArg", {
@@ -118,6 +167,8 @@ test_that("ClonalArg", {
   expect_identical(r, list(x = d, y = v))
 
 })
+
+# Barbouille ###################################################################
 
 # =============================================================================.
 #
@@ -371,13 +422,3 @@ test_that("AssignArgs", {
     expect_identical(m[[i]]$f$y, "B")
   }
 })
-
-# + FormatVectors --------------------------------------------------------------
-test_that("FormatVectors", {
-  nx <- ny <- 0
-  u <- list(nx = nx, ny = ny)
-  FormatVectors(u, 3)
-  expect_identical(nx, c(0, 0, 0))
-  expect_identical(ny, c(0, 0, 0))
-})
-

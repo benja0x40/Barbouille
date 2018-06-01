@@ -1,3 +1,5 @@
+# COMMON #######################################################################
+
 # > matrixes ===================================================================
 context("matrixes")
 
@@ -36,6 +38,8 @@ test_that("MulByRow", {
   r <- t(t(m) * v)
   expect_equal(MulByRow(m, v), r)
 })
+
+# SPECIFIC #####################################################################
 
 # + RowSampler -----------------------------------------------------------------
 test_that("RowSampler", {
@@ -112,14 +116,15 @@ test_that("ExtractSelection", {
   expect_identical(as.vector(a[ 1, ]), as.vector(M[ 1, v]))
   expect_identical(as.vector(a[10, ]), as.vector(M[10, v]))
 
+  idx <- seq(1, nrow(M), 3)
   a <- ExtractSelection(
-    M, meta = meta, cols = list(
+    M, meta = meta, rows = idx, cols = list(
       x = antibody == "H3"  & genotype == "WT",
       y = c("IgG_WT_R1", "IgG_WT_R2")
     )
   )
   b <- ExtractSelection(
-    M, meta = meta, cols = list(
+    M, meta = meta, rows = idx, cols = list(
       x = c("H3_WT_R1", "H3_WT_R2"),
       y = antibody == "IgG" & genotype == "WT"
     )
@@ -160,6 +165,15 @@ test_that("ExtractSelection", {
 test_that("ReCombine", {
 
   M <- matrix(1:20, 10, 2, dimnames = list(NULL, c("x", "y")))
+
+  expect_error(
+    ReCombine(M, f = list(A_Non_Existent_Column = "mean")),
+    regexp = "column not found"
+  )
+  expect_error(
+    ReCombine(M, f = list(x = "A_Non_Existent_Function")),
+    regexp = "unknown function name"
+  )
 
   A <- ReCombine(M, f = list(x = "mean"))
   expect_identical(A, M)
@@ -220,4 +234,39 @@ test_that("ReCombine", {
   B <- ReCombine(M, f = list(x =  median,  y = "mad"))
   expect_identical(A, B)
 
+})
+
+# NOT USED #####################################################################
+
+# + Matrix2Table ---------------------------------------------------------------
+test_that("Matrix2Table", {
+
+  M <- matrix(1:30, 10, 3, dimnames = list(NULL, LETTERS[1:3]))
+  g <- sample(1:2, nrow(M), replace = T)
+
+  r <- Matrix2Table(M, grp = g)
+  expect_identical(r$id, as.factor(rep(colnames(M), each = nrow(M))))
+  expect_identical(r$grp, rep(g, ncol(M)))
+
+  expect_identical(r$x[r$id == "A"], M[, "A"])
+  expect_identical(r$x[r$id == "B"], M[, "B"])
+  expect_identical(r$x[r$id == "C"], M[, "C"])
+})
+
+# + List2Dataframe -------------------------------------------------------------
+test_that("List2Dataframe", {
+
+  lst <- list(
+    "x", 0, "u", 1,
+    "y", 0, "v", 2,
+    "z", 0, "w", 3
+  )
+  r <- List2Dataframe(lst, LETTERS[1:4])
+
+  expect_true(is.data.frame(r))
+  expect_identical(colnames(r), LETTERS[1:4])
+  expect_identical(r$A, as.factor(c("x", "y", "z")))
+  expect_identical(r$C, as.factor(c("u", "v", "w")))
+  expect_identical(r$B, rep(0, 3))
+  expect_equal(r$D, 1:3)
 })

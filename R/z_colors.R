@@ -46,12 +46,12 @@
 #' @export
 BlendColors <- function(x, y, gamma) {
 
-  u <- list(x = x, y = y, gamma = gamma)
-  FormatVectors(u, n = max(sapply(u, length)))
+  VectorArgs(c("x", "y", "gamma"))
 
   x <- t(grDevices::col2rgb(x, alpha = TRUE) / 255)
   y <- t(grDevices::col2rgb(y, alpha = TRUE) / 255)
   x <- gamma * x + (1 - gamma) * y
+
   grDevices::rgb(x[, 1], x[, 2], x[, 3], x[, 4])
 }
 

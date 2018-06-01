@@ -49,10 +49,4 @@ usr <- list(
 )
 AssignArgs(usr, def)
 }
-\seealso{
-\link{AtomicArgs},
-  \link{ReferenceArgs},
-  \link{ComposeArgs},
-  \link{FormatVectors}
-}
 \keyword{internal}

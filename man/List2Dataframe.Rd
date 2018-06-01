@@ -7,6 +7,6 @@
 List2Dataframe(x, lbl)
 }
 \description{
-** RESERVED FOR INTERNAL USE **
+Convert a list into a data.frame.
 }
 \keyword{internal}

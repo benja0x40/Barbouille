@@ -15,7 +15,7 @@ ReCombine(M, f = NULL)
 \code{ReCombine} returns a numeric \code{matrix}.
 }
 \description{
-Combine matrix columns
+Combine matrix columns.
 }
 \examples{
 
@@ -28,9 +28,5 @@ ReCombine(M, f = list(x =  mean,  y = "mean"))
 ReCombine(M, f = c(x = "merge"))
 ReCombine(M, f = c(y = "merge"))
 ReCombine(M, f = list(x = "merge", y = "merge"))
-}
-\seealso{
-\link{ExtractSelection},
-  \link{MetaSelect}
 }
 \keyword{internal}

@@ -7,6 +7,6 @@
 MulByRow(m, v)
 }
 \description{
-** RESERVED FOR INTERNAL USE **
+Multiply a numeric matrix by a column vector.
 }
 \keyword{internal}

@@ -7,6 +7,6 @@
 AddByRow(m, v)
 }
 \description{
-** RESERVED FOR INTERNAL USE **
+Add a column vector to a numeric matrix.
 }
 \keyword{internal}

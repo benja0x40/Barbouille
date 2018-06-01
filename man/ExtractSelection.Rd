@@ -19,7 +19,7 @@ ExtractSelection(M, cols, rows = NULL, meta = NULL)
 \code{ExtractSelection} returns a \code{matrix}.
 }
 \description{
-Extract and rename matrix columns
+Extract and rename matrix columns.
 }
 \examples{
 
@@ -57,9 +57,5 @@ ExtractSelection(
     y = antibody == "IgG" & genotype == "WT"
   )
 )
-}
-\seealso{
-\link{ReCombine},
-  \link{MetaSelect}
 }
 \keyword{internal}

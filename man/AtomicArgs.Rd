@@ -34,10 +34,4 @@ AtomicArgs(u = list(x = m), a)
 AtomicArgs(u = list(y = m), a)
 AtomicArgs(u = list(z = m), a)
 }
-\seealso{
-\link{ReferenceArgs},
-  \link{ComposeArgs},
-  \link{AssignArgs},
-  \link{FormatVectors}
-}
 \keyword{internal}

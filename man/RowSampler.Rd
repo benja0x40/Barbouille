@@ -17,9 +17,6 @@ RowSampler(M, min = 0, max = Inf)
 \code{RowSampler} returns an integer vector.
 }
 \description{
-Random sampling of row indices
-}
-\seealso{
-\link{ExtractSelection}
+Random sampling of row indices.
 }
 \keyword{internal}

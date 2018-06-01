@@ -31,10 +31,4 @@ ReferenceArgs(u = c(b = 1, d = 2), r)
 ReferenceArgs(u = list(b = 1:2, d = 3:4), r)
 ReferenceArgs(u = list(z = 0), r)
 }
-\seealso{
-\link{AtomicArgs},
-  \link{ComposeArgs},
-  \link{AssignArgs},
-  \link{FormatVectors}
-}
 \keyword{internal}
