@@ -1,5 +1,7 @@
-# > colors : rgb ===============================================================
-context("colors : rgb")
+# > colors =====================================================================
+context("colors")
+
+# RGB ##########################################################################
 
 x <- rbind(
   c(153, 102,  51,  51),
@@ -20,8 +22,7 @@ test_that("rgb2R", {
   expect_identical(rgb2R(x), y)
 })
 
-# > colors : hsv ===============================================================
-context("colors : hsv")
+# HSV ##########################################################################
 
 x <- rbind(
   c( 30, 102,  51,  51),
@@ -42,10 +43,21 @@ test_that("hsv2R", {
   expect_identical(hsv2R(x), y)
 })
 
-# > colors : channels ==========================================================
-context("colors : channels")
+# FUNCTIONS ####################################################################
 
-# + hsv2R ----------------------------------------------------------------------
+# + BlendColors ----------------------------------------------------------------
+test_that("BlendColors", {
+
+  expect_identical(BlendColors("red",  "green", gamma = 0.5), "#808000FF")
+  expect_identical(BlendColors("red",   "blue", gamma = 0.5), "#800080FF")
+  expect_identical(BlendColors("green", "blue", gamma = 0.5), "#008080FF")
+
+  expect_identical(
+    BlendColors("white", grey(0.5, 0.5), gamma = 0.5), "#C0C0C0C0"
+  )
+})
+
+# + ColorChannel ---------------------------------------------------------------
 test_that("ColorChannel", {
 
   n <- seq(51, 204, 51)
@@ -106,11 +118,9 @@ test_that("ColorChannel", {
   expect_identical(x, y)
 })
 
+# + TransformColors ------------------------------------------------------------
+test_that("TransformColors", {
 
-# =============================================================================.
-context("TransformColors")
-# -----------------------------------------------------------------------------.
-test_that("transparency is preserved", {
   x <- grey(0:3/3, 0:3/3)
   y <- c("#33333300", "#66666655", "#999999AA", "#CCCCCCFF")
   z <- TransformColors(x, V.range = c(0.2, 0.8))

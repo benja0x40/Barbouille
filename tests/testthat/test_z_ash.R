@@ -12,7 +12,7 @@ test_that("ASH1D", {
   x <- x[o]
   g <- g[o]
 
-  dt <- ASH1D(x, k = 5)
+  dt <- ASH1D(x, k = 5, safe = FALSE, quiet = FALSE)
   d1 <- ASH1D(x, data = x[g == 1], k = 10)
   d2 <- ASH1D(x, data = x[g == 2], k = 10)
 
@@ -38,9 +38,11 @@ test_that("ASH2D", {
     c(rnorm(n1, 0, 1), rnorm(n2, 0, 5))
   )
 
-  dt <- ASH2D(V, k = c(5, 5))
-  d1 <- ASH2D(V, data = V[g == 1, ], k = c(10, 10))
-  d2 <- ASH2D(V, data = V[g == 2, ], k = c(10, 10))
+  dt <- ASH2D(
+    V, k = c(5, 5), safe = FALSE, interpolation = "akima", quiet = FALSE
+  )
+  d1 <- ASH2D(V, data = V[g == 1, ], k = c(10, 10), interpolation = "fields")
+  d2 <- ASH2D(V, data = V[g == 2, ], k = c(10, 10), interpolation = "fields")
 
   n <- dim(V)
   expect_identical(length(dt), n[1])

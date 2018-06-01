@@ -6,7 +6,27 @@
 \usage{
 ash2(bins, m = c(5, 5), kopt = c(2, 2), quiet = TRUE)
 }
+\arguments{
+\item{bins}{
+(input list) bin count matrix nc and interval matrix  ab from \code{bin2}
+}
+
+\item{m}{
+(input integer vector of length 2) x and y direction smoothing
+parameters. Default is 5 by 5. 
+}
+
+\item{kopt}{see \code{\link{ash1}}}
+}
+\value{
+Matrix of ASH estimates returned.
+Components x,y,z can be given to the contour function directly.
+Other input variables returned in list for record keeping.
+}
 \description{
 ash::ash2 modified to use message() instead of regular text output
+}
+\seealso{
+\code{\link{bin2}}
 }
 \keyword{internal}

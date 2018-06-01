@@ -175,18 +175,40 @@ test_that("ReCombine", {
     regexp = "unknown function name"
   )
 
-  A <- ReCombine(M, f = list(x = "mean"))
-  expect_identical(A, M)
-  A <- ReCombine(M, f = list(y = "mean"))
-  expect_identical(A, M)
-  A <- ReCombine(M, f = list(x = "mad"))
-  expect_identical(A[, "x"], rep(0, nrow(A)))
-  A <- ReCombine(M, f = list(y = "mad"))
-  expect_identical(A[, "y"], rep(0, nrow(A)))
-  A <- ReCombine(M, f = list(x = "var"))
-  expect_true(all(is.na(A[, "x"])))
-  A <- ReCombine(M, f = list(y = "var"))
-  expect_true(all(is.na(A[, "y"])))
+  for(fun in c("mean", "max", "min", "median")) {
+    A <- ReCombine(M, f = list(x = fun))
+    expect_identical(A, M)
+    A <- ReCombine(M, f = list(y = fun))
+    expect_identical(A, M)
+  }
+  for(fun in c("mad")) {
+    A <- ReCombine(M, f = list(x = fun))
+    expect_identical(A[, "x"], rep(0, nrow(A)))
+    A <- ReCombine(M, f = list(y = fun))
+    expect_identical(A[, "y"], rep(0, nrow(A)))
+  }
+  for(fun in c("var", "sd")) {
+    A <- ReCombine(M, f = list(x = fun))
+    expect_true(all(is.na(A[, "x"])))
+    A <- ReCombine(M, f = list(y = fun))
+    expect_true(all(is.na(A[, "y"])))
+  }
+
+  M <- matrix(1:60, 10, 6)
+  colnames(M) <- c("x", "x", "x", "y", "y", "y")
+
+  A <- ReCombine(M, f = list(x = "mean", y =  mean))
+  B <- ReCombine(M, f = list(x =  mean,  y = "mean"))
+  expect_identical(A, B)
+  A <- ReCombine(M, f = list(x = "min", y =  max))
+  B <- ReCombine(M, f = list(x =  min,  y = "max"))
+  expect_identical(A, B)
+  A <- ReCombine(M, f = list(x = "var", y =  sd))
+  B <- ReCombine(M, f = list(x =  var,  y = "sd"))
+  expect_identical(A, B)
+  A <- ReCombine(M, f = list(x = "median", y =  mad))
+  B <- ReCombine(M, f = list(x =  median,  y = "mad"))
+  expect_identical(A, B)
 
   M <- matrix(1:40, 10, 4, dimnames = list(NULL, c("x", "x", "y", "y")))
 
@@ -217,22 +239,6 @@ test_that("ReCombine", {
   A <- ReCombine(M, f = list(x = "merge", y = "merge"))
   expect_identical(colnames(A), c("x", "y"))
   expect_equal(nrow(A), 4 * nrow(M))
-
-  M <- matrix(1:60, 10, 6)
-  colnames(M) <- c("x", "x", "x", "y", "y", "y")
-
-  A <- ReCombine(M, f = list(x = "mean", y =  mean))
-  B <- ReCombine(M, f = list(x =  mean,  y = "mean"))
-  expect_identical(A, B)
-  A <- ReCombine(M, f = list(x = "min", y =  max))
-  B <- ReCombine(M, f = list(x =  min,  y = "max"))
-  expect_identical(A, B)
-  A <- ReCombine(M, f = list(x = "var", y =  sd))
-  B <- ReCombine(M, f = list(x =  var,  y = "sd"))
-  expect_identical(A, B)
-  A <- ReCombine(M, f = list(x = "median", y =  mad))
-  B <- ReCombine(M, f = list(x =  median,  y = "mad"))
-  expect_identical(A, B)
 
 })
 

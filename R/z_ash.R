@@ -1,6 +1,7 @@
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
+#' @inherit ash::ash1 params return details seealso
 #' @description
 #' ash::ash1 modified to use message() instead of regular text output
 # -----------------------------------------------------------------------------.
@@ -29,6 +30,7 @@ ash1 <- function(bins, m = 5, kopt = c(2, 2), quiet = TRUE){
 # =============================================================================.
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
+#' @inherit ash::ash2 params return details seealso
 #' @description
 #' ash::ash2 modified to use message() instead of regular text output
 # -----------------------------------------------------------------------------.
@@ -192,7 +194,7 @@ ASH1D <- function(
 #' logical (defautl = TRUE, yes).
 #'
 #' @param ...
-#' optional argument (\code{kopt}) forwarded to the \link{bin2} function.
+#' optional argument forwarded to the \link{ash2} function.
 #'
 #' @return
 #' \code{ASH2D} returns a numeric vector with estimated densities.
