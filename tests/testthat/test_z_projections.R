@@ -4,11 +4,11 @@ context("projections : Atomize")
 n <- 10000
 
 # + spray ----------------------------------------------------------------------
-for(spray in c("uniform", "triangle", "cosine")) {
+for(spray in c("uniform", "triangle", "cosine", "normal")) {
   tst <- paste0("spray = ", spray)
   test_that(tst, {
     r <- Atomize(n, spray = spray)
-    expect_true(all(r >= 0 & r <= 1))
+    if(spray != "normal") expect_true(all(r >= 0 & r <= 1))
     expect_true(abs(mean(r) - 0.5) < 1E-2)
   })
 }
@@ -21,14 +21,23 @@ x <- rnorm(n, c(-10, 10), 5)
 r <- range(x)
 
 # + spray ----------------------------------------------------------------------
-for(spray in c("uniform", "triangle", "cosine")) {
-  tst <- paste0("spray = ", spray)
-  test_that(tst, {
-    p <- UnivariateProjection(x, spray = spray)
-    expect_equal(length(p), length(x))
-    expect_true(all(p >= 0))
-    expect_true(all(p <= 1))
-  })
+lst <- list(NULL, "static", "global", "local")
+for(p in lst) {
+  for(o in lst) {
+    for(spray in c("uniform", "triangle", "cosine")) {
+      tst <- paste0(
+        "proportions = ", p, " | ordering = ", o, " | spray = ", spray
+      )
+      test_that(tst, {
+        p <- UnivariateProjection(
+          x, proportions = p, ordering = o, spray = spray
+        )
+        expect_equal(length(p), length(x))
+        expect_true(all(p >= 0))
+        expect_true(all(p <= 1))
+      })
+    }
+  }
 }
 
 # > BivariateProjection ========================================================

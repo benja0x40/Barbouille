@@ -187,60 +187,6 @@ PlotImage <- function(m, x = NULL, y = NULL, ...) {
 }
 
 # =============================================================================.
-#' SimulateData
-# -----------------------------------------------------------------------------.
-#' @param p
-#' dataframe of mode generators with columns f, a, b (e.g. "rnorm", mu, sigma)
-#'
-#' @param m
-#' matrix of observation groups (rows) where:
-#' column  1 = population
-#' column  2 = pairing correlation [-1 ; 1] (variable sort and shuffle)
-#' columns 3.. path of modes (as indexes within p)
-#'
-#' @param n
-#' population of each group
-#'
-#' @return
-#' \code{SimulateData} returns a \code{list}.
-# -----------------------------------------------------------------------------.
-#' @keywords internal
-#' @export
-SimulateData <- function(p, m, n = 10000) {
-
-  n <- round(m[, 1] / sum(m[, 1]) * n)
-  r <- m[, 2]
-  z <- sign(r)
-
-  m <- m[, -(1:2)]
-  v <- ncol(m)
-
-  g <- rep(1:nrow(m), n)
-  k <- c(0, cumsum(n))
-
-  X <- matrix(0, sum(n), v)
-  for(i in 1:nrow(m)) {
-    s <- matrix(0, n[i], v)
-    for(j in 1:v) {
-      e <- p[m[i, j], ]
-      e <- with(e, e$f[[1]](n[i], a, b))
-      if(r[i] != 0) {
-        e <- sort(e)
-        if(r[i] == -1 & ! (j %% 2)) e <- rev(e)
-        if(abs(r[i]) < 1) {
-          e <- LocalShuffle(e, k = r[i] * z[i]^((j %% 2) + 1))
-        }
-      }
-      s[, j] <- e
-    }
-    X[k[i] + 1:n[i], ] <- s
-  }
-  colnames(X) <- LETTERS[1:v]
-
-  list(X = X, g = g)
-}
-
-# =============================================================================.
 #' Make plot limits including space for legends
 # -----------------------------------------------------------------------------.
 #' @param x
@@ -421,8 +367,13 @@ AutoColorParameters <- function(colors = NULL) {
 # NOT EXPORTED #################################################################
 
 # =============================================================================.
-# Function for internal use
+#' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
+#' @description
+#' Compute legend coordinates
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
 resolve.legend.position <- function(pos) {
   p <- c(-1, 0, 1)
   p <- data.frame(
