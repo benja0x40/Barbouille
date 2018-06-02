@@ -29,12 +29,12 @@ for(p in lst) {
         "proportions = ", p, " | ordering = ", o, " | spray = ", spray
       )
       test_that(tst, {
-        p <- UnivariateProjection(
+        r <- UnivariateProjection(
           x, proportions = p, ordering = o, spray = spray
         )
-        expect_equal(length(p), length(x))
-        expect_true(all(p >= 0))
-        expect_true(all(p <= 1))
+        expect_equal(length(r), length(x))
+        expect_true(all(r >= 0))
+        expect_true(all(r <= 1))
       })
     }
   }

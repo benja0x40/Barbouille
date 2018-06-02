@@ -1,7 +1,7 @@
 Package: Barbouille
 Type: Package
 Title: Visualisation of empirical distributions
-Version: 0.6.13
+Version: 0.6.14
 Authors@R:
     person(
       "Benjamin", "Leblanc",

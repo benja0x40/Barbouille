@@ -43,6 +43,10 @@ test_that("SX2Y", {
 # + resolve.legend.position -----------------------------------------------------------------------
 test_that("resolve.legend.position", {
 
+  expect_error(resolve.legend.position(-1))
+  expect_error(resolve.legend.position(10))
+  expect_error(resolve.legend.position("A_Non_Existent_Position"))
+
   lst <- c(
     "bottomleft", "bottom", "bottomright",
     "left", "center", "right",
