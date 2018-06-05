@@ -77,8 +77,7 @@ ScatterMaps <- function(
   cfg <- Barbouille() # Global options
   DefaultArgs(cfg, from = as.environment(list(...)))
 
-  extend <- rep(extend, length.out = 2)
-  bins   <- rep(bins,   length.out = 2)
+  VectorArgs(c("extend", "bins"), size = 2)
 
   layers <- match.arg(layers)
 
@@ -113,6 +112,9 @@ ScatterMaps <- function(
   }
   g.pop <- tabulate(pops)
   g.nbr <- length(g.pop)
+
+  if(is.factor(pops)) g.lev <- levels(pops)
+  else g.lev <- 1:g.nbr
 
   clr <- AtomicArgs(colors, list(p = NULL, m = NULL))
   if(is.null(clr$p)) {
@@ -153,7 +155,7 @@ ScatterMaps <- function(
   SCM <- array(0.0, dim = c(bins, n.map, g.nbr))
 
   for(g in 1:g.nbr) {
-    grp <- which(pops == g)
+    grp <- which(pops == g.lev[g])
     for(i in 1:n.map) {
       map <- maps[[i]]
       r <- ExtractSelection(M, cols = map[c("x", "y")], rows = grp)

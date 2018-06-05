@@ -77,15 +77,14 @@ SideBySide <- function(
   cfg <- Barbouille() # Global options
   DefaultArgs(cfg, from = as.environment(list(...)))
 
+  VectorArgs(c("extend", "sampling"), size = 2)
+
   a <- c("d", "v")
   smoothing  <- ClonalArg(smoothing, a, cfg$smoothing)
   spray      <- ClonalArg(spray,     a, cfg$spray)
   fwhm       <- ClonalArg(fwhm,      a, cfg$fwhm)
   scales     <- ClonalArg(scales,    a, cfg$scales)
   render     <- ClonalArg(render,    a, cfg$render)
-
-  extend   <- rep(extend,   length.out = 2)
-  sampling <- rep(sampling, length.out = 2)
 
   if(spacing) grid <- NA
   if(is.null(label)) label = deparse(substitute(M))
@@ -108,6 +107,9 @@ SideBySide <- function(
   }
   g.pop <- tabulate(pops)
   g.nbr <- length(g.pop)
+
+  if(is.factor(pops)) g.lev <- levels(pops)
+  else g.lev <- 1:g.nbr
 
   clr <- AtomicArgs(colors, list(d = "grey", v = "grey", p = NULL))
   clr$d <- rep(clr$d, length.out = n.var)
@@ -164,7 +166,7 @@ SideBySide <- function(
       d <- matrix(0, n.obs, g.nbr)
       for(g in 1:g.nbr) {
         d[, g] <- ASH1D(
-          M[, i], data = M[pops == g, i], n = bins, k = smoothing$d[2],
+          M[, i], data = M[pops == g.lev[g], i], n = bins, k = smoothing$d[2],
           safe = T
         )
       }
@@ -178,7 +180,7 @@ SideBySide <- function(
       for(g in 1:g.nbr) {
         # Binning
         r <- Binning2D(
-          p[pops[rnd] == g, ], n = c(db, bins), k = smoothing$d,
+          p[pops[rnd] == g.lev[g], ], n = c(db, bins), k = smoothing$d,
           xlim = 0:1, ylim = rng, breaks = FALSE, safe = TRUE
         )
         if(scales$d == "absolute") r <- r * 1 / n.obs
@@ -197,7 +199,7 @@ SideBySide <- function(
       for(g in 1:g.nbr) {
         # Binning
         r <- Binning2D(
-          p[pops[rnd] == g, ], n = c(vb, bins), k = smoothing$v,
+          p[pops[rnd] == g.lev[g], ], n = c(vb, bins), k = smoothing$v,
           xlim = 0:1, ylim = rng, breaks = FALSE, safe = TRUE
         )
         if(scales$d == "absolute") r <- r * 1 / n.obs

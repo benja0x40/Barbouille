@@ -1,0 +1,16 @@
+Category	Parameter	Type	Description	Default
+Orientation	layout	char	"""horizontal"" or ""vertical"""	"""h"""
+Axes	rng	num	represented range of X values	NULL
+Axes	label	char	name of the X values axis	NULL
+Axes	names	logic	show column names of X if available	TRUE
+Axes	las	int		1
+Separators	box	logic	show frame surrounding visualization slots	TRUE
+Separators	grid	color	lines delimiting visualization slots	grey(0.5, alpha = 0.5)
+Separators	spacing	int	blank space between visualization slots	0
+Binning	bins	int	number of bins for the values of X	200
+Binning	uv	int	bins in each distribution slot	50
+Binning	bv	int	bins in each variation slot	50
+Quality	sampling	num		5,00E+03
+Quality	smoothing	int		5
+Casting	spray	char	"""uniform"", ""triangle"", ""normal"" or ""cosine"""	"""uniform"""
+Casting	stencil	char	"""linear"", ""cosine"" or ""sigmoid"""	"""linear"""

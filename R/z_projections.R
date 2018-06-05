@@ -164,6 +164,7 @@ UnivariateProjection <- function(
   n.grp <- ncol(X)
 
   if(is.null(grp)) grp <- matrix(1, n.obs, 1)
+  if(is.factor(grp)) grp <- unclass(grp)
   g.pop <- tabulate(grp)
 
   if(is.null(proportions)) proportions <- ""

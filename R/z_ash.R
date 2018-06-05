@@ -270,6 +270,8 @@ ASH2D <- function(
   } else {
     s <- nrow(data) / nrow(V)
   }
+
+  VectorArgs(c("n", "k", "rx"), size = 2)
   k[k == 0] <- 1
 
   # Range
