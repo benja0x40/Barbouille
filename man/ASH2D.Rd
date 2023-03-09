@@ -4,8 +4,16 @@
 \alias{ASH2D}
 \title{Bivariate density estimation for given observations}
 \usage{
-ASH2D(V, data = NULL, n = c(200, 200), k = c(5, 5), rx = c(1.1, 1.1),
-  safe = TRUE, interpolation = c("fields", "akima"), ...)
+ASH2D(
+  V,
+  data = NULL,
+  n = c(200, 200),
+  k = c(5, 5),
+  rx = c(1.1, 1.1),
+  safe = TRUE,
+  interpolation = c("fields", "akima"),
+  ...
+)
 }
 \arguments{
 \item{V}{numeric matrix with 2 columns.}

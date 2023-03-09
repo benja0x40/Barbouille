@@ -4,8 +4,12 @@
 \alias{BivariateProjection}
 \title{** RESERVED FOR INTERNAL USE **}
 \usage{
-BivariateProjection(V, stencil = c("linear", "cosine", "sigmoid"),
-  spray = "uniform", fwhm = 1/2)
+BivariateProjection(
+  V,
+  stencil = c("linear", "cosine", "sigmoid"),
+  spray = "uniform",
+  fwhm = 1/2
+)
 }
 \arguments{
 \item{V}{numeric matrix with two columns representing bivariate observations.}

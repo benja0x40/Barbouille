@@ -325,6 +325,39 @@ Matrix2Table <- function(X, grp = NULL) {
 #' ** RESERVED FOR INTERNAL USE **
 # -----------------------------------------------------------------------------.
 #' @description
+#' Convert a list into a data.table.
+# -----------------------------------------------------------------------------.
+#' @param x
+#' list containing table values.
+#'
+#' @param key
+#' name of the key column.
+#'
+#' @param columns
+#' column names.
+# -----------------------------------------------------------------------------.
+#' @keywords internal
+#' @export
+List2DataTable <- function(x, key, columns, ...) {
+  nc <- length(columns)
+  nx <- length(x)
+  nr <- nx / nc
+  d <- list()
+
+  for(k in columns) {
+    j <- match(k, columns)
+    d[[k]] <- unlist(x[(1:nr - 1) * nc + j])
+  }
+  d <- c(d, ...)
+  d <- do.call(data.frame, d)
+  colnames(d) <- columns
+  data.table(d, key = key)
+}
+
+# =============================================================================.
+#' ** RESERVED FOR INTERNAL USE **
+# -----------------------------------------------------------------------------.
+#' @description
 #' Convert a list into a data.frame.
 # -----------------------------------------------------------------------------.
 #' @keywords internal

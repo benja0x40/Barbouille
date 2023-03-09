@@ -4,8 +4,7 @@
 \alias{ASH1D}
 \title{Univariate density estimation for given observations}
 \usage{
-ASH1D(x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1,
-  safe = TRUE, ...)
+ASH1D(x, data = NULL, n = 200, k = 5, r = NULL, rx = 1.1, safe = TRUE, ...)
 }
 \arguments{
 \item{x}{numeric vector.}

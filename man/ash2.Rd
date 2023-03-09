@@ -16,7 +16,7 @@ ash2(bins, m = c(5, 5), kopt = c(2, 2), quiet = TRUE)
 parameters. Default is 5 by 5. 
 }
 
-\item{kopt}{see \code{\link{ash1}}}
+\item{kopt}{see \code{\link[ash]{ash1}}}
 }
 \value{
 Matrix of ASH estimates returned.
@@ -27,6 +27,6 @@ Other input variables returned in list for record keeping.
 ash::ash2 modified to use message() instead of regular text output
 }
 \seealso{
-\code{\link{bin2}}
+\code{\link[ash]{bin2}}
 }
 \keyword{internal}

@@ -4,9 +4,18 @@
 \alias{UnivariateProjection}
 \title{** RESERVED FOR INTERNAL USE **}
 \usage{
-UnivariateProjection(X, Y = NULL, grp = NULL, proportions = NULL,
-  ordering = NULL, rounding = 2, spray = "uniform", fwhm = 1/2,
-  violin = FALSE, vmode = "linear")
+UnivariateProjection(
+  X,
+  Y = NULL,
+  grp = NULL,
+  proportions = NULL,
+  ordering = NULL,
+  rounding = 2,
+  spray = "uniform",
+  fwhm = 1/2,
+  violin = FALSE,
+  vmode = "linear"
+)
 }
 \arguments{
 \item{X}{numeric vector or matrix with positive values, for instance representing

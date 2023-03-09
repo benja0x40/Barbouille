@@ -271,8 +271,8 @@ test_that("List2Dataframe", {
 
   expect_true(is.data.frame(r))
   expect_identical(colnames(r), LETTERS[1:4])
-  expect_identical(r$A, as.factor(c("x", "y", "z")))
-  expect_identical(r$C, as.factor(c("u", "v", "w")))
+  expect_identical(r$A, c("x", "y", "z")) # as.factor no longer needed
+  expect_identical(r$C, c("u", "v", "w")) # as.factor no longer needed
   expect_identical(r$B, rep(0, 3))
   expect_equal(r$D, 1:3)
 })

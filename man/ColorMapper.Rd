@@ -4,8 +4,15 @@
 \alias{ColorMapper}
 \title{ColorMapper (early prototype)}
 \usage{
-ColorMapper(H, shift = 30, gradient = "bright", saturation = 1,
-  contrast = 0.5, luminance = 1, greyscale = FALSE)
+ColorMapper(
+  H,
+  shift = 30,
+  gradient = "bright",
+  saturation = 1,
+  contrast = 0.5,
+  luminance = 1,
+  greyscale = FALSE
+)
 }
 \arguments{
 \item{H}{color or hue value.}

@@ -4,8 +4,14 @@
 \alias{SuperRainbow}
 \title{Presumably an improved rainbow color generator}
 \usage{
-SuperRainbow(n, mod = c("-+", "++", "+-"), s.rng = c(0.6, 1),
-  l.rng = c(0.7, 1), f = "hsv", alpha = 1)
+SuperRainbow(
+  n,
+  mod = c("-+", "++", "+-"),
+  s.rng = c(0.6, 1),
+  l.rng = c(0.7, 1),
+  f = "hsv",
+  alpha = 1
+)
 }
 \arguments{
 \item{n}{number of colors.}

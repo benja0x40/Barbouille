@@ -39,6 +39,6 @@ vector of ash estimates
 ash::ash1 modified to use message() instead of regular text output
 }
 \seealso{
-\code{\link{bin1}}
+\code{\link[ash]{bin1}}
 }
 \keyword{internal}

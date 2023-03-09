@@ -4,8 +4,15 @@
 \alias{TransformColors}
 \title{Color transformation}
 \usage{
-TransformColors(v, delta.H = NULL, S.range = NULL, V.range = NULL,
-  R.range = NULL, G.range = NULL, B.range = NULL)
+TransformColors(
+  v,
+  delta.H = NULL,
+  S.range = NULL,
+  V.range = NULL,
+  R.range = NULL,
+  G.range = NULL,
+  B.range = NULL
+)
 }
 \arguments{
 \item{v}{a standard R color vector or a ColorParameters or GroupParameters object

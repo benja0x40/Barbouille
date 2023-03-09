@@ -4,10 +4,24 @@
 \alias{ColorLegend}
 \title{Legend for color maps}
 \usage{
-ColorLegend(pos, parameters, ticks = NULL, labels = NULL,
-  resolution = 100, log = FALSE, xpd = FALSE, size = c(40, 3),
-  margin = 5, horiz = FALSE, tick.pos = 1, tick.size = 1.5,
-  offset = 0.3, lwd = 1, border = TRUE, ...)
+ColorLegend(
+  pos,
+  parameters,
+  ticks = NULL,
+  labels = NULL,
+  resolution = 100,
+  log = FALSE,
+  xpd = FALSE,
+  size = c(40, 3),
+  margin = 5,
+  horiz = FALSE,
+  tick.pos = 1,
+  tick.size = 1.5,
+  offset = 0.3,
+  lwd = 1,
+  border = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pos}{the legend location which can be specified using either a single keyword in

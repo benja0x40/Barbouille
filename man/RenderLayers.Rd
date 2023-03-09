@@ -4,8 +4,13 @@
 \alias{RenderLayers}
 \title{** RESERVED FOR INTERNAL USE **}
 \usage{
-RenderLayers(LYR, master, mappers, render = c("prevalence", "maximum"),
-  scoring = "linear")
+RenderLayers(
+  LYR,
+  master,
+  mappers,
+  render = c("prevalence", "maximum"),
+  scoring = "linear"
+)
 }
 \arguments{
 \item{LYR}{numeric array.}

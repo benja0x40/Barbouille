@@ -4,10 +4,23 @@
 \alias{MakeColors}
 \title{Piecewise color mapping and group-associated coloring}
 \usage{
-MakeColors(v, thresholds = NULL, colors = NULL, range = NULL,
-  number = NULL, below = "white", above = "white", na = NA,
-  levels = 256, name = "", parameters = NULL, alpha = 1,
-  override = TRUE, grp = NULL, grp.prm = NULL)
+MakeColors(
+  v,
+  thresholds = NULL,
+  colors = NULL,
+  range = NULL,
+  number = NULL,
+  below = "white",
+  above = "white",
+  na = NA,
+  levels = 256,
+  name = "",
+  parameters = NULL,
+  alpha = 1,
+  override = TRUE,
+  grp = NULL,
+  grp.prm = NULL
+)
 }
 \arguments{
 \item{v}{vector of numeric values.}

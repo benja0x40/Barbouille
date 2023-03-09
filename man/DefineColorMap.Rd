@@ -4,9 +4,19 @@
 \alias{DefineColorMap}
 \title{Definition of ColorParameters}
 \usage{
-DefineColorMap(thresholds = NULL, colors = NULL, range = NULL,
-  number = NULL, below = NA, above = NA, na = NA, levels = 256,
-  centered = FALSE, extra = NULL, name = "")
+DefineColorMap(
+  thresholds = NULL,
+  colors = NULL,
+  range = NULL,
+  number = NULL,
+  below = NA,
+  above = NA,
+  na = NA,
+  levels = 256,
+  centered = FALSE,
+  extra = NULL,
+  name = ""
+)
 }
 \arguments{
 \item{thresholds}{numeric vector defining the boundaries for each range of values to be
